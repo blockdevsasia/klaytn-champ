@@ -25,10 +25,10 @@ Blockchain-based user and developer challenge with verifiable scoring and certif
 <tr>
 <td><strong>Technology</strong></td>
 <td>
-<strong>Webapp:</strong> Quasar<br>
-<strong>Server:</strong> ExpressJS<br>
-<strong>DB/Auth:</strong> Firebase<br>
-<strong>Blockchain:</strong> Klaytn<br>
+<strong>Webapp:</strong> Quasar (https://quasar.dev/)<br>
+<strong>Server:</strong> ExpressJS (https://expressjs.com/)<br>
+<strong>DB/Auth:</strong> Firebase (https://firebase.google.com/)<br>
+<strong>Blockchain:</strong> Klaytn (https://www.klaytn.com/)<br>
 </td>
 </tr>
 </table>
