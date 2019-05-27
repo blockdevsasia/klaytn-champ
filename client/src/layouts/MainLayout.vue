@@ -3,8 +3,19 @@
     <q-header elevated>
 
       <q-toolbar>
+
+        <q-btn
+          flat
+          dense
+          round
+          @click="leftDrawerOpen = !leftDrawerOpen"
+          aria-label="Menu"
+          class="menu-bar"
+        >
+          <q-icon name="menu" />
+        </q-btn>
         <q-toolbar-title>
-          Klaytn Champion: Level {{level}}
+          Klaytn Champ: Level {{level}}
         </q-toolbar-title>
 
       </q-toolbar>
