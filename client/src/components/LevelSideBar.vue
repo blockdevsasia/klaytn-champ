@@ -18,25 +18,21 @@
         exact
       />
       <q-route-tab
-        :disable="level < 2"
         label="2"
         to="/level/2"
         exact
       />
       <q-route-tab
-        :disable="level < 3"
         label="3"
         to="/level/3"
         exact
       />
       <q-route-tab
-        :disable="level < 4"
         label="4"
         to="/level/4"
         exact
       />
       <q-route-tab
-        :disable="level < 5"
         label="5"
         to="/level/5"
         exact
