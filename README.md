@@ -19,7 +19,7 @@ Blockchain-based user and developer challenge with verifiable scoring and certif
 
 <tr>
 <td><strong>Wireframes</strong></td>
-<td>https://balsamiq.cloud/styja/py0ofv4/r5490</td>
+<td></td>
 </tr>
 
 <tr>
