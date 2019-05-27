@@ -51,4 +51,4 @@ app.post('/checkAmount', wrap(async (req, res, next) => {
 }))
 
 
-app.listen(process.env.SERVER_PORT, () => console.log(`Example app listening on port ${PORT}!`))
+app.listen(process.env.SERVER_PORT, () => console.log(`Example app listening on port ${process.env.SERVER_PORT}!`))
