@@ -1,58 +1,54 @@
-require('dotenv').config();
+const Contract = require('../solidity/build/contracts/KlaytnChamp.json')
+
+require('dotenv').config()
 const express = require('express')
-const app = express();
 const cors = require('cors')
 const Caver = require('caver-js')
+const wrap = require("./middleware/wrap")
 
-const cav = new Caver('https://api.baobab.klaytn.net:8651/')
-const wrap = require("./middleware/wrap");
-const port = 3000
-
+const app = express()
 app.use(cors())
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-app.get('/', (req, res) => res.send('Hello World!'))
+const cav = new Caver(process.env.URL)
+cav.klay.accounts.wallet.add(process.env.PRIVATE_KEY);
+const contract = new cav.klay.Contract(Contract.abi, process.env.CONTRACT_ID)
 
-const router = require('express-promise-router')();
-
-const PRIVATE_KEY=process.env.PRIVATE_KEY
-const ADDRESS=process.env.ADDRESS
-
-app.post('/user/:address', wrap(async (req, res, next) => {
-  // TODO: Check if we already sent to the user
-
-  const randomNumber = Math.floor(1 + (Math.random() * 1000000))
-  let txParams = {
-    from: ADDRESS,
-    gasPrice: 25000000000,
-    gasLimit: 9900000,
-    to: req.params.address,
-    value: cav.utils.toHex(randomNumber),
-    chainId: 1001,
-  };
-
-  const tx = await cav.klay.accounts.signTransaction(txParams, PRIVATE_KEY)
-  const result = await cav.klay.sendSignedTransaction(tx.rawTransaction)
-
-  await res.send(result)
+app.get('/getOurPlayer', wrap(async (req, res, next) => {
+  const result = await contract.methods.getPlayer("0xe23a66edbdec3c716e1d5fc14d4d4b40ee3d2b41").call()
+  res.status(200).send(result)
 }))
 
-app.post('/checkRandomAmount', wrap(async (req, res, next) => {
+app.post('/registerUser', wrap(async (req, res, next) => {
+  const address = req.body.address
 
   const randomNumber = Math.floor(1 + (Math.random() * 1000000))
-  let txParams = {
-    from: ADDRESS,
-    gasPrice: 25000000000,
-    gasLimit: 9900000,
-    to: req.params.address,
-    value: cav.utils.toHex(randomNumber),
-    chainId: 1001,
-  };
 
-  const tx = await cav.klay.accounts.signTransaction(txParams, PRIVATE_KEY)
-  const result = await cav.klay.sendSignedTransaction(tx.rawTransaction)
+  try {
+    const result = await contract.methods.registerUser(address).send({
+      gas: '200000',
+      from: process.env.ADDRESS,
+      value: randomNumber
+    })
+    console.log(result)
+    res.status(200).send()
+  }catch(err){
+    res.status(422).send(err)
+  }
+}))
 
-  await res.send(result)
+app.post('/checkAmount', wrap(async (req, res, next) => {
+  try {
+    const result = await contract.methods.registerPlayer(req.params.address).send({
+      gas: '200000',
+      from: ADDRESS
+    })
+    res.status(200).send()
+  }catch(err){
+    res.status(404).send()
+  }
 }))
 
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(process.env.SERVER_PORT, () => console.log(`Example app listening on port ${process.env.SERVER_PORT}!`))

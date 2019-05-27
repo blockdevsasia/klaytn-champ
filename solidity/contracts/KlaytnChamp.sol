@@ -2,32 +2,40 @@ pragma solidity 0.4.24;
 
 // TODO implement OpenZeppelin's Ownable
 
-contract Champ {
-    struct PlayerData {
+contract KlaytnChamp {
+    struct UserData {
         uint256 randomAmount;
         uint256 level;
     }
 
-    // The main mapping that contains the data for each player
-    mapping(address => PlayerData) _players;
+    // The main mapping that contains the data for each user
+    mapping(address => UserData) _users;
 
-    function registerPlayer(address playerAddress, uint256 randomAmount) public {
+    function registerUser(address userAddress) public payable {
         require(
-            _players[playerAddress].level == 0,
+            _users[userAddress].level == 0,
             "Cannot register twice"
         );
+        require(
+            msg.value > 0,
+            "Random amount cannot be 0"
+        );
 
-        PlayerData memory newPlayer =  PlayerData(randomAmount, 1);
+        // Transfer the random amount
+        userAddress.transfer(msg.value);
 
-        _players[playerAddress] = newPlayer;
+        // If the transfer succeeded, register the user's address
+        UserData memory newUser = UserData(msg.value, 1);
+        _users[userAddress] = newUser;
+
 
     }
 
-    function getPlayer(address playerAddress)
+    function getUser(address userAddress)
     public view
     returns (uint256 randomAmount, uint256 level)
     {
-        PlayerData storage player = _players[playerAddress];
-        return (player.randomAmount, player.level);
+        UserData storage user = _users[userAddress];
+        return (user.randomAmount, user.level);
     }
 }
