@@ -73,11 +73,11 @@ export default {
       this.$store.commit(key, value)
     },
     level1submitAddress () {
-      this.$store.dispatch('external/serverSendAddress', this.address)
+      this.$store.dispatch('external/httpRegisterUser', this.address)
       console.log('submitted address')
     },
     level1submitRandomAmount () {
-      this.$store.dispatch('external/serverSendRandomAmount', { address: this.address, randomAmount: this.randomAmount })
+      this.$store.dispatch('external/httpCheckAmount', { address: this.address, randomAmount: this.randomAmount })
       console.log('submitted randomAmount')
     }
   },
