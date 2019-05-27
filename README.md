@@ -1,4 +1,4 @@
-# klaytn-champions
+# klaytn-champ
 Blockchain-based user and developer challenge with verifiable scoring and certification. Our goal is to make technical documentation and onboarding with Klaytn more fun by Gamification & Incentivisation.
 
 <table>
@@ -14,7 +14,7 @@ Blockchain-based user and developer challenge with verifiable scoring and certif
 
 <tr>
 <td><strong>Github</strong></td>
-<td>https://github.com/blockdevsasia/klaytn-champions</td>
+<td>https://github.com/blockdevsasia/klaytn-champ</td>
 </tr>
 
 <tr>

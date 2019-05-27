@@ -2,7 +2,7 @@ pragma solidity 0.4.24;
 
 // TODO implement OpenZeppelin's Ownable
 
-contract Champions {
+contract Champ {
     struct PlayerData {
         uint256 randomAmount;
         uint256 level;

@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.0.1",
   "description": "Blockchain-based usage and developer challenge with verifiable scoring and on-chain certification.",
-  "productName": "Klaytn Champions",
+  "productName": "Klaytn Champ",
   "cordovaId": "org.cordova.quasar.app",
   "author": "info@blockdevs.asia",
   "private": true,
