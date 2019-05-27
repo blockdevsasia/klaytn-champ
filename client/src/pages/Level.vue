@@ -46,10 +46,142 @@
         text-color="black" label="Check account to proceed to Level 2" @click="level1submitAddress" />
     </div>
     <!--------------------- LEVEL 3 ----------------------------------->
+    <div
+      v-if="level == 3"
+      class="row"    
+    >
+      <q-card flat class="my-card">
+        <q-card-section>
+          <q-list>
+            <q-item>
+              <q-item-section>
+                <q-item-label>1. Export you keystore from the Klatyn wallet to a file.</q-item-label>
+             
+              </q-item-section>            
+            </q-item>
+
+             <q-item>
+              <q-item-section>
+                <q-item-label>2. Open your IDE and load your keystore and swtich to BAOBAB.</q-item-label>
+               
+              </q-item-section>            
+            </q-item>
+
+            <q-item>
+              <q-item-section>
+                <q-item-label>3. Compile and deploy the default (count) contract.</q-item-label>
+              
+              </q-item-section>            
+            </q-item>
+
+            <q-item>
+              <q-item-section>
+                <q-item-label><q-input v-model="text" label="Contract address" /></q-item-label>
+              
+              </q-item-section>            
+            </q-item>
+          
+          </q-list>   
+        </q-card-section>
+
+        <q-card-actions>
+            <q-btn color="green" icon="check" label="check" />
+        </q-card-actions>
+      </q-card>
+    </div>
+
 
     <!--------------------- LEVEL 4 ----------------------------------->
 
+    <div
+      v-if="level == 4"
+      class="row"    
+    >
+      <q-card flat class="my-card">
+         <q-card-actions>
+            <q-btn color="orange" icon="notification_important" label="hint" />
+        </q-card-actions>
+        <q-card-section>
+          <q-list>
+            <q-item>
+              <q-item-section>
+                <q-item-label>1. Using the IDE, do a function call to "setCount", with as input the amount you received in the beginning.</q-item-label>
+             
+              </q-item-section>            
+            </q-item>
+
+            <q-item>
+              <q-item-section>
+                <q-item-label><q-input v-model="text" label="Block number of the tx" /></q-item-label>
+              
+              </q-item-section>            
+            </q-item>
+          
+          </q-list>   
+        </q-card-section>
+
+        <q-card-actions>
+            <q-btn color="green" icon="check" label="check" />
+        </q-card-actions>
+      </q-card>
+    </div>
+
     <!--------------------- LEVEL 5 ----------------------------------->
+    <div
+      v-if="level == 5"
+      class="row"    
+    >
+      <q-card flat class="my-card">
+         <q-card-actions>
+            <q-btn color="orange" icon="notification_important" label="hint" />
+        </q-card-actions>
+        <q-card-section>
+          <q-list>
+            <q-item>
+              <q-item-section>
+                <q-item-label>1. Change the "setCount" function so it stores count multiplied by.</q-item-label>             
+              </q-item-section>            
+            </q-item>
+
+            <q-item>
+              <q-item-section>
+                <q-item-label>2. Compile and deploy the updated source.</q-item-label>             
+              </q-item-section>            
+            </q-item>
+
+            <q-item>
+              <q-item-section>
+                <q-item-label>3. Call the "setCount" with any numeric value that you want.</q-item-label>             
+              </q-item-section>            
+            </q-item>
+
+            <q-item>
+              <q-item-section>
+                <q-item-label>4. Call count() and paste the resulting value below.</q-item-label>             
+              </q-item-section>            
+            </q-item>
+
+            <q-item>
+              <q-item-section>
+                <q-item-label>5. Change the "setCount" function so it stores count multiplied by</q-item-label>             
+              </q-item-section>            
+            </q-item>
+
+            <q-item>
+              <q-item-section>
+                <q-item-label><q-input v-model="text" label="Count" /></q-item-label>
+              
+              </q-item-section>            
+            </q-item>
+          
+          </q-list>   
+        </q-card-section>
+
+        <q-card-actions>
+            <q-btn color="green" icon="check" label="check" />
+        </q-card-actions>
+      </q-card>
+    </div>
 
   </q-page>
 </template>
