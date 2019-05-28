@@ -6,133 +6,228 @@
       class="row"
       QPageContainer
     >
-      <h5 class="full-width" dense>Create a Klaytn Account</h5>
-      <p class="full-width">Go to Klaytn Wallet, create an account, and paste your public address.</p>
-      <q-input
-        class="full-width"
-        :value="address"
-        @blur="(event) => commit('user/address', event.target.value)"
-        label="Account View"
-      />
-      <q-btn
-        color="white"
-        text-color="black"
-        label="This is my address, send me KLAY!"
-        @click="level1submit"
-      />
-      <q-btn
-        color="white"
-        text-color="black"
-        size="xl"
-        label="Proceed to Level 2"
-        to="/level/2"
-      />
+      <q-card flat class="my-card">
+        <q-card-section>
+          <div class="text-h6">Create a Klatyn Account</div>
+          <div class="text-subtitle2">Level 1: Your goal is to create your own Klatyn account.</div>
+        </q-card-section>
+
+        <q-card-section>
+          <q-list>
+            <q-item>
+              <q-item-section>
+                <q-item-label>1. Go to <a href="https://baobab.klaytnwallet.com/" target="_blank">Klaytn Wallet</a>, and click the "create account" button. </q-item-label>
+              </q-item-section>
+            </q-item>
+
+            <q-item>
+              <q-item-section>
+                <q-item-label>2. Follow the instructions on how to create a new account. You will be asked to provide a password, download your keystore and keep your private key. It's just a 3-step process. </q-item-label>
+              </q-item-section>
+            </q-item>
+           
+            <q-item>
+              <q-item-section>
+                <q-item-label>3. Paste your public address on the texbox below.</q-item-label>
+              </q-item-section>
+            </q-item>
+
+             <q-item>
+              <q-item-section>
+                <q-input
+                    square outlined
+                    :value="address"
+                    @blur="(event) => commit('user/address', event.target.value)"
+                    label="Public address"
+                  /> 
+              </q-item-section>
+            </q-item>
+
+            <q-item>
+              <q-item-section>
+                <div>
+                  <q-btn
+                    color="green"
+                    text-color="black"
+                    label="This is my address, send me KLAY!"
+                    @click="level1submit"
+                  />
+                  <q-btn
+                    color="green"
+                    text-color="black"  
+                    icon="check"          
+                    label="Proceed to Level 2"
+                    to="/level/2"
+                  />
+                </div>
+              </q-item-section>
+            </q-item>
+            
+          </q-list>
+        </q-card-section>
+      </q-card>
+
+      <q-card flat class="my-card bg-yellow-1" >
+        <q-card-section>
+          <div class="text-subtitle2">Notes:</div>
+        </q-card-section>
+        <q-separator inset />
+        <q-card-section>
+          Remember to keep your keystore file. You will need it in the succeeding levels. <br/> A Klatyn account contains information about a person's balance or a smart contract.
+          To learn more about Klatyn account, click <a href="https://docs.klaytn.com/klaytn/design/account">here</a>
+        </q-card-section>
+      </q-card>
     </div>
     <!--------------------- LEVEL 2 ----------------------------------->
     <div
       v-if="selectedLevel === 2"
       class="row"
     >
-      <h5 class="full-width" dense>Go to the Faucet and request</h5>
-      <p class="full-width">Go to KlaytnScope and find that transaction</p>
-      <q-input class="full-width" label="Transaction hash (txid)"/>
-      <q-btn
-        color="white"
-        text-color="black" label="Check account to proceed to Level 3" @click="level2submit"/>
-    </div>
-    <!--------------------- LEVEL 3 ----------------------------------->
-    <div
-<<<<<<< HEAD
-      v-if="level == 3"
-      class="row"    
-    >
+      
       <q-card flat class="my-card">
+        <q-card-section>
+          <div class="text-h6">Faucet and Klaytnscope</div>
+          <div class="text-subtitle2">Level 2: Your goal is to fund your Klatyn account with test KLAY and view the transaction from Klaytnscope.</div>
+        </q-card-section>
+
         <q-card-section>
           <q-list>
             <q-item>
               <q-item-section>
-                <q-item-label>1. Export you keystore from the Klatyn wallet to a file.</q-item-label>
-             
-              </q-item-section>            
+                <q-item-label>1. Go back to <a href="https://baobab.klaytnwallet.com/" target="_blank">Klaytn Wallet</a>, and click the "KLAY Faucet" from the main menu. </q-item-label>
+              </q-item-section>
+            </q-item>
+
+            <q-item>
+              <q-item-section>
+                <q-item-label>2. To fund your account, click the "run faucet" button. You should receive a small amount of KLAY. I received 5 KLAY when I did this. </q-item-label>
+              </q-item-section>
+            </q-item>
+
+            <q-item>
+              <q-item-section>
+                <q-item-label>3. Copy your public address from your wallet and go to <a href="https://baobab.klaytnwallet.com/" target="_blank">Klaytnscope</a>, paste your address in the "search by" textbox and click the search icon. </q-item-label>
+              </q-item-section>
+            </q-item>
+
+            <q-item>
+              <q-item-section>
+                <q-item-label>4. You should be able to see the transaction from the faucet. Copy the TX HASH and paste it on the textbox below.</q-item-label>
+              </q-item-section>
             </q-item>
 
              <q-item>
               <q-item-section>
-                <q-item-label>2. Open your IDE and load your keystore and swtich to BAOBAB.</q-item-label>
-               
-              </q-item-section>            
-            </q-item>
-
-            <q-item>
-              <q-item-section>
-                <q-item-label>3. Compile and deploy the default (count) contract.</q-item-label>
-              
-              </q-item-section>            
-            </q-item>
-
-            <q-item>
-              <q-item-section>
-                <q-item-label><q-input v-model="text" label="Contract address" /></q-item-label>
-              
-              </q-item-section>            
-            </q-item>
-          
-          </q-list>   
-        </q-card-section>
-
-        <q-card-actions>
-            <q-btn color="green" icon="check" label="check" />
-        </q-card-actions>
-      </q-card>
-    </div>
-
-=======
-      v-if="selectedLevel === 3"
-      class="row"
-      QPageContainer
-    >
-<<<<<<< HEAD
-      <h5 class="full-width" dense>Setup your working enviorment</h5>
-      <p class="full-width">Export your Keystore from the Klaytn Wallet to a file</p>
-      <p class="full-width">Open the IDE and load your keystore, and switch to BAOBAB</p>
-      <p class="full-width">Compile and Deploy the default (count) contract</p>
->>>>>>> a1bf53a2276240087dd4f5ea2e59bfe40b28b92e
-=======
-      <q-card flat class="my-card">
-        <q-card-section>
-          <q-list>
-            <q-item>
-              <q-item-section>
-                <q-item-label>1. Export you keystore from the Klatyn wallet to a file.</q-item-label>
->>>>>>> 3bbbf356b0d2702d6405f771e54c1dcd701b4603
-
+                <q-input
+                    square outlined                   
+                    label="Transaction hash (txid)"
+                  /> 
               </q-item-section>
             </q-item>
+
             <q-item>
               <q-item-section>
-                <q-item-label>2. Open your IDE and load your keystore and swtich to BAOBAB.</q-item-label>
-
-              </q-item-section>
-            </q-item>
-            <q-item>
-              <q-item-section>
-                <q-item-label>3. Compile and deploy the default (count) contract.</q-item-label>
-
-              </q-item-section>
-            </q-item>
-            <q-item>
-              <q-item-section>
-                <q-item-label><q-input v-model="text" label="Contract address" /></q-item-label>
-
+                <div>
+                 
+                  <q-btn
+                    color="green"
+                    text-color="black"  
+                    icon="check"          
+                    label="Check account to proceed to Level 3"
+                    @click="level2submit"
+                  />
+                </div>
               </q-item-section>
             </q-item>
 
           </q-list>
         </q-card-section>
-        <q-card-actions>
-          <q-btn color="green" icon="check" label="check" />
-        </q-card-actions>
       </q-card>
+
+      <q-card flat class="my-card bg-yellow-1" >
+        <q-card-section>
+          <div class="text-subtitle2">Notes:</div>
+        </q-card-section>
+        <q-separator inset />
+        <q-card-section>
+          A faucet drips small amounts of cryptocurrency over a set period of time.
+          Klaytnscope is Klatyn's block explorer. It allows you to find data by monitoring network health and statistics of Klaytn as well as profiling blocks and transactions on Klaytn.
+          To learn more about Klaytnscope, click <a href="https://docs.klaytn.com/toolkit/scope">here</a>
+        </q-card-section>
+      </q-card>
+     
+    </div>
+    <!--------------------- LEVEL 3 ----------------------------------->
+    <div
+      v-if="selectedLevel === 3"
+      class="row"
+      QPageContainer
+    >
+
+    <q-card flat class="my-card">
+        <q-card-section>
+          <div class="text-h6">Klatyn IDE</div>
+          <div class="text-subtitle2">Level 3: Your goal is to compile a smart contract from the Klatyn IDE.</div>
+        </q-card-section>
+
+        <q-card-section>
+          <q-list>
+            <q-item>
+              <q-item-section>
+                <q-item-label>1. Get your exported keystore file. This was automatically downloaded when you created your account.</q-item-label>
+              </q-item-section>
+            </q-item>
+            <q-item>
+              <q-item-section>
+                <q-item-label>2. Go to the <a href="https://ide.klaytn.com/">Klatyn IDE</a>. You will see a default untitle.sol file with a Count contract. Klatyn uses solidity for smart contract development.</q-item-label>
+              </q-item-section>
+            </q-item>
+            <q-item>
+              <q-item-section>
+                <q-item-label>3. On the right side of the IDE, go to "setting" and select "BAOBAB" from the "environment" dropdown.</q-item-label>
+              </q-item-section>
+            </q-item>
+            <q-item>
+              <q-item-section>
+                <q-item-label>4. Go to the "From Account" dropdown and select "import an account", go to the location where you saved your keystore file. You will be asked to provide your account password. Click import.</q-item-label>
+              </q-item-section>
+            </q-item>
+            <q-item>
+              <q-item-section>
+                <q-item-label>5. Select your account and click "compile". You should see the compiled output, it contains the bytecode and abi data of the contract.</q-item-label>
+              </q-item-section>
+            </q-item>
+            <q-item>
+              <q-item-section>
+                <q-item-label>6. Click the "deploy" button located below the setting. You should be able to see the transaction details in the deploy output tab.</q-item-label>
+              </q-item-section>
+            </q-item>
+            <q-item>
+              <q-item-section>
+                <q-item-label>6. In the contract details, below the settings, copy the contract address and paste it in the textbox below.</q-item-label>
+              </q-item-section>
+            </q-item>
+            
+            <q-item>
+              <q-item-section>
+                <q-item-label><q-input square outlined label="Contract address" /></q-item-label>
+              </q-item-section>
+            </q-item>
+
+             <q-item>
+              <q-item-section>
+                <div>
+                  <q-btn color="orange" icon="notification_important" label="hint" />
+                  <q-btn color="green" icon="check" label="check and proceed to level 4" />
+                </div>
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-card-section>
+      
+      </q-card>
+
+      
     </div>
     <!--------------------- LEVEL 4 ----------------------------------->
     <div
@@ -141,136 +236,46 @@
       QPageContainer
     >
       <q-card flat class="my-card">
-        <q-card-actions>
-          <q-btn color="orange" icon="notification_important" label="hint" />
-        </q-card-actions>
         <q-card-section>
-          <q-list>
-            <q-item>
-              <q-item-section>
-                <q-item-label>1. Using the IDE, do a function call to "setCount", with as input the amount you received in the beginning.</q-item-label>
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <div
-      v-if="level == 4"
-      class="row"    
-    >
-      <q-card flat class="my-card">
-         <q-card-actions>
-            <q-btn color="orange" icon="notification_important" label="hint" />
-        </q-card-actions>
-        <q-card-section>
-          <q-list>
-            <q-item>
-              <q-item-section>
-                <q-item-label>1. Using the IDE, do a function call to "setCount", with as input the amount you received in the beginning.</q-item-label>
-             
-              </q-item-section>            
-            </q-item>
-
-            <q-item>
-              <q-item-section>
-                <q-item-label><q-input v-model="text" label="Block number of the tx" /></q-item-label>
-              
-              </q-item-section>            
-            </q-item>
-          
-          </q-list>   
+          <div class="text-h6">Contract Interaction</div>
+          <div class="text-subtitle2">Level 4: Your goal is to interact with the Count by calling its function(s).</div>
         </q-card-section>
 
-        <q-card-actions>
-            <q-btn color="green" icon="check" label="check" />
-        </q-card-actions>
-      </q-card>
-    </div>
-
-    <!--------------------- LEVEL 5 ----------------------------------->
-    <div
-      v-if="level == 5"
-      class="row"    
-    >
-      <q-card flat class="my-card">
-         <q-card-actions>
-            <q-btn color="orange" icon="notification_important" label="hint" />
-        </q-card-actions>
         <q-card-section>
           <q-list>
             <q-item>
               <q-item-section>
-                <q-item-label>1. Change the "setCount" function so it stores count multiplied by.</q-item-label>             
-              </q-item-section>            
+                <q-item-label>1. Using the IDE, go to the Count details pane located on the lower right side of the screens.</q-item-label>
+              </q-item-section>
             </q-item>
 
             <q-item>
               <q-item-section>
-                <q-item-label>2. Compile and deploy the updated source.</q-item-label>             
-              </q-item-section>            
+                <q-item-label>2. Do a function call to "setCount", with as input the amount you received in the beginning and click the "send" button.</q-item-label>
+              </q-item-section>
             </q-item>
 
-            <q-item>
+              <q-item>
               <q-item-section>
-                <q-item-label>3. Call the "setCount" with any numeric value that you want.</q-item-label>             
-              </q-item-section>            
-            </q-item>
-
-            <q-item>
-              <q-item-section>
-                <q-item-label>4. Call count() and paste the resulting value below.</q-item-label>             
-              </q-item-section>            
-            </q-item>
-
-            <q-item>
-              <q-item-section>
-                <q-item-label>5. Change the "setCount" function so it stores count multiplied by</q-item-label>             
-              </q-item-section>            
-            </q-item>
-
-            <q-item>
-              <q-item-section>
-                <q-item-label><q-input v-model="text" label="Count" /></q-item-label>
-              
-              </q-item-section>            
-            </q-item>
-          
-          </q-list>   
-        </q-card-section>
-
-        <q-card-actions>
-            <q-btn color="green" icon="check" label="check" />
-        </q-card-actions>
-      </q-card>
-    </div>
-=======
-      <q-input
-        class="full-width"
-        :value="address"
-        @blur="(event) => commit('user/address', event.target.value)"
-        label="Block number of the Tx"
-      />
-      <q-btn
-        color="white"
-        text-color="black"
-        label="Check contract deployment to proceed to Level 5"
-        @click="blocknroftx"
-      />
-=======
+                <q-item-label>2. On the "Transaction" output tab, You should be able to see the transaction details of the function call. Copy the blockNumber and paste it in the textbox below</q-item-label>
               </q-item-section>
             </q-item>
             <q-item>
               <q-item-section>
-                <q-item-label><q-input v-model="text" label="Block number of the tx" /></q-item-label>
-
+                <q-item-label><q-input square outlined label="Block number of the tx" /></q-item-label>
               </q-item-section>
             </q-item>
-
           </q-list>
         </q-card-section>
-        <q-card-actions>
-          <q-btn color="green" icon="check" label="check" />
-        </q-card-actions>
+        <q-item>
+          <q-item-section>
+            <div>
+              <q-btn color="orange" icon="notification_important" label="hint" />
+              <q-btn color="green" icon="check" label="check and proceed to level 5" />
+            </div>
+          </q-item-section>
+        </q-item>
       </q-card>
->>>>>>> 3bbbf356b0d2702d6405f771e54c1dcd701b4603
     </div>
     <!--------------------- LEVEL 5 ----------------------------------->
     <div
@@ -278,23 +283,17 @@
       class="row"
       QPageContainer
     >
-<<<<<<< HEAD
-      <h5 class="full-width" dense>Working with Smart Contracts</h5>
-      <p class="full-width">Change the "setCount" function so it stores count multiplied by block.number</p>
-      <p class="full-width">Compile and deploy the updated source</p>
-      <p class="full-width">Call "setCount" with any numeric value you like</p>
-      <p class="full-width">Call count() and paste the resulting number below</p>
->>>>>>> a1bf53a2276240087dd4f5ea2e59bfe40b28b92e
-=======
       <q-card flat class="my-card">
-        <q-card-actions>
-          <q-btn color="orange" icon="notification_important" label="hint" />
-        </q-card-actions>
+         <q-card-section>
+          <div class="text-h6">Contract Modification and Redeployment</div>
+          <div class="text-subtitle2">Level 5: Your goal is to modify and redeploy the Count contract.</div>
+        </q-card-section>
+
         <q-card-section>
           <q-list>
             <q-item>
               <q-item-section>
-                <q-item-label>1. Change the "setCount" function so it stores count multiplied by.</q-item-label>
+                <q-item-label>1. From the IDE, change the "setCount" function so it stores count multiplied by.</q-item-label>
               </q-item-section>
             </q-item>
             <q-item>
@@ -312,40 +311,48 @@
                 <q-item-label>4. Call count() and paste the resulting value below.</q-item-label>
               </q-item-section>
             </q-item>
+            
             <q-item>
               <q-item-section>
-                <q-item-label>5. Change the "setCount" function so it stores count multiplied by</q-item-label>
+                <q-item-label><q-input square outlined label="Count" /></q-item-label>
               </q-item-section>
             </q-item>
-            <q-item>
-              <q-item-section>
-                <q-item-label><q-input v-model="text" label="Count" /></q-item-label>
-              </q-item-section>
-            </q-item>
->>>>>>> 5c16181a73a6b95d2e3eb80fe2290959b113ea24
-
           </q-list>
         </q-card-section>
-        <q-card-actions>
-          <q-btn color="green" icon="check" label="check" />
-        </q-card-actions>
+        <q-item>
+          <q-item-section>
+            <div>
+              <q-btn color="orange" icon="notification_important" label="hint" />
+              <q-btn color="green" icon="check" label="check and proceed to level 5" />
+            </div>
+          </q-item-section>
+        </q-item>
+      </q-card>
+
+      <q-card flat class="my-card bg-yellow-1" >
+        <q-card-section>
+          <div class="text-subtitle2">Notes:</div>
+        </q-card-section>
+        <q-separator inset />
+        <q-card-section>
+          When a contract is redeployed, it stays in the blockchain forever. The old contract doesn't get overwritten.
+          The redeployed contract will have a different address.  
+        </q-card-section>
       </q-card>
     </div>
   </q-page>
 </template>
-
 <style>
 </style>
-
 <script>
 import { mapState } from 'vuex'
-
 export default {
   name: 'Level',
   mounted: function () {
+   
   },
   data () {
-    return {}
+    return { }
   },
   methods: {
     commit (key, value) {
@@ -368,7 +375,6 @@ export default {
     //   console.log('submitted randomAmount')
     // }
   },
-
   computed: {
     ...mapState('user', {
       currentUser: 'current',
