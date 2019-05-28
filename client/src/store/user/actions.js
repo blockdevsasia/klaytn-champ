@@ -10,10 +10,12 @@ export async function init (ctx) {
 }
 
 export async function loggedIn (ctx, firebaseUser) {
+  console.log(firebaseUser)
   const user = {
     displayName: firebaseUser.displayName,
     email: firebaseUser.email,
-    emailVerified: firebaseUser.emailVerified
+    emailVerified: firebaseUser.emailVerified,
+    photoUrl: firebaseUser.photoURL
   }
   console.log('loggedIn', user)
 
