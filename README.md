@@ -1,6 +1,4 @@
 # Klaytn-Champ
-<img src="https://agency.eoi.digital/wp-content/uploads/2019/05/Stylescape-1.jpg">
-<img src="https://agency.eoi.digital/wp-content/uploads/2019/05/Stylescape-2.jpg">
 
 <b>Growing the blockchain ecosystem on Klaytn by taking a bottom-up strategy (from building-to-consuming). Our blockchain-based solution is aimed to provide a better & more entertaining onboarding and certification process for Klaytn developers. By challenging developers with tasks, activities & trivia, we are educating developers with Klaytn technical documentation & implementation. With our tier-based gamification scoring system with incentives, learning how to utilize and develop with Klaytn is fun and rewarding.</b></br>
 <table>
@@ -35,3 +33,5 @@
 </tr>
 </table>
 
+<img src="https://agency.eoi.digital/wp-content/uploads/2019/05/Stylescape-1.jpg">
+<img src="https://agency.eoi.digital/wp-content/uploads/2019/05/Stylescape-2.jpg">
