@@ -17,6 +17,12 @@
 <td>https://github.com/blockdevsasia/klaytn-champ</td>
 </tr>
 
+
+<tr>
+<td><strong>Landing Page</strong></td>
+<td>https://www.blockdevs.asia/klaytn-champions</td>
+</tr>
+
 <tr>
 <td><strong>Wireframes</strong></td>
 <td>https://balsamiq.cloud/styja/py0ofv4/r5490</td>
