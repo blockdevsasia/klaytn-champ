@@ -15,7 +15,7 @@
         <q-list>
           <q-item>
             <q-item-section>
-              <q-item-label>1. From the IDE, change the "setCount" function so it stores count multiplied by.</q-item-label>
+              <q-item-label>1. From the IDE, change the "setCount" function so it stores count multiplied by block number.</q-item-label>
             </q-item-section>
           </q-item>
           <q-item>
