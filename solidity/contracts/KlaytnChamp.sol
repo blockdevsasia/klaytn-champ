@@ -96,7 +96,7 @@ contract KlaytnChamp is Ownable {
         UserData storage user = _users[userAddress];
 
         require(user.level > 0, "User has to be registered");
-        require(newLevel > user.level, "New level has to be higher");
+//        require(newLevel > user.level, "New level has to be higher");
 
         user.level = newLevel;
     }

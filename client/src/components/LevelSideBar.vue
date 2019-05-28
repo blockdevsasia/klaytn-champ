@@ -62,7 +62,6 @@ export default {
   },
   data () {
     return {
-      address: 'aa'
     }
   },
   methods: {
@@ -72,7 +71,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      // address: 'user/address'
+      address: 'user/address'
     }),
     ...mapState('user', {
       level: 'level',

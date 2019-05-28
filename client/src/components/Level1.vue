@@ -47,10 +47,10 @@
             <q-item-section>
               <div>
                 <q-btn
-                  :disable="isAddressValid(solution) || level > 1"
+                  :disable="!isAddressValid(solution) || level > 1"
                   color="green"
                   text-color="black"
-                  label="This is my address, send me KLAY!"
+                  label="Check my solution"
                   @click="$emit('finish')"
                 />
                 <q-btn
