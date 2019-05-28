@@ -1,31 +1,46 @@
 export default {
   // data: {},
-  current: { displayName: 'loading' },
-  address: '0xe23a66edbdec3c716e1d5fc14d4d4b40ee3d2b41',
+  current: {},
+  address: '',
   randomAmount: 0.00,
-  loading: true,
-  level: 2,
+  loading: false,
+  level: 1,
+  selectedLevel: 1,
   levelSideBar: {
     1: [
       {
         label: 'Klaytn Wallet',
-        description: 'Klaytn Wallet',
         link: 'https://baobab.klaytnwallet.com',
-        icon: 'mail'
+        icon: 'account_balance_wallet'
+      },
+      {
+        label: 'Klaytnscope',
+        link: 'https://baobab.klaytnscope.com/',
+        icon: 'explore'
       },
       {
         label: 'Klaytn Documentation',
-        description: 'Klaytn Documentation',
         link: 'https://docs.klaytn.com/',
-        icon: 'mail'
+        icon: 'book'
       }
     ],
-    2: [{
-      label: 'Klaytn Wallet',
-      description: 'Klaytn Wallet',
-      link: 'https://baobab.klaytnwallet.com',
-      icon: ''
-    }],
+    2: [
+      {
+        label: 'Klaytn Wallet',
+        link: 'https://baobab.klaytnwallet.com',
+        icon: 'account_balance_wallet'
+      },
+      {
+        label: 'Klaytnscope',
+        link: 'https://baobab.klaytnscope.com/',
+        icon: 'explore'
+      },
+      {
+        label: 'Klaytn Documentation',
+        link: 'https://docs.klaytn.com/',
+        icon: 'book'
+      }
+    ],
     3: [{
       label: 'Klaytn Wallet',
       description: 'Klaytn Wallet',

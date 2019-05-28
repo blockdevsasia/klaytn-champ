@@ -7,7 +7,8 @@ module.exports = function (ctx) {
     boot: [
       'firebase',
       'main',
-      'axios'
+      'axios',
+      'caver'
     ],
 
     css: [

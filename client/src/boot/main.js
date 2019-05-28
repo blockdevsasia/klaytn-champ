@@ -1,20 +1,55 @@
+import { AUTH } from 'boot/firebase'
+
 export default ({ app, router, Vue, store }) => {
   router.beforeEach((to, from, next) => {
-    console.log('to', to)
-    if (to.params.level) {
-      store.commit('user/level', to.params.level)
+    const isLoading = store.state.user.loading
+    const userLoggedIn = store.state.user.current.displayName !== undefined
+    const userHasAddress = store.state.user.address.length > 0
+    const userNeedsToSignup = AUTH.currentUser === null
+    const userNeedsLevel1 = userLoggedIn && !userHasAddress
+
+    console.log('to', to.path)
+    console.log('isLoading', isLoading)
+    console.log('userNeedsToSignup', userNeedsToSignup)
+    console.log('userNeedsLevel1', userNeedsLevel1)
+
+    if (userNeedsToSignup) {
+      if (to.path === '/signup') {
+        next()
+      } else {
+        next('/signup')
+      }
+    } else if (userNeedsLevel1) {
+      if (to.path === '/level/1') {
+        next()
+      } else {
+        next('/level/1')
+      }
+    } else if (to.path.indexOf('/level/') === 0) {
+      store.commit('user/selectedLevel', Number.parseInt(to.path.replace('/level/', '')))
+      next()
+    } else {
+      next()
     }
 
-    if (store.state.user.current === undefined) {
-      console.log('no user yet')
-    }
-    //
-    //   store.dispatch('main/setCurrentOperation', to.params.operationId)
-    // } else if (to.name === 'contract') {
-    //   store.commit('main/contractId', to.params.contractId)
-    //   store.commit('main/abiMethod', to.params.abiMethod)
-    //   store.dispatch('iost/loadContract', to.params.contractId)
+    // if (isLoading) {
+    //   if (to.path !== '/loading') {
+    //     next('/loading')
+    //   } else {
+    //     next()
+    //   }
+    // } else if (!isLoading && userNeedsToSignup) {
+    //   console.log('no user yet')
+    //   next('/signup')
+    // } else if (userNeedsLevel0) {
+    //   console.log('no address yet')
+    //   next('/level/0')
+    // } else {
+    //   if (!userNeedsToSignup && to.path === '/signup') {
+    //     next('/')
+    //   } else {
+    //     next()
+    //   }
     // }
-    next()
   })
 }
