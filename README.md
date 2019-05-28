@@ -33,7 +33,7 @@
 </tr>
 </table>
 
-Corporate Style Guide
+<i>Corporate Style Guide</i>
 
 <img src="https://agency.eoi.digital/wp-content/uploads/2019/05/Stylescape-1.jpg">
 <img src="https://agency.eoi.digital/wp-content/uploads/2019/05/Stylescape-2.jpg">
