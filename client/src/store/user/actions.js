@@ -29,6 +29,7 @@ export default {
   },
 
   setUserField (ctx, change) {
+    console.log('setUserField', change)
     ctx.dispatch('set', change)
   },
 
