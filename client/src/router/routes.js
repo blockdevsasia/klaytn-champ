@@ -7,13 +7,18 @@ const routes = [
       { path: '', name: 'main', component: () => import('pages/Level.vue') },
       { path: '/loading', name: 'loading', component: () => import('pages/Loading.vue') },
       { path: '/start', name: 'start', component: () => import('pages/Index.vue') },
-      { path: '/myaccount', name: 'myaccount', component: () => import('pages/MyAccount.vue') },
+    ]
+  },
+  {
+    path: '/level',
+    component: () => import('layouts/LevelLayout.vue'),
+    children: [
       { path: '/level/:level([0-9]+)', component: () => import('pages/Level.vue') }
     ]
   },
   {
     path: '/signup',
-    component: () => import('layouts/Full.vue'),
+    component: () => import('layouts/AuthLayout.vue'),
     children: [
       { path: '/signup', component: () => import('pages/Signup.vue') }
     ]

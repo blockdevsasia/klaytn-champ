@@ -1,15 +1,6 @@
 <template>
   <div>
-    <q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px; ">
-      <div class="absolute-bottom bg-transparent">
-        <!--      <q-avatar size="56px" class="q-mb-sm">-->
-        <!--        <img src="https://cdn.quasar.dev/img/boy-avatar.png">-->
-        <!--      </q-avatar>-->
-        <div class="text-weight-bold">{{currentUser.displayName}} <q-btn size="xs" @click="logout">Logout</q-btn></div>
-        <div>Address: {{address}}</div>
-        <div>Level: {{level}}</div>
-      </div>
-    </q-img>
+    <profile :user="currentUser" :address="address" :level="level"></profile>
     <br/><br/><br/><br/><br/><br/><br/>
     <q-tabs >
       <q-route-tab
@@ -64,8 +55,12 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 
+
 export default {
   name: 'LevelSideBar',
+  components: {
+    Profile: () => import('components/Profile')
+  },
   data () {
     return {}
   },
