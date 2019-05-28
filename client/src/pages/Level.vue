@@ -43,7 +43,7 @@
       <q-input class="full-width" v-model="account" label="Transaction hash (txid)" />
       <q-btn
         color="white"
-        text-color="black" label="Check account to proceed to Level 2" @click="level1submitAddress" />
+        text-color="black" label="Check account to proceed to Level 3" @click="level1submitAddress" />
     </div>
     <!--------------------- LEVEL 3 ----------------------------------->
      <div
@@ -65,7 +65,7 @@
           <q-btn
             color="white"
             text-color="black"
-            label="Check contract deployment to proceed to Level 3"
+            label="Check contract deployment to proceed to Level 4"
             @click="level3checkcontract"
           />
         </div>
@@ -87,11 +87,39 @@
           <q-btn
             color="white"
             text-color="black"
-            label="Check contract deployment to proceed to Level 3"
-            @click="level4checksendamount"
+            label="Check contract deployment to proceed to Level 5"
+            @click="blocknroftx"
           />
         </div>
     <!--------------------- LEVEL 5 ----------------------------------->
+     <div
+          v-if="level == 5"
+          class="row"
+          QPageContainer
+        >
+          <h5 class="full-width" dense>Working with Smart Contracts</h5>
+          <p class="full-width">Change the "setCount" function so it stores count multiplied by block.number</p>
+          <p class="full-width">Compile and deploy the updated source</p>
+          <p class="full-width">Call "setCount" with any numeric value you like</p>
+          <p class="full-width">Call count() and paste the resulting number below</p>
+
+          <q-input
+            class="full-width"
+            :value="address"
+            @blur="(event) => commit('user/address', event.target.value)"
+            label="Count results"
+          />
+          <q-btn
+            color="white"
+            text-color="black"
+            label="Check results to proceed to level 6"
+            @click="level5checksendamount"
+          />
+        </div>
+
+
+
+
   </q-page>
 </template>
 

@@ -9,23 +9,37 @@ export default {
     1: [
       {
         label: 'Klaytn Wallet',
-        description: 'Klaytn Wallet',
         link: 'https://baobab.klaytnwallet.com',
-        icon: 'mail'
+        icon: 'account_balance_wallet'
+      },
+            {
+        label: 'Klaytnscope',
+        link: 'https://baobab.klaytnscope.com/',
+        icon: 'explore'
       },
       {
         label: 'Klaytn Documentation',
-        description: 'Klaytn Documentation',
         link: 'https://docs.klaytn.com/',
-        icon: 'mail'
+        icon: 'book'
       }
     ],
-    2: [{
-      label: 'Klaytn Wallet',
-      description: 'Klaytn Wallet',
-      link: 'https://baobab.klaytnwallet.com',
-      icon: ''
-    }],
+    2: [
+      {
+        label: 'Klaytn Wallet',
+        link: 'https://baobab.klaytnwallet.com',
+        icon: 'account_balance_wallet'
+      },
+            {
+        label: 'Klaytnscope',
+        link: 'https://baobab.klaytnscope.com/',
+        icon: 'explore'
+      },
+      {
+        label: 'Klaytn Documentation',
+        link: 'https://docs.klaytn.com/',
+        icon: 'book'
+      }
+    ],
     3: [{
       label: 'Klaytn Wallet',
       description: 'Klaytn Wallet',
