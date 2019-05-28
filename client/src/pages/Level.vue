@@ -91,24 +91,48 @@
       class="row"
       QPageContainer
     >
+<<<<<<< HEAD
       <h5 class="full-width" dense>Setup your working enviorment</h5>
       <p class="full-width">Export your Keystore from the Klaytn Wallet to a file</p>
       <p class="full-width">Open the IDE and load your keystore, and switch to BAOBAB</p>
       <p class="full-width">Compile and Deploy the default (count) contract</p>
 >>>>>>> a1bf53a2276240087dd4f5ea2e59bfe40b28b92e
+=======
+      <q-card flat class="my-card">
+        <q-card-section>
+          <q-list>
+            <q-item>
+              <q-item-section>
+                <q-item-label>1. Export you keystore from the Klatyn wallet to a file.</q-item-label>
+>>>>>>> 3bbbf356b0d2702d6405f771e54c1dcd701b4603
 
-      <q-input
-        class="full-width"
-        :value="address"
-        @blur="(event) => commit('user/address', event.target.value)"
-        label="Contract Adress"
-      />
-      <q-btn
-        color="white"
-        text-color="black"
-        label="Check contract deployment to proceed to Level 4"
-        @click="level3submit"
-      />
+              </q-item-section>
+            </q-item>
+            <q-item>
+              <q-item-section>
+                <q-item-label>2. Open your IDE and load your keystore and swtich to BAOBAB.</q-item-label>
+
+              </q-item-section>
+            </q-item>
+            <q-item>
+              <q-item-section>
+                <q-item-label>3. Compile and deploy the default (count) contract.</q-item-label>
+
+              </q-item-section>
+            </q-item>
+            <q-item>
+              <q-item-section>
+                <q-item-label><q-input v-model="text" label="Contract address" /></q-item-label>
+
+              </q-item-section>
+            </q-item>
+
+          </q-list>
+        </q-card-section>
+        <q-card-actions>
+          <q-btn color="green" icon="check" label="check" />
+        </q-card-actions>
+      </q-card>
     </div>
     <!--------------------- LEVEL 4 ----------------------------------->
     <div
@@ -116,10 +140,17 @@
       class="row"
       QPageContainer
     >
-      <h5 class="full-width" dense>Working with Smart Contracts</h5>
-      <p class="full-width">Using the IDE, do a function call to "setCount", with as input the amount you received in
-        the beginning</p>
+      <q-card flat class="my-card">
+        <q-card-actions>
+          <q-btn color="orange" icon="notification_important" label="hint" />
+        </q-card-actions>
+        <q-card-section>
+          <q-list>
+            <q-item>
+              <q-item-section>
+                <q-item-label>1. Using the IDE, do a function call to "setCount", with as input the amount you received in the beginning.</q-item-label>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     <div
       v-if="level == 4"
@@ -223,6 +254,23 @@
         label="Check contract deployment to proceed to Level 5"
         @click="blocknroftx"
       />
+=======
+              </q-item-section>
+            </q-item>
+            <q-item>
+              <q-item-section>
+                <q-item-label><q-input v-model="text" label="Block number of the tx" /></q-item-label>
+
+              </q-item-section>
+            </q-item>
+
+          </q-list>
+        </q-card-section>
+        <q-card-actions>
+          <q-btn color="green" icon="check" label="check" />
+        </q-card-actions>
+      </q-card>
+>>>>>>> 3bbbf356b0d2702d6405f771e54c1dcd701b4603
     </div>
     <!--------------------- LEVEL 5 ----------------------------------->
     <div
