@@ -1,17 +1,16 @@
 # klaytn-champ
 <img src="https://raw.githubusercontent.com/amadeobrands/ChainEstate/master/art-work/chain-estate.png">
 
-Blockchain-based user and developer challenge with verifiable scoring and certification. Our goal is to make technical documentation and onboarding with Klaytn more fun by Gamification & Incentivisation.
-
+Growing the blockchain ecosystem on Klaytn by taking a bottom-up strategy (from building-to-consuming). Our blockchain-based solution is aimed to provide a better & more entertaining onboarding and certification process for Klaytn developers. By challenging developers with tasks, activities & trivia, we are educating developers with Klaytn technical documentation & implementation. With our tier-based gamification scoring system with incentives, learning how to utilize and develop with Klaytn is fun and rewarding.
 <table>
 <tr>
 <td><strong>Description</strong></td>
-<td>Blockchain-based user and developer challenge with verifiable scoring and certification.</td>
+<td>Our blockchain-based solution is aimed to provide a better & more entertaining onboarding process for Klaytn developers. </td>
 </tr>
 
 <tr>
 <td><strong>Goal</strong></td>
-<td>To make technical documentation and onboarding with Klaytn more fun by Gamification & Incentivisation.</td>
+<td>Growing the Blockchain ecosystem on Klaytn Platform. By challenging developers & users with tasks, activities & trivias, we are educating users with technical documentation & implementation. With our tier-based gamification scoring system with incentives, learning how to utilize Klaytn is fun and rewarding. </td>
 </tr>
 
 <tr>
