@@ -20,7 +20,7 @@ Growing the blockchain ecosystem on Klaytn by taking a bottom-up strategy (from 
 
 <tr>
 <td><strong>Wireframes</strong></td>
-<td></td>
+<td>https://balsamiq.cloud/styja/py0ofv4/r5490</td>
 </tr>
 
 <tr>
