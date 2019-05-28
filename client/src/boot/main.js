@@ -4,7 +4,7 @@ export default ({ app, router, Vue, store }) => {
   router.beforeEach((to, from, next) => {
     const isLoading = store.state.user.loading
     const userLoggedIn = store.state.user.current.displayName !== undefined
-    const userHasAddress = store.state.user.address.length > 0
+    const userHasAddress = store.getters['user/address'].length > 0
     const userNeedsToSignup = AUTH.currentUser === null
     const userNeedsLevel1 = userLoggedIn && !userHasAddress
 
@@ -31,25 +31,5 @@ export default ({ app, router, Vue, store }) => {
     } else {
       next()
     }
-
-    // if (isLoading) {
-    //   if (to.path !== '/loading') {
-    //     next('/loading')
-    //   } else {
-    //     next()
-    //   }
-    // } else if (!isLoading && userNeedsToSignup) {
-    //   console.log('no user yet')
-    //   next('/signup')
-    // } else if (userNeedsLevel0) {
-    //   console.log('no address yet')
-    //   next('/level/0')
-    // } else {
-    //   if (!userNeedsToSignup && to.path === '/signup') {
-    //     next('/')
-    //   } else {
-    //     next()
-    //   }
-    // }
   })
 }

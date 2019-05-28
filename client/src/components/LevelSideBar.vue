@@ -53,8 +53,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
-
+import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'LevelSideBar',
@@ -62,7 +61,9 @@ export default {
     Profile: () => import('components/Profile')
   },
   data () {
-    return {}
+    return {
+      address: 'aa'
+    }
   },
   methods: {
     ...mapActions('user', [
@@ -70,12 +71,14 @@ export default {
     ])
   },
   computed: {
+    ...mapGetters({
+      // address: 'user/address'
+    }),
     ...mapState('user', {
       level: 'level',
       selectedLevel: 'selectedLevel',
       levelSideBar: 'levelSideBar',
-      currentUser: 'current',
-      address: 'address'
+      currentUser: 'current'
     })
 
   }

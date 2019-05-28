@@ -1,8 +1,5 @@
 import { axiosHTTP } from 'boot/axios'
-import { CAVER } from 'boot/caver'
-const Contract = require('src/assets/contracts/KlaytnChamp.json')
-
-const contract = new CAVER.klay.Contract(Contract.abi, '0x9B5B08601D002ba5627429bf41D86334BcABfa7F')
+import { contract } from 'boot/caver'
 
 // Fix for old web3 flaw: https://github.com/ethereum/web3.js/issues/1986
 process.versions = { node: '11.2.0' }
@@ -26,6 +23,16 @@ export async function httpCheckAmount (context, { address, randomAmount }) {
       randomAmount: randomAmount
     }
   })
+}
+export async function httpCheckLevel2 (context, address) {
+  const result = await axiosHTTP({
+    method: 'post',
+    url: '/checkLevel2',
+    data: {
+      address: address
+    }
+  })
+  console.log('level2check', result)
 }
 
 export async function klaytnGetUser (context, address) {

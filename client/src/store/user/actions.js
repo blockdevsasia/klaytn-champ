@@ -1,32 +1,44 @@
 import { AUTH } from 'boot/firebase'
 
-export async function logout (ctx) {
-  console.log('user/logout')
-  AUTH.signOut()
-}
+export default {
+  handler: () => {
+  },
 
-export async function init (ctx) {
-  console.log('user/init')
-}
+  async logout (ctx) {
+    console.log('user/logout')
+    AUTH.signOut()
+  },
 
-export async function loggedIn (ctx, firebaseUser) {
-  console.log(firebaseUser)
-  const user = {
-    displayName: firebaseUser.displayName,
-    email: firebaseUser.email,
-    emailVerified: firebaseUser.emailVerified,
-    photoUrl: firebaseUser.photoURL
+  async init (ctx) {
+    console.log('user/init')
+  },
+
+  async loggedIn (ctx, firebaseUser) {
+    console.log(firebaseUser)
+    const user = {
+      displayName: firebaseUser.displayName,
+      email: firebaseUser.email,
+      emailVerified: firebaseUser.emailVerified,
+      photoUrl: firebaseUser.photoURL
+    }
+    console.log('loggedIn', user)
+
+    ctx.commit('current', user)
+
+    ctx.dispatch('openDBChannel', { uid: firebaseUser.uid })
+  },
+
+  setUserField (ctx, change) {
+    ctx.dispatch('set', change)
+  },
+
+  async reset (ctx) {
+    console.log('user/reset')
+
+    AUTH.signOut()
+
+    await ctx.dispatch('closeDBChannel', { clearModule: true })
+    ctx.commit('current', {})
   }
-  console.log('loggedIn', user)
 
-  ctx.commit('current', user)
-}
-
-export async function reset (ctx) {
-  console.log('user/reset')
-
-  AUTH.signOut()
-
-  await ctx.dispatch('closeDBChannel', { clearModule: true })
-  ctx.commit('current', {})
 }
