@@ -27,7 +27,6 @@
         label="Proceed to Level 2"
         to="/level/2"
       />
-
     </div>
     <!--------------------- LEVEL 2 ----------------------------------->
     <div
@@ -231,26 +230,58 @@
       class="row"
       QPageContainer
     >
+<<<<<<< HEAD
       <h5 class="full-width" dense>Working with Smart Contracts</h5>
       <p class="full-width">Change the "setCount" function so it stores count multiplied by block.number</p>
       <p class="full-width">Compile and deploy the updated source</p>
       <p class="full-width">Call "setCount" with any numeric value you like</p>
       <p class="full-width">Call count() and paste the resulting number below</p>
 >>>>>>> a1bf53a2276240087dd4f5ea2e59bfe40b28b92e
+=======
+      <q-card flat class="my-card">
+        <q-card-actions>
+          <q-btn color="orange" icon="notification_important" label="hint" />
+        </q-card-actions>
+        <q-card-section>
+          <q-list>
+            <q-item>
+              <q-item-section>
+                <q-item-label>1. Change the "setCount" function so it stores count multiplied by.</q-item-label>
+              </q-item-section>
+            </q-item>
+            <q-item>
+              <q-item-section>
+                <q-item-label>2. Compile and deploy the updated source.</q-item-label>
+              </q-item-section>
+            </q-item>
+            <q-item>
+              <q-item-section>
+                <q-item-label>3. Call the "setCount" with any numeric value that you want.</q-item-label>
+              </q-item-section>
+            </q-item>
+            <q-item>
+              <q-item-section>
+                <q-item-label>4. Call count() and paste the resulting value below.</q-item-label>
+              </q-item-section>
+            </q-item>
+            <q-item>
+              <q-item-section>
+                <q-item-label>5. Change the "setCount" function so it stores count multiplied by</q-item-label>
+              </q-item-section>
+            </q-item>
+            <q-item>
+              <q-item-section>
+                <q-item-label><q-input v-model="text" label="Count" /></q-item-label>
+              </q-item-section>
+            </q-item>
+>>>>>>> 5c16181a73a6b95d2e3eb80fe2290959b113ea24
 
-      <q-input
-        class="full-width"
-        :value="address"
-        @blur="(event) => commit('user/address', event.target.value)"
-        label="Count results"
-      />
-      <q-btn
-        v-if="level>1"
-        color="white"
-        text-color="black"
-        label="Check results to proceed to level 6"
-        @click="level5checksendamount"
-      />
+          </q-list>
+        </q-card-section>
+        <q-card-actions>
+          <q-btn color="green" icon="check" label="check" />
+        </q-card-actions>
+      </q-card>
     </div>
   </q-page>
 </template>
@@ -259,45 +290,45 @@
 </style>
 
 <script>
-  import {mapState} from 'vuex'
+import { mapState } from 'vuex'
 
-  export default {
-    name: 'Level',
-    mounted: function () {
+export default {
+  name: 'Level',
+  mounted: function () {
+  },
+  data () {
+    return {}
+  },
+  methods: {
+    commit (key, value) {
+      this.$store.commit(key, value)
     },
-    data() {
-      return {}
+    level1submit () {
+      this.$store.dispatch('external/httpRegisterUser', this.address)
+      console.log('submitted address')
     },
-    methods: {
-      commit(key, value) {
-        this.$store.commit(key, value)
-      },
-      level1submit() {
-        this.$store.dispatch('external/httpRegisterUser', this.address)
-        console.log('submitted address')
-      },
-      level2submit() {
-        this.$store.dispatch('external/httpRegisterUser', this.address)
-        console.log('submitted address')
-      },
-      level3submit() {
-        this.$store.dispatch('external/httpRegisterUser', this.address)
-        console.log('submitted address')
-      }
-      // level1submitRandomAmount () {
-      //   this.$store.dispatch('external/httpCheckAmount', { address: this.address, randomAmount: this.randomAmount })
-      //   console.log('submitted randomAmount')
-      // }
+    level2submit () {
+      this.$store.dispatch('external/httpRegisterUser', this.address)
+      console.log('submitted address')
     },
-
-    computed: {
-      ...mapState('user', {
-        currentUser: 'current',
-        address: 'address',
-        randomAmount: 'randomAmount',
-        level: 'level',
-        selectedLevel: 'selectedLevel'
-      })
+    level3submit () {
+      this.$store.dispatch('external/httpRegisterUser', this.address)
+      console.log('submitted address')
     }
+    // level1submitRandomAmount () {
+    //   this.$store.dispatch('external/httpCheckAmount', { address: this.address, randomAmount: this.randomAmount })
+    //   console.log('submitted randomAmount')
+    // }
+  },
+
+  computed: {
+    ...mapState('user', {
+      currentUser: 'current',
+      address: 'address',
+      randomAmount: 'randomAmount',
+      level: 'level',
+      selectedLevel: 'selectedLevel'
+    })
   }
+}
 </script>
