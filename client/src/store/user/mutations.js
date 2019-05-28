@@ -16,6 +16,9 @@ export function loading (state, value) {
 export function level (state, value) {
   state.level = value
 }
+export function selectedLevel (state, value) {
+  state.selectedLevel = value
+}
 
 export function randomAmount (state, value) {
   state.randomAmount = value

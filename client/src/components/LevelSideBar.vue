@@ -5,13 +5,13 @@
         <!--      <q-avatar size="56px" class="q-mb-sm">-->
         <!--        <img src="https://cdn.quasar.dev/img/boy-avatar.png">-->
         <!--      </q-avatar>-->
-        <div class="text-weight-bold">{{currentUser.displayName}}</div>
+        <div class="text-weight-bold">{{currentUser.displayName}} <q-btn size="xs" @click="logout">Logout</q-btn></div>
         <div>Address: {{address}}</div>
         <div>Level: {{level}}</div>
       </div>
     </q-img>
     <br/><br/><br/><br/><br/><br/><br/>
-    <q-tabs>
+    <q-tabs >
       <q-route-tab
         label="1"
         to="/level/1"
@@ -39,10 +39,10 @@
       />
     </q-tabs>
     <q-list style="">
-      <q-item-label header>Level {{level}} help</q-item-label>
+      <q-item-label header>Level {{selectedLevel}} help</q-item-label>
 
       <q-item
-        v-for="item in levelSideBar[level]"
+        v-for="item in levelSideBar[selectedLevel]"
         v-bind:key="item.label"
         clickable
         tag="a"
@@ -62,23 +62,29 @@
 </template>
 
 <script>
-  import {mapState} from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
-  export default {
-    name: 'LevelSideBar',
-    data() {
-      return {}
-    },
-    computed: {
-      ...mapState('user', {
-        level: 'level',
-        levelSideBar: 'levelSideBar',
-        currentUser: 'current',
-        address: 'address'
-      })
+export default {
+  name: 'LevelSideBar',
+  data () {
+    return {}
+  },
+  methods: {
+    ...mapActions('user', [
+      'logout'
+    ])
+  },
+  computed: {
+    ...mapState('user', {
+      level: 'level',
+      selectedLevel: 'selectedLevel',
+      levelSideBar: 'levelSideBar',
+      currentUser: 'current',
+      address: 'address'
+    })
 
-    }
   }
+}
 </script>
 
 <style>

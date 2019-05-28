@@ -12,14 +12,15 @@
 
 <script>
 import * as firebase from 'firebase'
+import { AUTH } from 'boot/firebase'
 
 export default {
   name: 'PageIndex',
   methods: {
     signinGoogle () {
       var provider = new firebase.auth.GoogleAuthProvider()
-      window.AUTH.signInWithRedirect(provider).then((result) => {
-        this.$router.push({ name: 'level1' })
+      AUTH.signInWithRedirect(provider).then((result) => {
+        this.$router.push({ path: '' })
       }).catch(err => console.log(err))
     }
   }

@@ -4,11 +4,18 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', name: 'level', component: () => import('pages/Level.vue') },
+      { path: '', name: 'main', component: () => import('pages/Level.vue') },
+      { path: '/loading', name: 'loading', component: () => import('pages/Loading.vue') },
       { path: '/start', name: 'start', component: () => import('pages/Index.vue') },
-      { path: '/signup', name: 'signup', component: () => import('pages/Signup.vue') },
       { path: '/myaccount', name: 'myaccount', component: () => import('pages/MyAccount.vue') },
       { path: '/level/:level([0-9]+)', component: () => import('pages/Level.vue') }
+    ]
+  },
+  {
+    path: '/signup',
+    component: () => import('layouts/Full.vue'),
+    children: [
+      { path: '/signup', component: () => import('pages/Signup.vue') }
     ]
   }
 ]

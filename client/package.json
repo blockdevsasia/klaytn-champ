@@ -15,6 +15,7 @@
     "axios": "^0.18.0",
     "caver-js": "^0.8.4-2",
     "firebase": "^6.0.4",
+    "lodash": "^4.17.11",
     "quasar": "^1.0.0-beta.0",
     "vuex-easy-firestore": "^1.34.0"
   },

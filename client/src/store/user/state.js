@@ -1,10 +1,11 @@
 export default {
   // data: {},
-  current: { displayName: 'loading' },
-  address: '0xe23a66edbdec3c716e1d5fc14d4d4b40ee3d2b41',
+  current: {},
+  address: '',
   randomAmount: 0.00,
-  loading: true,
-  level: 2,
+  loading: false,
+  level: 1,
+  selectedLevel: 1,
   levelSideBar: {
     1: [
       {
@@ -12,7 +13,7 @@ export default {
         link: 'https://baobab.klaytnwallet.com',
         icon: 'account_balance_wallet'
       },
-            {
+      {
         label: 'Klaytnscope',
         link: 'https://baobab.klaytnscope.com/',
         icon: 'explore'
@@ -29,7 +30,7 @@ export default {
         link: 'https://baobab.klaytnwallet.com',
         icon: 'account_balance_wallet'
       },
-            {
+      {
         label: 'Klaytnscope',
         link: 'https://baobab.klaytnscope.com/',
         icon: 'explore'
