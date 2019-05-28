@@ -10,14 +10,12 @@ const connection = Firebase.initializeApp(firebaseConfig)
 export const DB = connection.database()
 export const AUTH = connection.auth()
 
-console.log('AUTH', AUTH.currentUser)
 export default ({ router, store, Vue }) => {
 
 
   connection.firestore().enablePersistence()
     .then(() => {
       // If Firebase is going to login, set loading state so UI can adapt
-      console.log('authcurr', AUTH.currentUser)
       if(AUTH.currentUser !== null){
         console.log('supposed to be loading')
         // Loading.show()

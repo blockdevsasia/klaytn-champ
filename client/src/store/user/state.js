@@ -1,7 +1,6 @@
 export default {
-  // data: {},
+  data: {},
   current: {},
-  address: '',
   randomAmount: 0.00,
   loading: false,
   level: 1,

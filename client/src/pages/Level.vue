@@ -355,30 +355,40 @@ export default {
     return { }
   },
   methods: {
-    commit (key, value) {
-      this.$store.commit(key, value)
-    },
+    ...mapActions('user', [
+      'setUserField'
+    ]),
     level1submit () {
       this.$store.dispatch('external/httpRegisterUser', this.address)
       console.log('submitted address')
     },
     level2submit () {
-      this.$store.dispatch('external/httpRegisterUser', this.address)
+      this.$store.dispatch('external/httpCheckLevel2', this.address)
       console.log('submitted address')
     },
     level3submit () {
-      this.$store.dispatch('external/httpRegisterUser', this.address)
+      this.$store.dispatch('external/httpRegisterUser', this.level3data)
+      console.log('submitted address')
+    },
+    level4submit () {
+      this.$store.dispatch('external/httpRegisterUser', this.level4data)
+      console.log('submitted address')
+    },
+    level5submit () {
+      this.$store.dispatch('external/httpRegisterUser', this.level5data)
       console.log('submitted address')
     }
-    // level1submitRandomAmount () {
-    //   this.$store.dispatch('external/httpCheckAmount', { address: this.address, randomAmount: this.randomAmount })
-    //   console.log('submitted randomAmount')
-    // }
   },
   computed: {
+    ...mapGetters({
+      address: 'user/address',
+      level2value: 'user/level2value',
+      level3value: 'user/level3value',
+      level4value: 'user/level4value',
+      level5value: 'user/level5value'
+    }),
     ...mapState('user', {
       currentUser: 'current',
-      address: 'address',
       randomAmount: 'randomAmount',
       level: 'level',
       selectedLevel: 'selectedLevel'
