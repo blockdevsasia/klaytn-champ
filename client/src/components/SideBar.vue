@@ -1,5 +1,9 @@
 <template>
-  <div>My component</div>
+  <div>
+
+    <profile :user="currentUser" :address="address" :level="level"></profile>
+
+  </div>
 </template>
 
 <script>
