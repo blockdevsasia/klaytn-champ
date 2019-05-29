@@ -11,6 +11,12 @@ Blockchain-based user and developer challenge with verifiable scoring and certif
 </tr>
 
 <tr>
+<td><strong>Quickstart</strong></td>
+<td>install all dependencies - Run in terminal at project root `yarn install:all`</td>
+<td>run client and backend at the same time - Run in terminal at project root `yarn dev`</td>
+</tr>
+
+<tr>
 <td><strong>Goal</strong></td>
 <td>Growing the Blockchain ecosystem on Klaytn Platform. By challenging developers & users with tasks, activities & trivias, we are educating users with technical documentation & implementation. With our tier-based gamification scoring system with incentives, learning how to utilize Klaytn is fun and rewarding. </td>
 </tr>
@@ -42,6 +48,7 @@ Blockchain-based user and developer challenge with verifiable scoring and certif
 </tr>
 </table>
 
+=======
 <i>Corporate Style Guide</i>
 
 <img src="https://agency.eoi.digital/wp-content/uploads/2019/05/Stylescape-1.jpg">
