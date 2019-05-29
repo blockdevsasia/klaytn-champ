@@ -19,14 +19,19 @@ export default ({ app, router, Vue, store }) => {
       } else {
         next('/signup')
       }
-    } else if (userNeedsLevel1) {
-      if (to.path === '/level/1') {
-        next()
-      } else {
-        next('/level/1')
-      }
+    // } else if (userNeedsLevel1) {
+    //   console.log('hre')
+    //   // store.dispatch('user/set', { selectedLevel: 1 })
+    //
+    //   if (to.path === '/level/1') {
+    //     next()
+    //   } else {
+    //     next('/level/1')
+    //   }
     } else if (to.path.indexOf('/level/') === 0) {
-      store.commit('user/selectedLevel', Number.parseInt(to.path.replace('/level/', '')))
+      store.dispatch('user/set', {
+        selectedLevel: Number.parseInt(to.path.replace('/level/', ''))
+      })
       next()
     } else {
       next()

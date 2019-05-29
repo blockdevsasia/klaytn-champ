@@ -40,7 +40,7 @@
 <script>
 import { openURL } from 'quasar'
 import LevelSideBar from 'components/LevelSideBar'
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'MyLayout',
@@ -57,10 +57,13 @@ export default {
     }
   },
   computed: {
+    ...mapGetters('user', {
+      selectedLevel: 'selectedLevel'
+
+    }),
     ...mapState('user', {
       currentUser: 'current',
-      level: 'level',
-      selectedLevel: 'selectedLevel'
+      level: 'level'
     })
 
   },

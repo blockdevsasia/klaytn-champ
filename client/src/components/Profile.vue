@@ -4,8 +4,8 @@
             <q-avatar size="56px" class="q-mb-sm">
               <img :src="user.photoURL">
             </q-avatar>
-      <div class="text-weight-bold">{{user.displayName}} <q-btn size="xs" @click="$store.dispatch('user/logout')">Logout</q-btn></div>
-      <div>Address: {{address}}</div>
+      <div class="text-weight-bold"><router-link to="/" >{{user.displayName}}</router-link> <q-btn size="xs" @click="$store.dispatch('user/logout')">Logout</q-btn></div>
+      <div v-if="address">Address: {{address}}</div>
       <div>Level: {{level}}</div>
     </div>
   </q-img>
@@ -19,7 +19,8 @@ export default {
       type: Object
     },
     address: {
-      type: String
+      type: String,
+      default: ''
     },
     level: {
       type: Number

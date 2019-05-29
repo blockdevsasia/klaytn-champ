@@ -71,11 +71,12 @@ export default {
   },
   computed: {
     ...mapGetters({
-      address: 'user/address'
+      address: 'user/address',
+      selectedLevel: 'user/selectedLevel'
+
     }),
     ...mapState('user', {
       level: 'level',
-      selectedLevel: 'selectedLevel',
       levelSideBar: 'levelSideBar',
       currentUser: 'current'
     })

@@ -44,7 +44,7 @@
                 label="Transaction hash (txid)"
                 :disable="level > 2"
                 :value="solution"
-                @blur="(event) => $emit('setValue', {level2value: event.target.value})"
+                @blur="(event) => $emit('setValue', {level2solution: event.target.value})"
               />
             </q-item-section>
           </q-item>

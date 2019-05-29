@@ -47,10 +47,41 @@ export async function httpCheckLevel3 (context, { address, contract }) {
   console.log('level3check', result)
 }
 
+export async function httpCheckLevel4 (context, { address, solution }) {
+  const data = {
+    address: address,
+    txHash: solution,
+    random: context.rootState.user.random
+  }
+  console.log(data)
+  const result = await axiosHTTP({
+    method: 'post',
+    url: '/checkLevel4',
+    data: data
+  })
+  console.log('level4check', result)
+}
+
+export async function httpCheckLevel5 (context, { address, solution }) {
+  const data = {
+    address: address,
+    count: solution,
+    random: context.rootState.user.random
+  }
+  console.log(data)
+  const result = await axiosHTTP({
+    method: 'post',
+    url: '/checkLevel5',
+    data: data
+  })
+  console.log('level5check', result)
+}
+
 export async function klaytnGetUser (context, address) {
   const result = await contract.methods.getUser(address).call()
   const level = Number.parseInt(result.level) + 1
-  console.log(result)
+  const random = result.randomAmount
 
   if (context.rootState.user.level !== level) context.commit('user/level', level, { root: true })
+  if (context.rootState.user.random !== random) context.commit('user/random', random, { root: true })
 }

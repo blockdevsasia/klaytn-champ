@@ -67,8 +67,10 @@ contract Ownable {
 
 contract KlaytnChamp is Ownable {
     struct UserData {
-        uint256 randomAmount;
-        uint256 level;
+        uint64 randomAmount;
+        uint64 level;
+        uint64 certificate;
+        bytes32 usernameHash;
     }
 
     // The main mapping that contains the data for each user

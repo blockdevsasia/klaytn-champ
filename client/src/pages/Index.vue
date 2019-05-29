@@ -1,15 +1,11 @@
 <template>
   <q-page class="">
-    <h1>Klaytn Champions</h1>
-    <h3>Learn to use the platform, in a fun way!</h3>
-    <q-btn
-      dense
-      color="primary"
-      size="xl"
-      label="Let's go!"
-      to="/signup"
-    ></q-btn>
+    <h6>Introduction</h6>
+    <p>Below you can find ... etc</p>
+
+    <router-link to="/level/1">Mastering the basic</router-link>
   </q-page>
+
 </template>
 
 <style>

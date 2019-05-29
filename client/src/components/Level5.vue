@@ -25,7 +25,7 @@
           </q-item>
           <q-item>
             <q-item-section>
-              <q-item-label>3. Call the "setCount" with any numeric value that you want.</q-item-label>
+              <q-item-label>3. Call the "setCount" with your random amount in Peb (integer). </q-item-label>
             </q-item-section>
           </q-item>
           <q-item>
