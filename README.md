@@ -10,6 +10,11 @@ Blockchain-based user and developer challenge with verifiable scoring and certif
 </tr>
 
 <tr>
+<td><strong>Quickstart</strong></td>
+<td>install all dependencies - Run in terminal at project root `yarn install:all`</td>
+</tr>
+
+<tr>
 <td><strong>Goal</strong></td>
 <td>To make technical documentation and onboarding with Klaytn more fun by Gamification & Incentivisation.</td>
 </tr>
@@ -34,4 +39,6 @@ Blockchain-based user and developer challenge with verifiable scoring and certif
 </td>
 </tr>
 </table>
+
+
 
