@@ -16,7 +16,7 @@
       bordered
       content-class="bg-grey-2"
     >
-      <profile :user="currentUser" :level="level"></profile>
+      <profile :user="currentUser" :level="leve1"></profile>
       <br/><br/><br/><br/><br/><br/><br/>
 
       <q-list>
