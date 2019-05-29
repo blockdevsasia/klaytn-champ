@@ -37,7 +37,7 @@ app.post('/checkLevel3', wrap(async (req, res, next) => {
   const result = await helpers.findTransactionsBy(
     address,
     async tx =>
-      tx.to === contractAddress,
+      tx.contractAddress.toUpperCase() === contractAddress.toUpperCase(),
     null    // We don't need the txn detail now
   )
 

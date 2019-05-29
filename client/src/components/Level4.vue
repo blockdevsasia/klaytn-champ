@@ -36,7 +36,7 @@
 
                 <q-input
                   square outlined
-                  label="Transaction Number"
+                  label="Transaction Hash"
                   :disable="level > 4"
                   :value="solution"
                   @blur="(event) => $emit('setValue', {level4solution: event.target.value})"
