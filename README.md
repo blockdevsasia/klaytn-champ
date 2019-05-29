@@ -48,7 +48,6 @@ Blockchain-based user and developer challenge with verifiable scoring and certif
 </tr>
 </table>
 
-=======
 <i>Corporate Style Guide</i>
 
 <img src="https://agency.eoi.digital/wp-content/uploads/2019/05/Stylescape-1.jpg">
