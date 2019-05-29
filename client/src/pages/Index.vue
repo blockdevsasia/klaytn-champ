@@ -5,8 +5,8 @@
     </p>
 
 
- <button class="lightgray-btn rightbuttons">
-    <img class="btnimg" src="http://lorempixel.com/output/food-q-c-27-24-8.jpg" alt="" />
+ <button class="lightgray-btn rightbuttons button-dash">
+    <img class="btnimg-dash" src="assets\klaytn-basics.png" alt="" />
     some text
   </button>
     <router-link to="/level/1">Mastering the basic</router-link>
