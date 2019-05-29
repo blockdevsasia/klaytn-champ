@@ -1,17 +1,8 @@
 <template>
   <div>
-    <q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px; ">
-      <div class="absolute-bottom bg-transparent">
-        <!--      <q-avatar size="56px" class="q-mb-sm">-->
-        <!--        <img src="https://cdn.quasar.dev/img/boy-avatar.png">-->
-        <!--      </q-avatar>-->
-        <div class="text-weight-bold">{{currentUser.displayName}}</div>
-        <div>Address: {{address}}</div>
-        <div>Level: {{level}}</div>
-      </div>
-    </q-img>
+    <profile :user="currentUser" :address="address" :level="level"></profile>
     <br/><br/><br/><br/><br/><br/><br/>
-    <q-tabs>
+    <q-tabs >
       <q-route-tab
         label="1"
         to="/level/1"
@@ -39,10 +30,10 @@
       />
     </q-tabs>
     <q-list style="">
-      <q-item-label header>Level {{level}} help</q-item-label>
+      <q-item-label header>Level {{selectedLevel}} help</q-item-label>
 
       <q-item
-        v-for="item in levelSideBar[level]"
+        v-for="item in levelSideBar[selectedLevel]"
         v-bind:key="item.label"
         clickable
         tag="a"
@@ -62,23 +53,36 @@
 </template>
 
 <script>
-  import {mapState} from 'vuex'
+import { mapState, mapActions, mapGetters } from 'vuex'
 
-  export default {
-    name: 'LevelSideBar',
-    data() {
-      return {}
-    },
-    computed: {
-      ...mapState('user', {
-        level: 'level',
-        levelSideBar: 'levelSideBar',
-        currentUser: 'current',
-        address: 'address'
-      })
-
+export default {
+  name: 'LevelSideBar',
+  components: {
+    Profile: () => import('components/Profile')
+  },
+  data () {
+    return {
     }
+  },
+  methods: {
+    ...mapActions('user', [
+      'logout'
+    ])
+  },
+  computed: {
+    ...mapGetters({
+      address: 'user/address',
+      selectedLevel: 'user/selectedLevel'
+
+    }),
+    ...mapState('user', {
+      level: 'level',
+      levelSideBar: 'levelSideBar',
+      currentUser: 'current'
+    })
+
   }
+}
 </script>
 
 <style>

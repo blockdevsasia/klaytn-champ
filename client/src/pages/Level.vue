@@ -1,160 +1,117 @@
 <template>
-    <q-page class="content-container">
+  <q-page class="content-container">
     <!--------------------- LEVEL 1 ----------------------------------->
-    <div
-      v-if="level == 1"
-      class="row"
-      QPageContainer
-    >
-      <h5 class="full-width" dense>Create a Klaytn Account</h5>
-      <p class="full-width">Go to Klaytn Wallet, create an account, and paste your public address.</p>
-      <q-input
-        class="full-width"
-        :value="address"
-        @blur="(event) => commit('user/address', event.target.value)"
-        label="Account View"
-      />
-      <q-btn
-        color="white"
-        text-color="black"
-        label="This is my address, send me KLAY!"
-        @click="level1submitAddress"
-      />
-      <q-input
-        class="full-width"
-        :value="randomAmount"
-        @blur="(event) => commit('user/randomAmount', event.target.value)"
-        label="Amount that you received"
-      />
-      <q-btn
-        color="white"
-        text-color="black"
-        label="Check amount to proceed to Level 2"
-        @click="level1submitRandomAmount"
-      />
-    </div>
+    <level-1
+      v-if="selectedLevel === 1"
+      :selectedLevel="selectedLevel"
+      :level="level"
+      :solution="address"
+      v-on:setValue="setUserField"
+      v-on:finish="level1submit"
+    />
+
     <!--------------------- LEVEL 2 ----------------------------------->
-    <div
-      v-if="level == 2"
-      class="row"
-    >
-      <h5 class="full-width" dense>Go to the Faucet and request</h5>
-      <p class="full-width">Go to KlaytnScope and find that transaction</p>
-      <q-input class="full-width" v-model="account" label="Transaction hash (txid)" />
-      <q-btn
-        color="white"
-        text-color="black" label="Check account to proceed to Level 3" @click="level1submitAddress" />
-    </div>
+    <level-2
+      v-if="selectedLevel === 2"
+      :selectedLevel="selectedLevel"
+      :level="level"
+      :solution="level2solution"
+      v-on:setValue="setUserField"
+      v-on:finish="level2submit"
+    />
+
     <!--------------------- LEVEL 3 ----------------------------------->
-     <div
-          v-if="level == 3"
-          class="row"
-          QPageContainer
-        >
-          <h5 class="full-width" dense>Setup your working enviorment</h5>
-          <p class="full-width">Export your Keystore from the Klaytn Wallet to a file</p>
-          <p class="full-width">Open the IDE and load your keystore, and switch to BAOBAB</p>
-          <p class="full-width">Compile and Deploy the default (count) contract</p>
+    <level-3
+      v-if="selectedLevel === 3"
+      :selectedLevel="selectedLevel"
+      :level="level"
+      :solution="level3solution"
+      v-on:setValue="setUserField"
+      v-on:finish="level3submit"
+    />
 
-          <q-input
-            class="full-width"
-            :value="address"
-            @blur="(event) => commit('user/address', event.target.value)"
-            label="Contract Adress"
-          />
-          <q-btn
-            color="white"
-            text-color="black"
-            label="Check contract deployment to proceed to Level 4"
-            @click="level3checkcontract"
-          />
-        </div>
     <!--------------------- LEVEL 4 ----------------------------------->
-     <div
-          v-if="level == 4"
-          class="row"
-          QPageContainer
-        >
-          <h5 class="full-width" dense>Working with Smart Contracts</h5>
-          <p class="full-width">Using the IDE, do a function call to "setCount", with as input    the amount you received in the beginning</p>
+    <level-4
+      v-if="selectedLevel === 4"
+      :selectedLevel="selectedLevel"
+      :level="level"
+      :solution="level4solution"
+      v-on:setValue="setUserField"
+      v-on:finish="level4submit"
+    />
 
-          <q-input
-            class="full-width"
-            :value="address"
-            @blur="(event) => commit('user/address', event.target.value)"
-            label="Block number of the Tx"
-          />
-          <q-btn
-            color="white"
-            text-color="black"
-            label="Check contract deployment to proceed to Level 5"
-            @click="blocknroftx"
-          />
-        </div>
     <!--------------------- LEVEL 5 ----------------------------------->
-     <div
-          v-if="level == 5"
-          class="row"
-          QPageContainer
-        >
-          <h5 class="full-width" dense>Working with Smart Contracts</h5>
-          <p class="full-width">Change the "setCount" function so it stores count multiplied by block.number</p>
-          <p class="full-width">Compile and deploy the updated source</p>
-          <p class="full-width">Call "setCount" with any numeric value you like</p>
-          <p class="full-width">Call count() and paste the resulting number below</p>
-
-          <q-input
-            class="full-width"
-            :value="address"
-            @blur="(event) => commit('user/address', event.target.value)"
-            label="Count results"
-          />
-          <q-btn
-            color="white"
-            text-color="black"
-            label="Check results to proceed to level 6"
-            @click="level5checksendamount"
-          />
-        </div>
-
-
-
-
+    <level-5
+      v-if="selectedLevel === 5"
+      :selectedLevel="selectedLevel"
+      :level="level"
+      :solution="level5solution"
+      v-on:setValue="setUserField"
+      v-on:finish="level5submit"
+    />
   </q-page>
 </template>
-
 <style>
 </style>
-
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions, mapGetters } from 'vuex'
+import Level1 from 'components/Level1'
+import Level2 from 'components/Level2'
+import Level3 from 'components/Level3'
+import Level4 from 'components/Level4'
+import Level5 from 'components/Level5'
 
 export default {
   name: 'Level',
+  components: {
+    Level1: Level1,
+    Level2: Level2,
+    Level3: Level3,
+    Level4: Level4,
+    Level5: Level5
+  },
   mounted: function () {
+   
   },
   data () {
-    return {
-    }
+    return { }
   },
   methods: {
-    commit (key, value) {
-      this.$store.commit(key, value)
-    },
-    level1submitAddress () {
+    ...mapActions('user', [
+      'setUserField'
+    ]),
+    level1submit () {
       this.$store.dispatch('external/httpRegisterUser', this.address)
       console.log('submitted address')
     },
-    level1submitRandomAmount () {
-      this.$store.dispatch('external/httpCheckAmount', { address: this.address, randomAmount: this.randomAmount })
-      console.log('submitted randomAmount')
+    level2submit () {
+      this.$store.dispatch('external/httpCheckLevel2', this.address)
+      console.log('submitted address')
+    },
+    level3submit () {
+      // this.$store.dispatch('external/httpRegisterUser', this.level3data)
+      console.log('level3submit', this.level3solution)
+    },
+    level4submit () {
+      this.$store.dispatch('external/httpCheckLevel4', { address: this.address, solution: this.level4solution })
+      console.log('submitted address')
+    },
+    level5submit () {
+      this.$store.dispatch('external/httpCheckLevel5', { address: this.address, solution: this.level5solution })
+      console.log('submitted address')
     }
   },
-
   computed: {
+    ...mapGetters({
+      address: 'user/address',
+      selectedLevel: 'user/selectedLevel',
+      level2solution: 'user/level2solution',
+      level3solution: 'user/level3solution',
+      level4solution: 'user/level4solution',
+      level5solution: 'user/level5solution'
+    }),
     ...mapState('user', {
       currentUser: 'current',
-      address: 'address',
       randomAmount: 'randomAmount',
       level: 'level'
     })

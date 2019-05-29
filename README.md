@@ -1,5 +1,7 @@
-# Klaytn-Champ
-<img src="https://camo.githubusercontent.com/58b02050aed4a26b0b1040dd1c30926b083df5ff/68747470733a2f2f7777772e626c6f636b646576732e617369612f77702d636f6e74656e742f75706c6f6164732f323031392f30352f6b6c6179746e2d6c6f676f2e706e67" data-canonical-src="https://www.blockdevs.asia/wp-content/uploads/2019/05/klaytn-logo.png" style="max-width:100%;">
+# klaytn-champ
+<img src="https://www.blockdevs.asia/wp-content/uploads/2019/05/klaytn-logo.png">
+
+Blockchain-based user and developer challenge with verifiable scoring and certification. Our goal is to make technical documentation and onboarding with Klaytn more fun by Gamification & Incentivisation.
 
 <b>Growing the blockchain ecosystem on Klaytn by taking a bottom-up strategy (from building-to-consuming). Our blockchain-based solution is aimed to provide a better & more entertaining onboarding and certification process for Klaytn developers. By challenging developers with tasks, activities & trivia, we are educating developers with Klaytn technical documentation & implementation. With our tier-based gamification scoring system with incentives, learning how to utilize and develop with Klaytn is fun and rewarding.</b></br>
 <table>

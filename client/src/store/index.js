@@ -4,43 +4,43 @@ import Vuex from 'vuex'
 import user from './user'
 import external from './external'
 
+import { DB } from 'boot/firebase'
+
 import createEasyFirestore from 'vuex-easy-firestore'
 
 Vue.use(Vuex)
 
 const userModule = {
-  firestorePath: 'users/{address}',
+  firestorePath: 'users/{uid}',
   firestoreRefType: 'doc',
   moduleName: 'user',
   statePropName: 'data',
   namespaced: true,
+  serverChange: {
+    modifiedHook: (updateStore, doc, id, store) => { console.log(store.state.user); updateStore(doc) }
+  },
   ...user
 }
-
-/*
- * If not building with SSR mode, you can
- * directly export the Store instantiation
- */
 
 const easyFirestore = createEasyFirestore(
   [userModule],
   {
     logging: true,
-    FirebaseDependency: window.DB
+    FirebaseDependency: DB.app
   }
 )
 
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
-      user,
       external
     },
-    plugins: [easyFirestore],
+    plugins: [easyFirestore]
 
     // enable strict mode (adds overhead!)
     // for dev mode only
-    strict: process.env.DEV
+    // @coostendorp: Disabled due to https://forum.vuejs.org/t/error-form-binding-with-vuex-do-not-mutate-vuex-store-state-outside-mutation-handlers/11941/12
+    // strict: process.env.DEV
   })
 
   return Store

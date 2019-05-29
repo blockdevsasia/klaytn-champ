@@ -1,21 +1,12 @@
 <template>
   <q-layout view="lHh Lpr lFf">
+    <div class="q-img__image absolute-full" style="background-image: url(&quot;https://res.cloudinary.com/eoi-digital/image/upload/v1559114383/main-background_x1btwj.png&quot;); background-size: cover; background-position: 50% 50%;"></div>
     <q-header elevated>
 
       <q-toolbar>
 
-        <q-btn
-          flat
-          dense
-          round
-          @click="leftDrawerOpen = !leftDrawerOpen"
-          aria-label="Menu"
-          class="menu-bar"
-        >
-          <q-icon name="menu" />
-        </q-btn>
         <q-toolbar-title>
-          Klaytn Champ: Level {{level}}
+          Klaytn Champ
         </q-toolbar-title>
 
       </q-toolbar>
@@ -25,30 +16,93 @@
       v-model="leftDrawerOpen"
       bordered
       content-class="bg-grey-2"
-      :width="400"
     >
-      <level-side-bar></level-side-bar>
+      <profile :user="currentUser" :level="leve1"></profile>
+      <br/><br/><br/><br/><br/><br/><br/>
+
+      <q-list>
+        <q-item clickable to="/profile">
+          <q-item-section avatar>
+            <q-icon name="person" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>My Profile</q-item-label>
+          </q-item-section>
+        </q-item>
+
+        <q-item clickable to="/profile">
+          <q-item-section avatar>
+            <q-icon name="grade" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Certificates</q-item-label>
+          </q-item-section>
+        </q-item>
+
+        <q-item clickable to="/profile">
+          <q-item-section avatar>
+            <q-icon name="chrome_reader_mode" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Challenges</q-item-label>
+          </q-item-section>
+        </q-item>
+
+        <q-item clickable to="/profile">
+          <q-item-section avatar>
+            <q-icon name="monetization_on" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Earnings</q-item-label>
+          </q-item-section>
+        </q-item>
+
+        <q-item clickable to="/profile">
+          <q-item-section avatar>
+            <q-icon name="insert_chart" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Leaderboard</q-item-label>
+          </q-item-section>
+        </q-item>
+        
+
+      <div class="padding-top">
+        <q-item clickable @click="$store.dispatch('user/logout')">
+          <q-item-section avatar>
+            <q-icon name="settings" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Logout</q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item clickable @click="$store.dispatch('user/logout')">
+          <q-item-section avatar>
+            <q-icon name="input" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Logout</q-item-label>
+          </q-item-section>
+        </q-item>
+      </div>
+
+      </q-list>
     </q-drawer>
 
     <q-page-container>
-
-      <router-view></router-view>
+      <router-view />
     </q-page-container>
   </q-layout>
 </template>
 
 <script>
 import { openURL } from 'quasar'
-import LevelSideBar from 'components/LevelSideBar'
 import { mapState } from 'vuex'
 
 export default {
-  name: 'MyLayout',
-  mounted: function () {
-    console.log(this.$router)
-  },
+  name: 'MainLayout',
   components: {
-    LevelSideBar: LevelSideBar
+    Profile: () => import('components/Profile')
   },
   data () {
     return {
@@ -56,10 +110,12 @@ export default {
       leftDrawerOpen: this.$q.platform.is.desktop
     }
   },
+
   computed: {
     ...mapState('user', {
-      currentUser: 'current',
-      level: 'level'
+      level: 'level',
+      levelSideBar: 'levelSideBar',
+      currentUser: 'current'
     })
 
   },

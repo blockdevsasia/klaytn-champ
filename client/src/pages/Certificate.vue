@@ -1,7 +1,11 @@
 <template>
-  <q-page class="flex flex-center">
-    <img alt="Quasar logo" src="~assets/quasar-logo-full.svg">
+  <q-page class="">
+    <h6>Introduction</h6>
+    <p>Below you can find ... etc</p>
+
+    <router-link to="/level/1">Mastering the basic</router-link>
   </q-page>
+
 </template>
 
 <style>
