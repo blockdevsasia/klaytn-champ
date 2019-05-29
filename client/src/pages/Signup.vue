@@ -1,8 +1,9 @@
 <template>
   <q-page class="flex flex-center">
     <div class="login">
-      <h3>Sign In</h3>
-      <q-btn label="Sign in with Google" @click="signinGoogle"></q-btn>
+      <img src="assets\klaytn-champ-logo.svg">
+      <div class="q-img__image absolute-full" style="background-image: url(&quot;&quot;); background-size: cover; background-position: 50% 50%;"></div>
+      <q-btn label="Sign in with Google" @click="signinGoogle" class="purp-button"></q-btn>
     </div>
   </q-page>
 </template>

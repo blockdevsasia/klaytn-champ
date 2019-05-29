@@ -1,9 +1,13 @@
 <template>
   <q-layout view="lHh Lpr lFf">
+    <div class="q-img__image absolute-full" style="background-image: url(&quot;https://res.cloudinary.com/eoi-digital/image/upload/v1559101751/sing-up-klaytn-champ_oornpw.png&quot;); background-size: cover; background-position: 50% 50%;">
+    <h3 class="singup-txt">Learn how to develop on Klaytn<br>And get rewarded!</h3>
+
+</div>
     <q-drawer
       v-model="leftDrawerOpen"
       bordered
-      content-class="bg-grey-2"
+      content-class="bg-white-2"
       :width="400"
     >
       <router-view></router-view>
