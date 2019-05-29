@@ -2,7 +2,7 @@ import Caver from 'caver-js'
 const Contract = require('src/assets/contracts/KlaytnChamp.json')
 
 const RPC_URL = 'https://api.baobab.klaytn.net:8651'
-const CONTRACT_ID = '0xc21C1C7f30c8Dc2115c3b18a471A4c0Bc81B1973'
+const CONTRACT_ID = '0x48667D376fc9E5E8D19a6FCeB64C8d4c6E4553b8'
 
 export const CAVER = new Caver(RPC_URL)
 

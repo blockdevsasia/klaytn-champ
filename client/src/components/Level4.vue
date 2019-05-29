@@ -54,7 +54,7 @@
               :disable=" level > 4"
               color="green"
               text-color="black"
-              label="This is the solution!"
+              label="Check my solution"
               @click="$emit('finish')"
             />
             <q-btn

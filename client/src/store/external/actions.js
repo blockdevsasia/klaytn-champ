@@ -35,9 +35,22 @@ export async function httpCheckLevel2 (context, address) {
   console.log('level2check', result)
 }
 
+export async function httpCheckLevel3 (context, { address, contract }) {
+  const result = await axiosHTTP({
+    method: 'post',
+    url: '/checkLevel3',
+    data: {
+      address: address,
+      contract: contract
+    }
+  })
+  console.log('level3check', result)
+}
+
 export async function klaytnGetUser (context, address) {
   const result = await contract.methods.getUser(address).call()
   const level = Number.parseInt(result.level) + 1
+  console.log(result)
 
   if (context.rootState.user.level !== level) context.commit('user/level', level, { root: true })
 }

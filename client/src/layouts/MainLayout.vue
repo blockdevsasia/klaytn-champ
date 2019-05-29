@@ -14,7 +14,7 @@
         </q-btn>
 
         <q-toolbar-title>
-          Klaytn Champion
+          Klaytn Champ
         </q-toolbar-title>
 
         <q-tabs

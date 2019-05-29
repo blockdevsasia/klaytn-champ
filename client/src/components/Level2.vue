@@ -57,7 +57,7 @@
                   :disable="level > 2"
                   color="green"
                   text-color="black"
-                  label="This is my address, send me KLAY!"
+                  label="Check my solution"
                   @click="$emit('finish')"
                 />
                 <q-btn

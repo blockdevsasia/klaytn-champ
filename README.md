@@ -1,5 +1,5 @@
 # klaytn-champ
-<img src="https://raw.githubusercontent.com/amadeobrands/ChainEstate/master/art-work/chain-estate.png">
+<img src="https://www.blockdevs.asia/wp-content/uploads/2019/05/klaytn-logo.png">
 
 Blockchain-based user and developer challenge with verifiable scoring and certification. Our goal is to make technical documentation and onboarding with Klaytn more fun by Gamification & Incentivisation.
 

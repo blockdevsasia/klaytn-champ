@@ -433,7 +433,7 @@ export default {
       console.log('submitted address')
     },
     level3submit () {
-      // this.$store.dispatch('external/httpRegisterUser', this.level3data)
+      this.$store.dispatch('external/httpCheckLevel3', { address: this.address, contract: this.level3solution })
       console.log('level3submit', this.level3solution)
     },
     level4submit () {

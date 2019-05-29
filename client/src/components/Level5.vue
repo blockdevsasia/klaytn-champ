@@ -15,7 +15,7 @@
         <q-list>
           <q-item>
             <q-item-section>
-              <q-item-label>1. From the IDE, change the "setCount" function so it stores count multiplied by.</q-item-label>
+              <q-item-label>1. From the IDE, change the "setCount" function so it stores count multiplied by block number.</q-item-label>
             </q-item-section>
           </q-item>
           <q-item>
@@ -57,7 +57,7 @@
               :disable=" level > 5"
               color="green"
               text-color="black"
-              label="This is the solution!"
+              label="Check my solution"
               @click="$emit('finish')"
             />
             <q-btn
