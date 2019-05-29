@@ -8,10 +8,7 @@ export default {
   level: function (state, value) {
     state.level = value
   },
-  selectedLevel: function (state, value) {
-    state.selectedLevel = value
-  },
-  randomAmount: function (state, value) {
-    state.randomAmount = value
+  random: function (state, value) {
+    state.random = value
   }
 }

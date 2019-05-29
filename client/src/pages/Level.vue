@@ -95,11 +95,11 @@ export default {
       console.log('level3submit', this.level3solution)
     },
     level4submit () {
-      this.$store.dispatch('external/httpRegisterUser', this.level4data)
+      this.$store.dispatch('external/httpCheckLevel4', { address: this.address, solution: this.level4solution })
       console.log('submitted address')
     },
     level5submit () {
-      this.$store.dispatch('external/httpRegisterUser', this.level5data)
+      this.$store.dispatch('external/httpCheckLevel5', { address: this.address, solution: this.level5solution })
       console.log('submitted address')
     }
   },
@@ -107,6 +107,7 @@ export default {
   computed: {
     ...mapGetters({
       address: 'user/address',
+      selectedLevel: 'user/selectedLevel',
       level2solution: 'user/level2solution',
       level3solution: 'user/level3solution',
       level4solution: 'user/level4solution',
@@ -115,8 +116,7 @@ export default {
     ...mapState('user', {
       currentUser: 'current',
       randomAmount: 'randomAmount',
-      level: 'level',
-      selectedLevel: 'selectedLevel'
+      level: 'level'
     })
   }
 }

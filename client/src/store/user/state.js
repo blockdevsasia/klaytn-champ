@@ -1,7 +1,7 @@
 export default {
   data: {},
   current: {},
-  randomAmount: 0.00,
+  random: 0.00,
   loading: false,
   level: 1,
   selectedLevel: 1,
