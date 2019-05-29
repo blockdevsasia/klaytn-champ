@@ -1,4 +1,3 @@
-const ethers = require('ethers')
 const ChampContract = require('../solidity/build/contracts/KlaytnChamp.json')
 const CountContract = require('../solidity/build/contracts/Count.json')
 const rp = require('request-promise-native');
