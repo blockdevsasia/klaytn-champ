@@ -15,7 +15,7 @@
           <q-icon name="menu" />
         </q-btn>
         <q-toolbar-title>
-          Klaytn Champ: Level {{level}}
+          Klaytn Champ: Level {{selectedLevel}}
         </q-toolbar-title>
 
       </q-toolbar>
@@ -59,7 +59,8 @@ export default {
   computed: {
     ...mapState('user', {
       currentUser: 'current',
-      level: 'level'
+      level: 'level',
+      selectedLevel: 'selectedLevel'
     })
 
   },

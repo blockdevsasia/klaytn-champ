@@ -1,8 +1,9 @@
 <template>
   <q-page class="content-container">
     <!--------------------- LEVEL 1 ----------------------------------->
-    <div
+    <level-1
       v-if="selectedLevel === 1"
+<<<<<<< HEAD
       class="row"
       QPageContainer
     >
@@ -78,9 +79,19 @@
         </q-card-section>
       </q-card>
     </div>
+=======
+      :selectedLevel="selectedLevel"
+      :level="level"
+      :solution="address"
+      v-on:setValue="setUserField"
+      v-on:finish="level1submit"
+    />
+
+>>>>>>> dd44e9013bc4ec8ad70f78b6e38ca9477e374312
     <!--------------------- LEVEL 2 ----------------------------------->
-    <div
+    <level-2
       v-if="selectedLevel === 2"
+<<<<<<< HEAD
       class="row"
     >
       
@@ -157,9 +168,19 @@
       </q-card>
      
     </div>
+=======
+      :selectedLevel="selectedLevel"
+      :level="level"
+      :solution="level2solution"
+      v-on:setValue="setUserField"
+      v-on:finish="level2submit"
+    />
+
+>>>>>>> dd44e9013bc4ec8ad70f78b6e38ca9477e374312
     <!--------------------- LEVEL 3 ----------------------------------->
-    <div
+    <level-3
       v-if="selectedLevel === 3"
+<<<<<<< HEAD
       class="row"
       QPageContainer
     >
@@ -229,9 +250,19 @@
 
       
     </div>
+=======
+      :selectedLevel="selectedLevel"
+      :level="level"
+      :solution="level3solution"
+      v-on:setValue="setUserField"
+      v-on:finish="level3submit"
+    />
+
+>>>>>>> dd44e9013bc4ec8ad70f78b6e38ca9477e374312
     <!--------------------- LEVEL 4 ----------------------------------->
-    <div
+    <level-4
       v-if="selectedLevel === 4"
+<<<<<<< HEAD
       class="row"
       QPageContainer
     >
@@ -277,9 +308,19 @@
         </q-item>
       </q-card>
     </div>
+=======
+      :selectedLevel="selectedLevel"
+      :level="level"
+      :solution="level4solution"
+      v-on:setValue="setUserField"
+      v-on:finish="level4submit"
+    />
+
+>>>>>>> dd44e9013bc4ec8ad70f78b6e38ca9477e374312
     <!--------------------- LEVEL 5 ----------------------------------->
-    <div
+    <level-5
       v-if="selectedLevel === 5"
+<<<<<<< HEAD
       class="row"
       QPageContainer
     >
@@ -340,14 +381,39 @@
         </q-card-section>
       </q-card>
     </div>
+=======
+      :selectedLevel="selectedLevel"
+      :level="level"
+      :solution="level5solution"
+      v-on:setValue="setUserField"
+      v-on:finish="level5submit"
+    />
+>>>>>>> dd44e9013bc4ec8ad70f78b6e38ca9477e374312
   </q-page>
 </template>
 <style>
 </style>
 <script>
+<<<<<<< HEAD
 import { mapState } from 'vuex'
+=======
+import { mapState, mapActions, mapGetters } from 'vuex'
+import Level1 from 'components/Level1'
+import Level2 from 'components/Level2'
+import Level3 from 'components/Level3'
+import Level4 from 'components/Level4'
+import Level5 from 'components/Level5'
+
+>>>>>>> dd44e9013bc4ec8ad70f78b6e38ca9477e374312
 export default {
   name: 'Level',
+  components: {
+    Level1: Level1,
+    Level2: Level2,
+    Level3: Level3,
+    Level4: Level4,
+    Level5: Level5
+  },
   mounted: function () {
    
   },
@@ -367,8 +433,8 @@ export default {
       console.log('submitted address')
     },
     level3submit () {
-      this.$store.dispatch('external/httpRegisterUser', this.level3data)
-      console.log('submitted address')
+      // this.$store.dispatch('external/httpRegisterUser', this.level3data)
+      console.log('level3submit', this.level3solution)
     },
     level4submit () {
       this.$store.dispatch('external/httpRegisterUser', this.level4data)
@@ -382,10 +448,10 @@ export default {
   computed: {
     ...mapGetters({
       address: 'user/address',
-      level2value: 'user/level2value',
-      level3value: 'user/level3value',
-      level4value: 'user/level4value',
-      level5value: 'user/level5value'
+      level2solution: 'user/level2solution',
+      level3solution: 'user/level3solution',
+      level4solution: 'user/level4solution',
+      level5solution: 'user/level5solution'
     }),
     ...mapState('user', {
       currentUser: 'current',
