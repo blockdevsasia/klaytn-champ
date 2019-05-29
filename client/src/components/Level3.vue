@@ -58,7 +58,7 @@
           </q-item>
           <q-item>
             <q-item-section>
-              <q-item-label>6. In the contract details, below the settings, copy the contract address and paste it in
+              <q-item-label>7. In the contract details, below the settings, copy the contract address and paste it in
                 the textbox below.
               </q-item-label>
             </q-item-section>

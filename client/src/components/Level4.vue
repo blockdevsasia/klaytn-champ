@@ -8,7 +8,7 @@
     <q-card flat class="my-card">
       <q-card-section>
         <div class="text-h6">Contract Interaction</div>
-        <div class="text-subtitle2">Level 4: Your goal is to interact with the Count by calling its function(s).</div>
+        <div class="text-subtitle2">Level 4: Your goal is to interact with the Count contract by calling its function(s).</div>
       </q-card-section>
 
       <q-card-section>
@@ -27,7 +27,7 @@
 
           <q-item>
             <q-item-section>
-              <q-item-label>2. On the "Transaction" output tab, You should be able to see the transaction details of the function call. Copy the blockNumber and paste it in the textbox below</q-item-label>
+              <q-item-label>3. On the "Transaction" output tab, You should be able to see the transaction details of the function call. Copy the blockNumber and paste it in the textbox below</q-item-label>
             </q-item-section>
           </q-item>
           <q-item>
