@@ -47,11 +47,11 @@
               <div>
                 <q-btn
                   :disable="!isAddressValid(solution) || level > 1"
-                  color="green"
-                  text-color="black"
                   label="Check my solution"
                   @click="$emit('finish')"
+                  class="full-width level-button"
                 />
+
                 <q-btn
                   v-if="level > 1 && selectedLevel === 1"
                   color="green"

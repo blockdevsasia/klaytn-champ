@@ -25,8 +25,7 @@
     <q-drawer
       v-model="leftDrawerOpen"
       bordered
-      content-class="bg-grey-2"
-      :width="400"
+      :width="300"
     >
       <level-side-bar></level-side-bar>
     </q-drawer>

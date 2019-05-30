@@ -26,7 +26,7 @@
 
       <q-list>
         <router-link class="no-style" to="/">
-        <q-item clickable to="/profile">
+        <q-item class="q-item-m" clickable to="/profile">
           <q-item-section avatar>
             <q-icon name="person" />
           </q-item-section>
@@ -36,7 +36,7 @@
         </q-item>
       </router-link>
 
-        <q-item clickable to="/profile">
+        <q-item class="q-item-m" clickable to="/profile">
           <q-item-section avatar>
             <q-icon name="grade" />
           </q-item-section>
@@ -45,7 +45,7 @@
           </q-item-section>
         </q-item>
 
-        <q-item clickable to="/profile">
+        <q-item class="q-item-m" clickable to="/profile">
           <q-item-section avatar>
             <q-icon name="chrome_reader_mode" />
           </q-item-section>
@@ -54,7 +54,7 @@
           </q-item-section>
         </q-item>
 
-        <q-item clickable to="/profile">
+        <q-item class="q-item-m" clickable to="/profile">
           <q-item-section avatar>
             <q-icon name="monetization_on" />
           </q-item-section>
@@ -63,7 +63,7 @@
           </q-item-section>
         </q-item>
 
-        <q-item clickable to="/profile">
+        <q-item class="q-item-m" clickable to="/profile">
           <q-item-section avatar>
             <q-icon name="insert_chart" />
           </q-item-section>
@@ -73,7 +73,7 @@
         </q-item>
 
       <div class="padding-top">
-        <q-item clickable @click="$store.dispatch('user/logout')">
+        <q-item class="q-item-m" clickable @click="$store.dispatch('user/logout')">
           <q-item-section avatar>
             <q-icon name="settings" />
           </q-item-section>
@@ -81,7 +81,7 @@
             <q-item-label>Settings</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item clickable @click="$store.dispatch('user/logout')">
+        <q-item class="q-item-m" clickable @click="$store.dispatch('user/logout')">
           <q-item-section avatar>
             <q-icon name="input" />
           </q-item-section>

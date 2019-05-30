@@ -32,7 +32,7 @@
     <q-list style="">
       <q-item-label header>Level {{selectedLevel}} help</q-item-label>
 
-      <q-item
+      <q-item class="q-item-m"
         v-for="item in levelSideBar[selectedLevel]"
         v-bind:key="item.label"
         clickable
@@ -49,6 +49,10 @@
         </q-item-section>
       </q-item>
     </q-list>
+
+<img class="footer-inner-logo fixed absolute" src="assets\klaytn-champ-logo.svg">
+
+    
   </div>
 </template>
 
