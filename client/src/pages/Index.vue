@@ -1,17 +1,26 @@
 <template>
   <q-page class="content-container">
-    <h6>Introduction</h6>
-    <p class="content-container">Below you can find an overview of the different challenges from Klay Kakao’s global
-      public blockchain project Klaytn is an enterprise-grade, service-centric platform that brings user-friendly
-      blockchain experience to millions. It combines the best features of both public blockchains (decentralized data &
-      control, distributed governance) and private blockchains (low latency, high scalability) via an efficient ‘hybrid’
-      design.
+    <h6>Welcome to the Klaytn Challenges</h6>
+    <p class="content-container">Kakao’s global public blockchain project Klaytn is an enterprise-grade, service-centric platform that brings user-friendly blockchain experience to millions. It combines the best features of both public blockchains (decentralized data & control, distributed governance) and private blockchains (low latency, high scalability) via an efficient ‘hybrid’ design.<br /><br />
+    	<i>Below you can find an overview of the different challenges from Klatyn.</i> 
     </p>
-
     <div class="q-pa-md">
       <div class="row">
+      	<div class="col home-button left-hb">
+        	<div class="row">
+				<div class="col-12 col-md-4">
+					<router-link to="/level/1">
+        			<img class="btnimg-dash center" src="assets\klaytn-basics.png" alt="" />
+        			</router-link>
+        		</div>
+    			<div class="col-12 col-md-8">
+    				<p class="text-weight-bolder">Mastering the basics</p>
+    				<p>Get started with this challenge to learn
+					the basic set-up with the Klaytn token.</p>
+				</div>
+			</div>
+      </div>
         <div class="col home-button left-hb">
-
           <router-link to="/level/1">
             <div class="row">
               <div class="col-12 col-md-4">

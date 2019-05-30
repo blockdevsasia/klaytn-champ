@@ -24,7 +24,7 @@
           </q-item>
           <q-item>
             <q-item-section>
-              <q-item-label>3. Call the "setCount" with your random amount in Peb (integer). </q-item-label>
+              <q-item-label>3. Call the "setCount" with input: <strong>{{random}}</strong>. </q-item-label>
             </q-item-section>
           </q-item>
           <q-item>
@@ -95,6 +95,9 @@ export default {
       type: Number
     },
     solution: {
+      type: String
+    },
+    random: {
       type: String
     }
   },
