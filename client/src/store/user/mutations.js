@@ -10,5 +10,8 @@ export default {
   },
   random: function (state, value) {
     state.random = value
+  },
+  certificationLevel: function (state, value) {
+    state.certificationLevel = value
   }
 }

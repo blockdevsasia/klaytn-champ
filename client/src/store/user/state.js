@@ -5,6 +5,7 @@ export default {
   loading: false,
   level: 1,
   selectedLevel: 1,
+  certificationLevel: 0,
   levelSideBar: {
     1: [
       {

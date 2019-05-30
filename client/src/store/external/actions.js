@@ -99,14 +99,15 @@ export async function httpCheckLevel5 (context, { address, solution }) {
 export async function klaytnGetUser (context, address) {
   const result = await contract.methods.getUser(address).call()
   const level = Number.parseInt(result.level) + 1
+  const certificationLevel = Number.parseInt(result.certificationLevel) + 1
   const random = result.randomAmount
 
   // console.log(level, random)
   if (context.rootState.user.level !== level) {
     context.commit('user/level', level, { root: true })
     context.commit('user/random', random, { root: true })
-
-    // Show confetti
-
+    if (context.rootState.user.certificationLevel !== certificationLevel) {
+      context.commit('user/certificationLevel', certificationLevel, { root: true })
+    }
   }
 }
