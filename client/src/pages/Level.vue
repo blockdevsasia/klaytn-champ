@@ -86,18 +86,16 @@ export default {
     ...mapActions('user', [
       'setUserField'
     ]),
-    confettistart ()
-    {
-      this.$confetti.start({shape: 'rect'})
+    confettistart () {
+      this.$confetti.start({ shape: 'rect' })
     },
     confettistop () {
-    this.$confetti.stop()
+      this.$confetti.stop()
     },
     level1submit () {
       this.$store.dispatch('external/httpRegisterUser', this.address)
       console.log('submitted address')
       this.confettistart()
-
     },
     level2submit () {
       this.$store.dispatch('external/httpCheckLevel2', { address: this.address, solution: this.level2solution })
