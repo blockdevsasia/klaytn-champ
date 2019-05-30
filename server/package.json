@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "deploytera": "cp ../client/src/assets/contracts/* . && rsync -avr ./ teraweb:./klaytn.champ.blockdevs.asia/api && ssh teraweb 'docker restart klaytn-champ-api'"
+  },
   "dependencies": {
     "caver-js": "^0.8.3-1",
     "cors": "^2.8.5",
