@@ -84,7 +84,7 @@ export default {
       type: String
     },
     random: {
-      type: Number
+      type: String
     }
   },
   data () {

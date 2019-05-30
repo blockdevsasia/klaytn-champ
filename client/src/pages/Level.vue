@@ -86,36 +86,20 @@ export default {
     ...mapActions('user', [
       'setUserField'
     ]),
-    confettistart () {
-      this.$confetti.start({ shape: 'rect' })
-    },
-    confettistop () {
-      this.$confetti.stop()
-    },
     level1submit () {
       this.$store.dispatch('external/httpRegisterUser', this.address)
-      console.log('submitted address')
-      this.confettistart()
     },
     level2submit () {
       this.$store.dispatch('external/httpCheckLevel2', { address: this.address, solution: this.level2solution })
-      console.log('level2submit', this.level2solution)
-      this.confettistart()
     },
     level3submit () {
       this.$store.dispatch('external/httpCheckLevel3', { address: this.address, solution: this.level3solution })
-      console.log('level3submit', this.level3solution)
-      this.confettistart()
     },
     level4submit () {
       this.$store.dispatch('external/httpCheckLevel4', { address: this.address, solution: this.level4solution })
-      console.log('submitted address')
-      this.confettistart()
     },
     level5submit () {
       this.$store.dispatch('external/httpCheckLevel5', { address: this.address, solution: this.level5solution })
-      console.log('submitted address')
-      this.confettistart()
     }
   },
   computed: {
@@ -132,6 +116,14 @@ export default {
       random: 'random',
       level: 'level'
     })
+  },
+  watch: {
+    level (newValue, oldValue) {
+      this.$confetti.start({ shape: 'rect' })
+    },
+    selectedLevel (newValue, oldValue) {
+      this.$confetti.stop()
+    }
   }
 }
 </script>

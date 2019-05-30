@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-        <div class="q-img__image absolute-full" style="background-image: url(&quot;https://res.cloudinary.com/eoi-digital/image/upload/v1559114383/main-background_x1btwj.png&quot;); background-size: cover; background-position: 50% 50%;"></div>
+        <div class="q-img__image absolute-full" style="background-image: url('assets/main-background.png'); background-size: cover; background-position: 50% 50%;"></div>
     <q-header elevated>
 
       <q-toolbar>
@@ -15,7 +15,7 @@
         >
           <q-icon name="menu" />
         </q-btn>
-        <q-toolbar-title>       
+        <q-toolbar-title>
           Mastering the basics: Level {{selectedLevel}}
         </q-toolbar-title>
 

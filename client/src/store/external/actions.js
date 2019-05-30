@@ -102,6 +102,11 @@ export async function klaytnGetUser (context, address) {
   const random = result.randomAmount
 
   // console.log(level, random)
-  if (context.rootState.user.level !== level) context.commit('user/level', level, { root: true })
-  if (context.rootState.user.random !== random) context.commit('user/random', random, { root: true })
+  if (context.rootState.user.level !== level) {
+    context.commit('user/level', level, { root: true })
+    context.commit('user/random', random, { root: true })
+
+    // Show confetti
+
+  }
 }

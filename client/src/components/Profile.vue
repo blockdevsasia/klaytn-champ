@@ -4,23 +4,23 @@
 
 <div class="row">
       <div class="col-4">
-        
+
     <q-avatar size="56px" class="q-mb-sm">
         <img class="profile-pic" src="https://avatars3.githubusercontent.com/u/6133031?s=460&v=4">
       </q-avatar>
       </div>
       <div class="col-8">
-        
+
      <div class="text-weight-bold">
         <router-link class="user-name" to="/">
           {{user.displayName}}
         </router-link>
-<!--         <q-btn size="xs" @click="$store.dispatch('user/resetAll')">
+         <q-btn size="xs" @click="$store.dispatch('user/resetAll')">
           DEV: RESET ME
         </q-btn>
- -->
+
       </div>
-      <div class="level-indu">Level: 3</div>
+      <div class="level-indu">Level: {{level}}</div>
       </div>
     </div>
 <div v-if="address" class="adress-kltn">
@@ -28,14 +28,8 @@
       <q-tooltip>{{address}}</q-tooltip>
     </q-btn>
 
-
 </div>
 
-
-
-
-     
- 
     </div>
   </q-img>
 </template>
@@ -59,15 +53,7 @@ export default {
     return {}
   }
 
-
-
-
 }
-
-
-
-
-
 
 </script>
 

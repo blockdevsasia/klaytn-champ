@@ -48,8 +48,20 @@ export default {
     ctx.dispatch('external/httpResetUser', ctx.getters.address, { root: true })
 
     // Reset firebase
-    ctx.dispatch('delete', 'address')
-    ctx.dispatch('delete', 'selectedLevel')
+    ctx.dispatch('set', {
+      address: '',
+      selectedLevel: '',
+      level2solution: '',
+      level3solution: '',
+      level4solution: '',
+      level5solution: ''
+    })
+    // ctx.dispatch('delete', 'level2solution')
+    // ctx.dispatch('delete', 'level3solution')
+    // ctx.dispatch('delete', 'level4solution')
+    // ctx.dispatch('delete', 'level5solution')
+    // ctx.dispatch('delete', 'selectedLevel')
+    // ctx.dispatch('delete', 'address')
   }
 
 }
