@@ -72,7 +72,14 @@ module.exports = function (ctx) {
           // loader: 'eslint-loader',
           exclude: /node_modules/
         })
-      }
+      },
+      env: ctx.dev
+        ? { // so on dev we'll have
+          API: JSON.stringify('https://dev.api.com')
+        }
+        : { // and on build (production):
+          API: JSON.stringify('https://prod.api.com')
+        }
     },
 
     devServer: {
