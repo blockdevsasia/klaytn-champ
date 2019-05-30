@@ -6,6 +6,7 @@ process.versions = { node: '11.2.0' }
 
 export async function httpResetUser (context, address) {
   axiosHTTP({
+    baseURL: process.env.CHAMP_API_URL,
     method: 'post',
     url: '/SECRETkn3k4ln23lk4n2lk4n32_RESET_USER',
     data: {
@@ -16,6 +17,7 @@ export async function httpResetUser (context, address) {
 
 export async function httpRegisterUser (context, address) {
   axiosHTTP({
+    baseURL: process.env.CHAMP_API_URL,
     method: 'post',
     url: '/registerUser',
     data: {
@@ -27,6 +29,7 @@ export async function httpRegisterUser (context, address) {
 
 export async function httpCheckAmount (context, { address, random }) {
   axiosHTTP({
+    baseURL: process.env.CHAMP_API_URL,
     method: 'post',
     url: '/checkAmount',
     data: {
@@ -35,24 +38,27 @@ export async function httpCheckAmount (context, { address, random }) {
     }
   })
 }
-export async function httpCheckLevel2 (context, address) {
+export async function httpCheckLevel2 (context, { address, solution }) {
   const result = await axiosHTTP({
+    baseURL: process.env.CHAMP_API_URL,
     method: 'post',
     url: '/checkLevel2',
     data: {
-      address: address
+      address: address,
+      contract: solution
     }
   })
   console.log('level2check', result)
 }
 
-export async function httpCheckLevel3 (context, { address, contract }) {
+export async function httpCheckLevel3 (context, { address, solution }) {
   const result = await axiosHTTP({
+    baseURL: process.env.CHAMP_API_URL,
     method: 'post',
     url: '/checkLevel3',
     data: {
       address: address,
-      contract: contract
+      contract: solution
     }
   })
   console.log('level3check', result)
@@ -66,6 +72,7 @@ export async function httpCheckLevel4 (context, { address, solution }) {
   }
   console.log(data)
   const result = await axiosHTTP({
+    baseURL: process.env.CHAMP_API_URL,
     method: 'post',
     url: '/checkLevel4',
     data: data
@@ -81,6 +88,7 @@ export async function httpCheckLevel5 (context, { address, solution }) {
   }
   console.log(data)
   const result = await axiosHTTP({
+    baseURL: process.env.CHAMP_API_URL,
     method: 'post',
     url: '/checkLevel5',
     data: data

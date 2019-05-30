@@ -87,11 +87,11 @@ export default {
       console.log('submitted address')
     },
     level2submit () {
-      this.$store.dispatch('external/httpCheckLevel2', this.address)
-      console.log('submitted address')
+      this.$store.dispatch('external/httpCheckLevel2', { address: this.address, solution: this.level2solution })
+      console.log('level2submit', this.level2solution)
     },
     level3submit () {
-      // this.$store.dispatch('external/httpRegisterUser', this.level3data)
+      this.$store.dispatch('external/httpCheckLevel3', { address: this.address, solution: this.level3solution })
       console.log('level3submit', this.level3solution)
     },
     level4submit () {
