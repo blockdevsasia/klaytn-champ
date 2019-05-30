@@ -55,11 +55,15 @@
 </style>
 <script>
 import { mapState, mapActions, mapGetters } from 'vuex'
+import Vue from 'vue'
+import VueConfetti from 'vue-confetti'  
 import Level1 from 'components/Level1'
 import Level2 from 'components/Level2'
 import Level3 from 'components/Level3'
 import Level4 from 'components/Level4'
 import Level5 from 'components/Level5'
+
+Vue.use(VueConfetti)
 
 export default {
   name: 'Level',
@@ -80,25 +84,41 @@ export default {
     ...mapActions('user', [
       'setUserField'
     ]),
+    confettistart () 
+    {
+      this.$confetti.start({shape: 'rect'})
+    },
+    confettistop () {
+    this.$confetti.stop()
+    },
     level1submit () {
       this.$store.dispatch('external/httpRegisterUser', this.address)
       console.log('submitted address')
+      
+      this.confettistart()
+      
     },
     level2submit () {
+      
       this.$store.dispatch('external/httpCheckLevel2', this.address)
       console.log('submitted address')
+      this.confettistart()
     },
     level3submit () {
+      
       // this.$store.dispatch('external/httpRegisterUser', this.level3data)
       console.log('level3submit', this.level3solution)
+      this.confettistart()
     },
     level4submit () {
       this.$store.dispatch('external/httpCheckLevel4', { address: this.address, solution: this.level4solution })
       console.log('submitted address')
+      this.confettistart()
     },
     level5submit () {
       this.$store.dispatch('external/httpCheckLevel5', { address: this.address, solution: this.level5solution })
       console.log('submitted address')
+      this.confettistart()
     }
   },
   computed: {
