@@ -14,13 +14,13 @@ export async function httpRegisterUser (context, address) {
   })
 }
 
-export async function httpCheckAmount (context, { address, randomAmount }) {
+export async function httpCheckAmount (context, { address, random }) {
   axiosHTTP({
     method: 'post',
     url: '/checkAmount',
     data: {
       address: address,
-      randomAmount: randomAmount
+      random: random
     }
   })
 }

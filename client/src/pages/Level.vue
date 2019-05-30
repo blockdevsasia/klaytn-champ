@@ -36,6 +36,7 @@
       :selectedLevel="selectedLevel"
       :level="level"
       :solution="level4solution"
+      :random="random"
       v-on:setValue="setUserField"
       v-on:finish="level4submit"
     />
@@ -46,6 +47,7 @@
       :selectedLevel="selectedLevel"
       :level="level"
       :solution="level5solution"
+      :random="random"
       v-on:setValue="setUserField"
       v-on:finish="level5submit"
     />
@@ -71,7 +73,7 @@ export default {
     Level5: Level5
   },
   mounted: function () {
-   
+
   },
   data () {
     return { }
@@ -112,7 +114,7 @@ export default {
     }),
     ...mapState('user', {
       currentUser: 'current',
-      randomAmount: 'randomAmount',
+      random: 'random',
       level: 'level'
     })
   }
