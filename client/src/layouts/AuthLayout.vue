@@ -1,24 +1,32 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <div class="q-img__image absolute-full" style="background-image: url(&quot;https://res.cloudinary.com/eoi-digital/image/upload/v1559101751/sing-up-klaytn-champ_oornpw.png&quot;); background-size: cover; background-position: 50% 50%;">
-    <h3 class="singup-txt fixed absolute">Learn how to develop on Klaytn<br>And get rewarded!</h3>
-</div>
+    <div class="q-img__image absolute-full"
+         style="background-image: url('statics/sign-up-klaytn-champ.png'); background-size: cover; background-position: 50% 50%;">
+      <h3 class="singup-txt fixed absolute">Learn how to develop on Klaytn<br>And get rewarded!</h3>
+    </div>
     <q-drawer
       v-model="leftDrawerOpen"
       bordered
       content-class="bg-white-2"
       :width="400"
     >
-      <q-page-container>
-        <router-view />
-      </q-page-container>
+      <div class="login">
+        <img src="~assets/klaytn-champ-logo.svg">
+        <q-btn label="Sign in with Google" @click="signinGoogle" class="purp-button"></q-btn>
+        <div class="footer-singup fixed absolute">
+          <img src="~assets/klaytnhackathon-logo.svg">
+          <img class="padding-top" src="~assets/blockdevs-asia.svg">
+        </div>
+      </div>
     </q-drawer>
 
   </q-layout>
 </template>
 
 <script>
-import { openURL } from 'quasar'
+import * as firebase from 'firebase'
+import { AUTH } from 'boot/firebase'
+
 import { mapState } from 'vuex'
 
 export default {
@@ -26,12 +34,10 @@ export default {
   mounted: function () {
     console.log(this.$router)
   },
-  components: {
-  },
   data () {
     return {
       tab: 'level',
-      leftDrawerOpen: this.$q.platform.is.desktop
+      leftDrawerOpen: true
     }
   },
   computed: {
@@ -39,10 +45,14 @@ export default {
       currentUser: 'current',
       level: 'level'
     })
-
   },
   methods: {
-    openURL
+    signinGoogle () {
+      var provider = new firebase.auth.GoogleAuthProvider()
+      AUTH.signInWithRedirect(provider).then((result) => {
+        this.$router.push({ path: '' })
+      }).catch(err => console.log(err))
+    }
   }
 }
 </script>

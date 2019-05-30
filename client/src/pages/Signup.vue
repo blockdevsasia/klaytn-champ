@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex flex-center">
+  <q-page class="flex">
     <div class="login">
       <img src="~assets/klaytn-champ-logo.svg">
       <q-btn label="Sign in with Google" @click="signinGoogle" class="purp-button"></q-btn>
