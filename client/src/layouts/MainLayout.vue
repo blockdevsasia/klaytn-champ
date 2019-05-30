@@ -21,8 +21,7 @@
       bordered
       content-class="bg-white-2"
     >
-      <profile :user="currentUser" :level="level"></profile>
-      <br/><br/><br/><br/><br/><br/><br/>
+      <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
 
       <q-list>
         <router-link class="no-style" to="/">
@@ -92,6 +91,9 @@
       </div>
 
       </q-list>
+      </q-scroll-area>
+
+      <profile :user="currentUser" :level="level"></profile>
         <img class="footer-inner-logo fixed absolute" src="~assets/klaytn-champ-logo.svg">
     </q-drawer>
 
