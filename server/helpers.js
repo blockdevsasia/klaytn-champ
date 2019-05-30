@@ -68,4 +68,11 @@ const findTransactionsBy = async function (address, txMatcher, txDetailMatcher =
   return result
 }
 
+const generateRandomAmount = async function () {
+
+
+  return 0  // TODO
+}
+
+exports.generateRandomAmount = generateRandomAmount
 exports.findTransactionsBy = findTransactionsBy

@@ -8,16 +8,16 @@ const Caver = require('caver-js')
 const wrap = require("./middleware/wrap")
 const helpers = require('./helpers.js')
 
-const app = express()
-app.use(cors())
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+const server = express()
+server.use(cors())
+server.use(express.urlencoded({ extended: true }));
+server.use(express.json());
 
 const caver = new Caver(process.env.URL)
 caver.klay.accounts.wallet.add(process.env.PRIVATE_KEY);
 const champContract = new caver.klay.Contract(ChampContract.abi, process.env.CONTRACT_ID)
 
-app.get('/' + process.env.SECRET_RESET_URL + '/:address', wrap(async (req, res, next) => {
+server.get('/' + process.env.SECRET_RESET_URL + '/:address', wrap(async (req, res, next) => {
   const result = await champContract.methods.updateUserLevel(req.params.address,1).send({
     gas: '200000',
     from: process.env.ADDRESS,
@@ -25,12 +25,12 @@ app.get('/' + process.env.SECRET_RESET_URL + '/:address', wrap(async (req, res, 
   res.status(200).send(result)
 }))
 
-app.get('/getOurPlayer', wrap(async (req, res, next) => {
+server.get('/getOurPlayer', wrap(async (req, res, next) => {
   const result = await champContract.methods.getPlayer("0xe23a66edbdec3c716e1d5fc14d4d4b40ee3d2b41").call()
   res.status(200).send(result)
 }))
 
-app.post('/checkLevel3', wrap(async (req, res, next) => {
+server.post('/checkLevel3', wrap(async (req, res, next) => {
   const address = req.body.address
   const contractAddress = req.body.contract
 
@@ -52,7 +52,7 @@ app.post('/checkLevel3', wrap(async (req, res, next) => {
   }
 }))
 
-app.post('/checkLevel4', wrap(async (req, res, next) => {
+server.post('/checkLevel4', wrap(async (req, res, next) => {
   const address = req.body.address
   const txHash = req.body.txHash
   let randomHex = caver.utils.numberToHex(req.body.random)
@@ -77,7 +77,7 @@ app.post('/checkLevel4', wrap(async (req, res, next) => {
   }
 }))
 
-app.post('/checkLevel5', wrap(async (req, res, next) => {
+server.post('/checkLevel5', wrap(async (req, res, next) => {
   let contractAddress
   const address = req.body.address
   const count = req.body.count
@@ -114,9 +114,10 @@ app.post('/checkLevel5', wrap(async (req, res, next) => {
     }
   }
 
+  res.status(200).send("WRONG")
 }))
 
-app.post('/registerUser', wrap(async (req, res, next) => {
+server.post('/registerUser', wrap(async (req, res, next) => {
   const address = req.body.address
 
   const randomNumber = Math.floor(1 + (Math.random() * 1000000))
@@ -133,7 +134,7 @@ app.post('/registerUser', wrap(async (req, res, next) => {
   }
 }))
 
-app.post('/checkLevel2', wrap(async (req, res, next) => {
+server.post('/checkLevel2', wrap(async (req, res, next) => {
   const address = req.body.address
 
   const balance = await caver.klay.getBalance(address)
@@ -170,4 +171,4 @@ app.post('/checkLevel2', wrap(async (req, res, next) => {
 }))
 
 
-app.listen(process.env.SERVER_PORT, () => console.log(`Example app listening on port ${process.env.SERVER_PORT}!`))
+server.listen(process.env.SERVER_PORT, () => console.log(`Example app listening on port ${process.env.SERVER_PORT}!`))
