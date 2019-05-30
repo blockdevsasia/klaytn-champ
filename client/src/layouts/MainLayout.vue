@@ -25,6 +25,7 @@
       <br/><br/><br/><br/><br/><br/><br/>
 
       <q-list>
+        <router-link class="no-style" to="/">
         <q-item clickable to="/profile">
           <q-item-section avatar>
             <q-icon name="person" />
@@ -33,6 +34,7 @@
             <q-item-label>My Profile</q-item-label>
           </q-item-section>
         </q-item>
+      </router-link>
 
         <q-item clickable to="/profile">
           <q-item-section avatar>

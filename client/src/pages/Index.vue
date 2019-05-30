@@ -20,21 +20,6 @@
 				</div>
 			</div>
       </div>
-        <div class="col home-button left-hb">
-          <router-link to="/level/1">
-            <div class="row">
-              <div class="col-12 col-md-4">
-                <img class="btnimg-dash center" src="assets/klaytn-basics.png" alt=""/>
-
-              </div>
-              <div class="col-12 col-md-8">
-                <p class="text-weight-bolder">Mastering the basic</p>
-                <p>Get started with this challenge to learn
-                  the basic set-up with the Klaytn token.</p>
-              </div>
-            </div>
-          </router-link>
-        </div>
 
         <div class="col home-button">
           <div class="row">
