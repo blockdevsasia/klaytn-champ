@@ -24,7 +24,7 @@
  -->
       </div>
       <div v-if="address">Address: {{address}}</div>
-      <div>Level: {{level}}</div>
+      <div class="level-indu">Level: {{level}}</div>
 
       </div>
     </div>
