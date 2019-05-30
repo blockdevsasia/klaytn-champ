@@ -17,7 +17,7 @@
       bordered
       content-class="bg-grey-2"
     >
-      <profile :user="currentUser" :level="leve1"></profile>
+      <profile :user="currentUser" :level="level"></profile>
       <br/><br/><br/><br/><br/><br/><br/>
 
       <q-list>
@@ -65,7 +65,6 @@
             <q-item-label>Leaderboard</q-item-label>
           </q-item-section>
         </q-item>
-        
 
       <div class="padding-top">
         <q-item clickable @click="$store.dispatch('user/logout')">
