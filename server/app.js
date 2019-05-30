@@ -1,5 +1,5 @@
-const ChampContract = require('../client/src/assets/contracts/KlaytnChamp.json')
-const CountContract = require('../client/src/assets/contracts/Count.json')
+const ChampContract = require('./KlaytnChamp.json')
+const CountContract = require('./Count.json')
 const rp = require('request-promise-native');
 require('dotenv').config()
 const express = require('express')
