@@ -22,7 +22,7 @@ const userModule = {
 const easyFirestore = createEasyFirestore(
   [userModule],
   {
-    logging: true,
+    // logging: true,
     FirebaseDependency: DB.app
   }
 )
