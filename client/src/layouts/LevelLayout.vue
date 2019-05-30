@@ -15,8 +15,8 @@
         >
           <q-icon name="menu" />
         </q-btn>
-        <q-toolbar-title>
-          Klaytn Champ: Level {{selectedLevel}}
+        <q-toolbar-title>       
+          Mastering the basics: Level {{selectedLevel}}
         </q-toolbar-title>
 
       </q-toolbar>
