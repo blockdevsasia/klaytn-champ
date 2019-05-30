@@ -10,8 +10,9 @@
               <img :src="user.photoURL">
             </q-avatar>
       
-
-      <div class="text-weight-bold"><router-link to="/" >{{user.displayName}}</router-link> <q-btn size="xs" @click="$store.dispatch('user/logout')">Logout</q-btn></div>
+            
+      <div class="text-weight-bold"><router-link to="/" >{{user.displayName}}</router-link> 
+      <q-btn size="xs" @click="$store.dispatch('user/logout')">Logout</q-btn></div>
       
 
 
