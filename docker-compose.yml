@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  nodejs:
+    build:
+      context: ./klaytn-champ/server/
+      dockerfile: Dockerfile
+    image: nodejs
+    container_name: server-klaytn-champ
+    restart: unless-stopped
+    env_file: ./klaytn-champ/server/.env
+    ports:
+      - "3000"
+    labels:
+      - traefik.enable=true
+      - traefik.backend=server-klaytn-champ
+      - traefik.frontend.rule=Host:klaytn.champ.blockdevs.asia
+      - traefik.frontend.entryPoints=https
+      - traefik.port=3000
+    volumes:
+      - ./klaytn-champ/server/:/home/node/app
+    #      - ./node_modules:/home/node/app/node_modules
+    networks:
+      - traefik_proxy
+    command: /home/node/app/node_modules/.bin/nodemon app.js
+
+networks:
+  traefik_proxy:
+    external: true

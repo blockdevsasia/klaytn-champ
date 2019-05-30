@@ -69,14 +69,17 @@ contract KlaytnChamp is Ownable {
     struct UserData {
         uint64 randomAmount;
         uint64 level;
-        uint64 certificate;
-        bytes32 usernameHash;
+        uint64 certificationLevel;
+        bytes32 googleHash;
+        bytes32 linkedinHash;
+        bytes32 githubHash;
+        bytes32 facebookHash;
     }
 
     // The main mapping that contains the data for each user
     mapping(address => UserData) _users;
 
-    function registerUser(address userAddress) public payable onlyOwner {
+    function registerUser(address userAddress, bytes32 googleHash) public payable onlyOwner {
         require(
             _users[userAddress].level == 0,
             "Cannot register twice"
@@ -85,29 +88,57 @@ contract KlaytnChamp is Ownable {
             msg.value > 0,
             "Random amount cannot be 0"
         );
+        require(
+            msg.value < 18446744073709551615,
+            "random amount cannot be larger than UINT64 max"
+        );
 
         // Transfer the random amount
         userAddress.transfer(msg.value);
 
         // If the transfer succeeded, register the user's address
-        UserData memory newUser = UserData(msg.value, 1);
+        UserData memory newUser = UserData(uint64(msg.value), 1, 0, 0, 0, 0, 0);
         _users[userAddress] = newUser;
     }
 
-    function updateUserLevel(address userAddress, uint256 newLevel) public onlyOwner {
+    function updateUserLevel(address userAddress, uint64 newLevel) public onlyOwner {
         UserData storage user = _users[userAddress];
 
         require(user.level > 0, "User has to be registered");
 //        require(newLevel > user.level, "New level has to be higher");
 
         user.level = newLevel;
+
+    }
+
+    function updateUserCertificationLevel(address userAddress, uint64 newCertificationLevel) public onlyOwner {
+        UserData storage user = _users[userAddress];
+
+        require(user.level > 0, "User has to be registered");
+        user.certificationLevel = newCertificationLevel;
+
     }
 
     function getUser(address userAddress)
     public view
-    returns (uint256 randomAmount, uint256 level)
+    returns (uint64 randomAmount, uint64 level, uint64 certificationLevel, bytes32 googleHash)
     {
         UserData storage user = _users[userAddress];
-        return (user.randomAmount, user.level);
+        return (user.randomAmount, user.level, user.certificationLevel, user.googleHash);
     }
+
+    function resetUser(address userAddress) public onlyOwner {
+        UserData storage user = _users[userAddress];
+
+        user.randomAmount = 0;
+        user.level = 0;
+        user.certificationLevel = 0;
+        user.googleHash = 0x0;
+        user.linkedinHash = 0x0;
+        user.githubHash = 0x0;
+        user.facebookHash = 0x0;
+    }
+
+    //TODO: Add search by googleHash to retrieve certificate : return UserData by googleHash
+    //
 }

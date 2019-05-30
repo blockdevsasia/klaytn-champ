@@ -3,7 +3,6 @@
   <div
     v-if="selectedLevel === 3"
     class="row"
-    QPageContainer
   >
 
     <q-card flat class="my-card">

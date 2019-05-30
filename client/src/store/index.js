@@ -16,9 +16,6 @@ const userModule = {
   moduleName: 'user',
   statePropName: 'data',
   namespaced: true,
-  serverChange: {
-    modifiedHook: (updateStore, doc, id, store) => { console.log(store.state.user); updateStore(doc) }
-  },
   ...user
 }
 

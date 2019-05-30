@@ -40,6 +40,16 @@ export default {
 
     await ctx.dispatch('closeDBChannel', { clearModule: true })
     ctx.commit('current', {})
+  },
+
+  resetAll (ctx) {
+    console.log('resetting all')
+    // Reset contract
+    ctx.dispatch('external/httpResetUser', ctx.getters.address, { root: true })
+
+    // Reset firebase
+    ctx.dispatch('delete', 'address')
+    ctx.dispatch('delete', 'selectedLevel')
   }
 
 }

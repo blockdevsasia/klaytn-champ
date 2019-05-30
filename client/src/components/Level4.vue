@@ -3,7 +3,6 @@
   <div
     v-if="selectedLevel === 4"
     class="row"
-    QPageContainer
   >
     <q-card flat class="my-card">
       <q-card-section>
@@ -21,7 +20,7 @@
 
           <q-item>
             <q-item-section>
-              <q-item-label>2. Do a function call to "setCount", with as input the amount you received in the beginning and click the "send" button.</q-item-label>
+              <q-item-label>2. Do a function call to "setCount", with as input: <strong>{{random}}</strong> and click the "send" button.</q-item-label>
             </q-item-section>
           </q-item>
 
@@ -83,6 +82,9 @@ export default {
     },
     solution: {
       type: String
+    },
+    random: {
+      type: Number
     }
   },
   data () {

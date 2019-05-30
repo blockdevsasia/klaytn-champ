@@ -4,23 +4,34 @@ import { contract } from 'boot/caver'
 // Fix for old web3 flaw: https://github.com/ethereum/web3.js/issues/1986
 process.versions = { node: '11.2.0' }
 
-export async function httpRegisterUser (context, address) {
+export async function httpResetUser (context, address) {
   axiosHTTP({
     method: 'post',
-    url: '/registerUser',
+    url: '/SECRETkn3k4ln23lk4n2lk4n32_RESET_USER',
     data: {
       address: address
     }
   })
 }
 
-export async function httpCheckAmount (context, { address, randomAmount }) {
+export async function httpRegisterUser (context, address) {
+  axiosHTTP({
+    method: 'post',
+    url: '/registerUser',
+    data: {
+      address: address,
+      googleHash: '0x3e27a893dc40ef8a7f0841d96639de2f58a132be5ae466d40087a2cfa83b7179'
+    }
+  })
+}
+
+export async function httpCheckAmount (context, { address, random }) {
   axiosHTTP({
     method: 'post',
     url: '/checkAmount',
     data: {
       address: address,
-      randomAmount: randomAmount
+      random: random
     }
   })
 }
@@ -82,6 +93,7 @@ export async function klaytnGetUser (context, address) {
   const level = Number.parseInt(result.level) + 1
   const random = result.randomAmount
 
+  // console.log(level, random)
   if (context.rootState.user.level !== level) context.commit('user/level', level, { root: true })
   if (context.rootState.user.random !== random) context.commit('user/random', random, { root: true })
 }
