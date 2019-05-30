@@ -8,6 +8,7 @@ export default ({ app, router, Vue, store }) => {
     const userNeedsToSignup = AUTH.currentUser === null
     const userNeedsLevel1 = userLoggedIn && !userHasAddress
     
+
     console.log('to', to.path)
     console.log('isLoading', isLoading)
     console.log('userNeedsToSignup', userNeedsToSignup)

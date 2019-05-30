@@ -19,7 +19,7 @@
     <q-drawer
       v-model="leftDrawerOpen"
       bordered
-      content-class="bg-grey-2"
+      content-class="bg-white-2"
     >
       <profile :user="currentUser" :level="level"></profile>
       <br/><br/><br/><br/><br/><br/><br/>
@@ -76,7 +76,7 @@
             <q-icon name="settings" />
           </q-item-section>
           <q-item-section>
-            <q-item-label>Logout</q-item-label>
+            <q-item-label>Settings</q-item-label>
           </q-item-section>
         </q-item>
         <q-item clickable @click="$store.dispatch('user/logout')">
@@ -90,6 +90,7 @@
       </div>
 
       </q-list>
+        <img class="footer-inner-logo fixed absolute" src="assets\klaytn-champ-logo.svg">
     </q-drawer>
 
     <q-page-container>

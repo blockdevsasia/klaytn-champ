@@ -1,5 +1,7 @@
 <template>
-  <q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px; ">
+  <q-img class="absolute-top profile-header" style="height: 150px; ">
+    
+
     <div class="absolute-bottom bg-transparent">
       <q-avatar size="56px" class="q-mb-sm">
         <img :src="user.photoURL">

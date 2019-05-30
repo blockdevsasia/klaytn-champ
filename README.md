@@ -12,8 +12,7 @@ Blockchain-based user and developer challenge with verifiable scoring and certif
 
 <tr>
 <td><strong>Quickstart</strong></td>
-<td>install all dependencies - Run in terminal at project root `yarn install:all`</td>
-<td>run client and backend at the same time - Run in terminal at project root `yarn dev`</td>
+<td>install all dependencies - Run in terminal at project root `yarn install:all`<br>run client and backend at the same time - Run in terminal at project root `yarn dev`</td>
 </tr>
 
 <tr>
@@ -29,7 +28,7 @@ Blockchain-based user and developer challenge with verifiable scoring and certif
 
 <tr>
 <td><strong>Landing Page</strong></td>
-<td>https://www.blockdevs.asia/klaytn-champions</td>
+<td>https://www.blockdevs.asia/klaytn-champ</td>
 </tr>
 
 <tr>
