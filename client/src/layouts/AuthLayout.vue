@@ -9,7 +9,9 @@
       content-class="bg-white-2"
       :width="400"
     >
-      <router-view></router-view>
+      <q-page-container>
+        <router-view />
+      </q-page-container>
     </q-drawer>
 
   </q-layout>
