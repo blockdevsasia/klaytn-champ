@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-        <div class="q-img__image absolute-full" style="background-image: url('assets/main-background.png'); background-size: cover; background-position: 50% 50%;"></div>
+        <div class="q-img__image absolute-full" style="background-image: url('statics/main-background.png'); background-size: cover; background-position: 50% 50%;"></div>
     <q-header elevated>
 
       <q-toolbar>

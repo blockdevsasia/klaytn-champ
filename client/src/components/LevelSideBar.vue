@@ -50,8 +50,8 @@
       </q-item>
     </q-list>
 
-<img class="footer-inner-logo fixed absolute" src="assets/klaytn-champ-logo.svg">
-<img class="footer-inner-logo fixed absolute" src="assets/klaytn-champ-logo.svg">
+<img class="footer-inner-logo fixed absolute" src="~assets/klaytn-champ-logo.svg">
+<img class="footer-inner-logo fixed absolute" src="~assets/klaytn-champ-logo.svg">
 
   </div>
 </template>

@@ -2,7 +2,7 @@
   <q-page class="content-container">
     <h6>Welcome to the Klaytn Challenges</h6>
     <p class="content-container">Kakao’s global public blockchain project Klaytn is an enterprise-grade, service-centric platform that brings user-friendly blockchain experience to millions. It combines the best features of both public blockchains (decentralized data & control, distributed governance) and private blockchains (low latency, high scalability) via an efficient ‘hybrid’ design.<br /><br />
-    	<i>Below you can find an overview of the different challenges from Klatyn.</i> 
+    	<i>Below you can find an overview of the different challenges from Klatyn.</i>
     </p>
     <div class="q-pa-md">
       <div class="row">
@@ -10,7 +10,7 @@
         	<div class="row">
 				<div class="col-12 col-md-4">
 					<router-link to="/level/1">
-        			<img class="btnimg-dash center" src="assets\klaytn-basics.png" alt="" />
+        			<img class="btnimg-dash center" src="~assets/klaytn-basics.png" alt="" />
         			</router-link>
         		</div>
     			<div class="col-12 col-md-8">
@@ -24,7 +24,7 @@
         <div class="col home-button">
           <div class="row">
             <div class="col-12 col-md-4">
-              <img class="btnimg-dash center" src="assets/klaytn-advanced.png" alt=""/>
+              <img class="btnimg-dash center" src="~assets/klaytn-advanced.png" alt=""/>
             </div>
             <div class="col-12 col-md-8">
               <p class="text-weight-bolder">Diving into advanced methods</p>
@@ -39,7 +39,7 @@
         <div class="col home-button left-hb">
           <div class="row">
             <div class="col-12 col-md-4">
-              <img class="btnimg-dash center" src="assets/klaytn-expert.png" alt=""/>
+              <img class="btnimg-dash center" src="~assets/klaytn-expert.png" alt=""/>
             </div>
             <div class="col-12 col-md-8">
               <p class="text-weight-bolder">For the experts</p>
@@ -52,7 +52,7 @@
         <div class="col home-button">
           <div class="row">
             <div class="col-12 col-md-4">
-              <img class="btnimg-dash center" src="assets/klaytn-champ-logo.png" alt=""/>
+              <img class="btnimg-dash center" src="~assets/klaytn-champ-logo.png" alt=""/>
             </div>
             <div class="col-12 col-md-8">
               <p class="text-weight-bolder">Much more to come!</p>

@@ -1,11 +1,11 @@
 <template>
   <q-page class="flex flex-center">
     <div class="login">
-      <img src="assets\klaytn-champ-logo.svg">
+      <img src="~assets/klaytn-champ-logo.svg">
       <q-btn label="Sign in with Google" @click="signinGoogle" class="purp-button"></q-btn>
       <div class="footer-singup fixed absolute">
-        <img src="assets\klaytnhackathon-logo.svg">
-        <img class="padding-top" src="assets\blockdevs-asia.svg">
+        <img src="~assets/klaytnhackathon-logo.svg">
+        <img class="padding-top" src="~assets/blockdevs-asia.svg">
       </div>
     </div>
   </q-page>

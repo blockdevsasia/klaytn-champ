@@ -2,7 +2,7 @@
   <q-layout view="lHh Lpr lFf">
     <div
       class="q-img__image absolute-full"
-      style="background-image: url('assets/main-background.png'); background-size: cover; background-position: 50% 50%;">
+      style="background-image: url('statics/main-background.png'); background-size: cover; background-position: 50% 50%;">
 
     </div>
     <q-header elevated>
@@ -92,7 +92,7 @@
       </div>
 
       </q-list>
-        <img class="footer-inner-logo fixed absolute" src="assets\klaytn-champ-logo.svg">
+        <img class="footer-inner-logo fixed absolute" src="~assets/klaytn-champ-logo.svg">
     </q-drawer>
 
     <q-page-container>
