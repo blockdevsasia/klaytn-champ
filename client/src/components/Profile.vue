@@ -1,5 +1,5 @@
 <template>
-  <q-img class="absolute-top profile-header" style="height: 150px; ">
+  <q-img class="absolute-top profile-header" style="height: 130px; ">
     <div class="absolute-bottom bg-transparent">
 
 <div class="row">
