@@ -17,8 +17,8 @@
         </router-link>
 <!--         <q-btn size="xs" @click="$store.dispatch('user/resetAll')">
           DEV: RESET ME
-        </q-btn> -->
-
+        </q-btn>
+ -->
       </div>
       <div class="level-indu">Level: 3</div>
       </div>
