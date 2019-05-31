@@ -52,17 +52,15 @@ export async function httpCheckLevel2 (context, { address, solution }) {
       url: '/checkLevel2',
       data: {
         address: address,
-        contract: solution
+        txHash: solution
       }
     })
     context.commit('user/submissionProgress', 40, { root: true })
 
     console.log('level2check', result)
-  }catch(err){
+  } catch (err) {
     context.commit('user/submissionProgress', 0, { root: true })
-
   }
-
 }
 
 export async function httpCheckLevel3 (context, { address, solution }) {
@@ -77,11 +75,9 @@ export async function httpCheckLevel3 (context, { address, solution }) {
       }
     })
     console.log('level3check', result)
-  }catch(err){
+  } catch (err) {
     context.commit('user/submissionProgress', 0, { root: true })
-
   }
-
 }
 
 export async function httpCheckLevel4 (context, { address, solution }) {
@@ -99,11 +95,9 @@ export async function httpCheckLevel4 (context, { address, solution }) {
       data: data
     })
     console.log('level4check', result)
-  }catch(err){
+  } catch (err) {
     context.commit('user/submissionProgress', 0, { root: true })
-
   }
-
 }
 
 export async function httpCheckLevel5 (context, { address, solution }) {
@@ -121,11 +115,9 @@ export async function httpCheckLevel5 (context, { address, solution }) {
       data: data
     })
     console.log('level5check', result)
-  }catch(err){
+  } catch (err) {
     context.commit('user/submissionProgress', 0, { root: true })
-
   }
-
 }
 
 export async function klaytnGetUser (context, address) {
