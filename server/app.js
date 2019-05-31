@@ -50,23 +50,28 @@ app.post('/registerUser', wrap(async (req, res, next) => {
 app.post('/checkLevel2', wrap(async (req, res, next) => {
   const address = req.body.address
 
-  const balance = await caver.klay.getBalance(address)
+  // const balance = await caver.klay.getBalance(address)
+  const txHash = req.body.txHash
 
-  if(caver.utils.fromPeb(balance) > 4){
-    try {
-      const result = await champContract.methods.updateUserLevel(address,2).send({
-        gas: '200000',
-        from: process.env.ADDRESS,
-      })
-    }catch(err){
-      res.status(422).send(err)
-    }
+  const result = await helpers.findTransactionsBy(
+    address,
+    async tx =>
+      tx.type === 'TxTypeValueTransfer'
+      && tx.from.toUpperCase() === process.env.FAUCET_ADDRESS.toUpperCase()
+      && tx.txHash === txHash,
+    null    // We don't need the txn detail now
+  )
 
+  if(result.length > 0){
+    const result = await champContract.methods.updateUserLevel(address,2).send({
+      gas: '200000',
+      from: process.env.ADDRESS,
+    })
     res.status(200).send("OK")
-
   }else{
     res.status(406).send("WRONG")
   }
+
 }))
 
 app.post('/checkLevel3', wrap(async (req, res, next) => {
@@ -128,7 +133,7 @@ app.post('/checkLevel5', wrap(async (req, res, next) => {
   const txsContractCalls = await helpers.findTransactionsBy(
     address,
     async tx =>
-      tx.type === "TxTypeLegacyTransaction" && tx.contractAddress === "" && tx.gasUsed < 40000,
+      tx.type === "TxTypeLegacyTransaction" && tx.contractAddress === "" && tx.gasUsed < 90000,
     async tx =>
       tx.input.indexOf(randomHex) > -1
   )

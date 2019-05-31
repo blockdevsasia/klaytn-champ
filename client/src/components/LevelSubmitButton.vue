@@ -3,7 +3,7 @@
     :loading="submissionProgress > 0 && submissionProgress < 100 && level === buttonLevel"
     :percentage="submissionProgress"
     :label="submitButtonLabel"
-    @click=""
+    @click="submitButtonClick"
     class="level-button"
   >
     <template v-slot:loading>
