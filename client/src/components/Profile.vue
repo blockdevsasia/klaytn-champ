@@ -23,7 +23,7 @@
       <div class="level-indu">Level: {{level}}</div>
 
       <div class="adress-kltn">
-          <q-btn v-if="address" color="primary adress-kltn-btn" label="Klaytn Address" class="q-mt-md">
+          <q-btn v-if="address" color="primary adress-kltn-btn" label="Klaytn Address" class="q-mt-md" size="xs">
             <q-tooltip>{{address}}</q-tooltip>
           </q-btn>
               <q-btn v-else color="primary adress-kltn-btn" label="Klaytn Address" class="q-mt-md" size="xs">
