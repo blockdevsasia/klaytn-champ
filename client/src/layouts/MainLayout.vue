@@ -21,7 +21,7 @@
       bordered
       content-class="bg-white-2"
     >
-      <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
+      <q-scroll-area class="main-dash-styl">
 
       <q-list>
         <router-link class="no-style" to="/">
@@ -81,12 +81,13 @@
           </q-item-section>
         </q-item>
       </div>
-
+      <a href="https://www.blockdevs.asia/klaytn-champ/" target="_blank">
+        <img class="footer-inner-logo fixed absolute" src="~assets/klaytn-champ-logo.svg">
+      </a>
       </q-list>
       </q-scroll-area>
 
       <profile :user="currentUser" :level="level"></profile>
-        <img class="footer-inner-logo fixed absolute" src="~assets/klaytn-champ-logo.svg">
     </q-drawer>
 
     <q-page-container>

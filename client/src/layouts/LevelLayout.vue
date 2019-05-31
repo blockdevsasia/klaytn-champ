@@ -28,12 +28,8 @@
       bordered
       :width="300"
     >
-
-      <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
-
+      <q-scroll-area class="scroll-main-dash">
         <q-list>
-          <q-item-label header>Level {{selectedLevel}} help</q-item-label>
-
           <q-item class="q-item-m"
                   v-for="item in levelSideBar[selectedLevel]"
                   v-bind:key="item.label"
@@ -51,11 +47,14 @@
             </q-item-section>
           </q-item>
         </q-list>
-        <img class="footer-inner-logo fixed absolute" src="~assets/klaytn-champ-logo.svg">
+
+        <a href="https://www.blockdevs.asia/klaytn-champ/" target="_blank">
+          <img class="footer-inner-logo fixed absolute" src="~assets/klaytn-champ-logo.svg">
+        </a>
 
       </q-scroll-area>
       <profile :user="currentUser" :address="address" :level="level"></profile>
-      <q-tabs class="absolute-top" style="margin-top: 118px">
+      <q-tabs class="absolute-top">
         <q-route-tab
           label="1"
           to="/level/1"

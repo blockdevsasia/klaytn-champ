@@ -1,5 +1,5 @@
 <template>
-  <q-img class="absolute-top profile-header" style="height: 130px; ">
+  <q-img class="absolute-top profile-header" style="height: 95px; ">
     <div class="absolute-bottom bg-transparent">
 
 <div class="row">
@@ -15,20 +15,26 @@
         <router-link class="user-name" to="/">
           {{user.displayName}}
         </router-link>
-         <q-btn size="xs" @click="$store.dispatch('user/resetAll')">
+<!--          <q-btn size="xs" @click="$store.dispatch('user/resetAll')">
           DEV: RESET ME
-        </q-btn>
+        </q-btn> -->
 
       </div>
       <div class="level-indu">Level: {{level}}</div>
+
+      <div class="adress-kltn">
+          <q-btn v-if="address" color="primary adress-kltn-btn" label="Klaytn Address" class="q-mt-md">
+            <q-tooltip>{{address}}</q-tooltip>
+          </q-btn>
+              <q-btn v-else color="primary adress-kltn-btn" label="Klaytn Address" class="q-mt-md" size="xs">
+            <q-tooltip>No adress</q-tooltip>
+          </q-btn>
+      </div>
+
+
       </div>
     </div>
-<div v-if="address" class="adress-kltn">
-    <q-btn color="primary adress-kltn-btn" label="Personal Klaytn Address" class="q-mt-md">
-      <q-tooltip>{{address}}</q-tooltip>
-    </q-btn>
 
-</div>
 
     </div>
   </q-img>
