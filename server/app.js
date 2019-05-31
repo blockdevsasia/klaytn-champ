@@ -28,11 +28,6 @@ app.post('/' + process.env.SECRET_RESET_URL, wrap(async (req, res, next) => {
   res.status(200).send(result)
 }))
 
-app.get('/getOurPlayer', wrap(async (req, res, next) => {
-  const result = await champContract.methods.getPlayer("0xe23a66edbdec3c716e1d5fc14d4d4b40ee3d2b41").call()
-  res.status(200).send(result)
-}))
-
 app.post('/registerUser', wrap(async (req, res, next) => {
   const address = req.body.address
   const googleHash = req.body.googleHash
@@ -70,7 +65,7 @@ app.post('/checkLevel2', wrap(async (req, res, next) => {
     res.status(200).send("OK")
 
   }else{
-    res.status(200).send("WRONG")
+    res.status(406).send("WRONG")
   }
 }))
 
@@ -92,7 +87,7 @@ app.post('/checkLevel3', wrap(async (req, res, next) => {
     })
     res.status(200).send("OK")
   }else{
-    res.status(200).send("WRONG")
+    res.status(406).send("WRONG")
   }
 }))
 
@@ -117,7 +112,7 @@ app.post('/checkLevel4', wrap(async (req, res, next) => {
     })
     res.status(200).send("OK")
   }else{
-    res.status(200).send("WRONG")
+    res.status(406).send("WRONG")
   }
 }))
 
@@ -154,15 +149,11 @@ app.post('/checkLevel5', wrap(async (req, res, next) => {
       })
       res.status(200).send("OK")
     }else{
-      res.status(200).send("WRONG")
+      res.status(406).send("WRONG")
     }
   }
 
-  res.status(200).send("WRONG")
+  res.status(406).send("WRONG")
 }))
-
-
-
-
 
 app.listen(process.env.SERVER_PORT, () => console.log(`Example app listening on port ${process.env.SERVER_PORT}!`))

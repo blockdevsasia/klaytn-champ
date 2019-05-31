@@ -32,7 +32,6 @@
           <q-item>
             <q-item-section>
               <q-item-label>
-
                 <q-input
                   square outlined
                   label="Transaction Hash"
@@ -48,22 +47,42 @@
       <q-item>
         <q-item-section>
           <div>
-            <q-btn color="orange" icon="notification_important" label="hint"/>
-            <q-btn
-              :disable=" level > 4"
-              color="green"
-              text-color="black"
-              label="Check my solution"
-              @click="$emit('finish')"
+            <level-submit-button
+              :inputAttempts="inputAttempts"
+              :level="level"
+              :submissionProgress="submissionProgress"
+              :buttonLevel="4"
+              v-on:finish="$emit('finish')"
             />
-            <q-btn
-              v-if="level > 4 && selectedLevel === 4"
-              color="green"
-              text-color="black"
-              icon="check"
-              label="Proceed to Level 5"
-              to="/level/5"
-            />
+<!--            <q-btn-->
+<!--              :loading="submissionProgress > 0 && submissionProgress < 100"-->
+<!--              :percentage="submissionProgress"-->
+<!--              :label="submitButtonLabel"-->
+<!--              @click="level > 4 ? $router.push('/level/5'):$emit('finish')"-->
+<!--              class="level-button"-->
+<!--            >-->
+<!--              <template v-slot:loading>-->
+<!--                <q-spinner-gears class="on-left" />-->
+<!--                Checking...-->
+<!--              </template>-->
+<!--            </q-btn>-->
+<!--            -->
+<!--            <q-btn color="orange" icon="notification_important" label="hint"/>-->
+<!--            <q-btn-->
+<!--              :disable=" level > 4"-->
+<!--              color="green"-->
+<!--              text-color="black"-->
+<!--              label="Check my solution"-->
+<!--              @click="$emit('finish')"-->
+<!--            />-->
+<!--            <q-btn-->
+<!--              v-if="level > 4 && selectedLevel === 4"-->
+<!--              color="green"-->
+<!--              text-color="black"-->
+<!--              icon="check"-->
+<!--              label="Proceed to Level 5"-->
+<!--              to="/level/5"-->
+<!--            />-->
           </div>
         </q-item-section>
       </q-item>
@@ -73,6 +92,9 @@
 
 <script>
 export default {
+  components: {
+    LevelSubmitButton: () => import('components/LevelSubmitButton.vue')
+  },
   props: {
     selectedLevel: {
       type: Number
@@ -85,11 +107,18 @@ export default {
     },
     random: {
       type: String
+    },
+    submissionProgress: {
+      type: Number
+    },
+    inputAttempts: {
+      type: Number
     }
   },
   data () {
     return {}
   }
+
 }
 </script>
 

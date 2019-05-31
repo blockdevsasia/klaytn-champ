@@ -4,6 +4,8 @@
     <level-1
       v-if="selectedLevel === 1"
       :selectedLevel="selectedLevel"
+      :submissionProgress="submissionProgress"
+      :inputAttempts="inputAttempts"
       :level="level"
       :solution="address"
       v-on:setValue="setUserField"
@@ -14,6 +16,8 @@
     <level-2
       v-if="selectedLevel === 2"
       :selectedLevel="selectedLevel"
+      :submissionProgress="submissionProgress"
+      :inputAttempts="inputAttempts"
       :level="level"
       :solution="level2solution"
       v-on:setValue="setUserField"
@@ -24,6 +28,8 @@
     <level-3
       v-if="selectedLevel === 3"
       :selectedLevel="selectedLevel"
+      :submissionProgress="submissionProgress"
+      :inputAttempts="inputAttempts"
       :level="level"
       :solution="level3solution"
       v-on:setValue="setUserField"
@@ -34,6 +40,8 @@
     <level-4
       v-if="selectedLevel === 4"
       :selectedLevel="selectedLevel"
+      :submissionProgress="submissionProgress"
+      :inputAttempts="inputAttempts"
       :level="level"
       :solution="level4solution"
       :random="random"
@@ -45,6 +53,8 @@
     <level-5
       v-if="selectedLevel === 5"
       :selectedLevel="selectedLevel"
+      :submissionProgress="submissionProgress"
+      :inputAttempts="inputAttempts"
       :level="level"
       :solution="level5solution"
       :random="random"
@@ -87,18 +97,28 @@ export default {
       'setUserField'
     ]),
     level1submit () {
+      this.$store.commit('user/inputAttempts', this.inputAttempts + 1)
+      this.$store.commit('user/submissionProgress', 10)
       this.$store.dispatch('external/httpRegisterUser', this.address)
     },
     level2submit () {
+      this.$store.commit('user/inputAttempts', this.inputAttempts + 1)
+      this.$store.commit('user/submissionProgress', 10)
       this.$store.dispatch('external/httpCheckLevel2', { address: this.address, solution: this.level2solution })
     },
     level3submit () {
+      this.$store.commit('user/inputAttempts', this.inputAttempts + 1)
+      this.$store.commit('user/submissionProgress', 10)
       this.$store.dispatch('external/httpCheckLevel3', { address: this.address, solution: this.level3solution })
     },
     level4submit () {
+      this.$store.commit('user/inputAttempts', this.inputAttempts + 1)
+      this.$store.commit('user/submissionProgress', 10)
       this.$store.dispatch('external/httpCheckLevel4', { address: this.address, solution: this.level4solution })
     },
     level5submit () {
+      this.$store.commit('user/inputAttempts', this.inputAttempts + 1)
+      this.$store.commit('user/submissionProgress', 10)
       this.$store.dispatch('external/httpCheckLevel5', { address: this.address, solution: this.level5solution })
     }
   },
@@ -114,14 +134,20 @@ export default {
     ...mapState('user', {
       currentUser: 'current',
       random: 'random',
-      level: 'level'
+      submissionProgress: 'submissionProgress',
+      level: 'level',
+      inputAttempts: 'inputAttempts'
     })
   },
   watch: {
     level (newValue, oldValue) {
+      console.log('levelchanged to: ', newValue, ' from: ', oldValue)
       this.$confetti.start({ shape: 'rect' })
     },
     selectedLevel (newValue, oldValue) {
+      this.$store.commit('user/submissionProgress', 0)
+      this.$store.commit('user/inputAttempts', 0)
+
       this.$confetti.stop()
     }
   }

@@ -6,6 +6,8 @@ export default {
   level: 1,
   selectedLevel: 1,
   certificationLevel: 0,
+  submissionProgress: 0,
+  inputAttempts: 0,
   levelSideBar: {
     1: [
       {

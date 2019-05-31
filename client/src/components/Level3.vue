@@ -80,22 +80,41 @@
           <q-item>
             <q-item-section>
               <div>
-                <q-btn color="orange" icon="notification_important" label="hint"/>
-                <q-btn
-                  :disable="!isAddressValid(solution) || level > 3"
-                  color="green"
-                  text-color="black"
-                  label="Check my solution"
-                  @click="$emit('finish')"
+                <level-submit-button
+                  :inputAttempts="inputAttempts"
+                  :level="level"
+                  :submissionProgress="submissionProgress"
+                  :buttonLevel="3"
+                  v-on:finish="$emit('finish')"
                 />
-                <q-btn
-                  v-if="level > 3 && selectedLevel === 3"
-                  color="green"
-                  text-color="black"
-                  icon="check"
-                  label="Proceed to Level 4"
-                  to="/level/4"
-                />
+<!--                <q-btn-->
+<!--                  :loading="submissionProgress > 0 && submissionProgress < 100"-->
+<!--                  :percentage="submissionProgress"-->
+<!--                  :label="level > 3 ? 'Proceed to level 4' : 'Check solution'"-->
+<!--                  @click="level > 3 ? $router.push('/level/4'):$emit('finish')"-->
+<!--                  class="level-button"-->
+<!--                >-->
+<!--                  <template v-slot:loading>-->
+<!--                    <q-spinner-gears class="on-left" />-->
+<!--                    Checking...-->
+<!--                  </template>-->
+<!--                </q-btn>-->
+<!--                <q-btn color="orange" icon="notification_important" label="hint"/>-->
+<!--                <q-btn-->
+<!--                  :disable="!isAddressValid(solution) || level > 3"-->
+<!--                  color="green"-->
+<!--                  text-color="black"-->
+<!--                  label="Check my solution"-->
+<!--                  @click="$emit('finish')"-->
+<!--                />-->
+<!--                <q-btn-->
+<!--                  v-if="level > 3 && selectedLevel === 3"-->
+<!--                  color="green"-->
+<!--                  text-color="black"-->
+<!--                  icon="check"-->
+<!--                  label="Proceed to Level 4"-->
+<!--                  to="/level/4"-->
+<!--                />-->
               </div>
             </q-item-section>
           </q-item>
@@ -111,6 +130,9 @@
 import { CAVER } from 'boot/caver'
 
 export default {
+  components: {
+    LevelSubmitButton: () => import('components/LevelSubmitButton.vue')
+  },
   props: {
     address: {
       type: String
@@ -123,6 +145,12 @@ export default {
     },
     solution: {
       type: String
+    },
+    submissionProgress: {
+      type: Number
+    },
+    inputAttempts: {
+      type: Number
     }
   },
   data () {

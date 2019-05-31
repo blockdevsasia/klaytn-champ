@@ -51,22 +51,30 @@
       <q-item>
         <q-item-section>
           <div>
-            <q-btn color="orange" icon="notification_important" label="hint"/>
-            <q-btn
-              :disable=" level > 5"
-              color="green"
-              text-color="black"
-              label="Check my solution"
-              @click="$emit('finish')"
+            <level-submit-button
+              :inputAttempts="inputAttempts"
+              :level="level"
+              :submissionProgress="submissionProgress"
+              :buttonLevel="5"
+              v-on:finish="$emit('finish')"
             />
-            <q-btn
-              v-if="level > 5 && selectedLevel === 5"
-              color="green"
-              text-color="black"
-              icon="check"
-              label="Winner!!!"
-              to="/certificate"
-            />
+<!--            -->
+<!--            <q-btn color="orange" icon="notification_important" label="hint"/>-->
+<!--            <q-btn-->
+<!--              :disable=" level > 5"-->
+<!--              color="green"-->
+<!--              text-color="black"-->
+<!--              label="Check my solution"-->
+<!--              @click="$emit('finish')"-->
+<!--            />-->
+<!--            <q-btn-->
+<!--              v-if="level > 5 && selectedLevel === 5"-->
+<!--              color="green"-->
+<!--              text-color="black"-->
+<!--              icon="check"-->
+<!--              label="Winner!!!"-->
+<!--              to="/certificate"-->
+<!--            />-->
           </div>
         </q-item-section>
       </q-item>
@@ -87,6 +95,9 @@
 
 <script>
 export default {
+  components: {
+    LevelSubmitButton: () => import('components/LevelSubmitButton.vue')
+  },
   props: {
     selectedLevel: {
       type: Number
@@ -99,6 +110,12 @@ export default {
     },
     random: {
       type: String
+    },
+    submissionProgress: {
+      type: Number
+    },
+    inputAttempts: {
+      type: Number
     }
   },
   data () {

@@ -52,22 +52,29 @@
           <q-item>
             <q-item-section>
               <div>
+                <level-submit-button
+                  :inputAttempts="inputAttempts"
+                  :level="level"
+                  :submissionProgress="submissionProgress"
+                  :buttonLevel="2"
+                  v-on:finish="$emit('finish')"
+                />
 
-                <q-btn
-                  :disable="level > 2"
-                  color="green"
-                  text-color="black"
-                  label="Check my solution"
-                  @click="$emit('finish')"
-                />
-                <q-btn
-                  v-if="level > 2 && selectedLevel === 2"
-                  color="green"
-                  text-color="black"
-                  icon="check"
-                  label="Proceed to Level 3"
-                  to="/level/3"
-                />
+<!--                <q-btn-->
+<!--                  :disable="level > 2"-->
+<!--                  color="green"-->
+<!--                  text-color="black"-->
+<!--                  label="Check my solution"-->
+<!--                  @click="$emit('finish')"-->
+<!--                />-->
+<!--                <q-btn-->
+<!--                  v-if="level > 2 && selectedLevel === 2"-->
+<!--                  color="green"-->
+<!--                  text-color="black"-->
+<!--                  icon="check"-->
+<!--                  label="Proceed to Level 3"-->
+<!--                  to="/level/3"-->
+<!--                />-->
               </div>
             </q-item-section>
           </q-item>
@@ -93,6 +100,9 @@
 
 <script>
 export default {
+  components: {
+    LevelSubmitButton: () => import('components/LevelSubmitButton.vue')
+  },
   props: {
     address: {
       type: String
@@ -105,6 +115,12 @@ export default {
     },
     solution: {
       type: String
+    },
+    submissionProgress: {
+      type: Number
+    },
+    inputAttempts: {
+      type: Number
     }
   },
   data () {

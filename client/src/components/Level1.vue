@@ -33,9 +33,10 @@
           <q-item>
             <q-item-section>
               <q-input
+                :rules="[value => isAddressValid(value) || 'You need to enter a valid Klaytn address!']"
                 :disable="level > 1"
                 :value="solution"
-                @blur="(event) => $emit('setValue', {address: event.target.value})"
+                @change="event => handleChange(event.target.value)"
                 label="Public address"
                 square outlined
               />
@@ -45,21 +46,14 @@
           <q-item>
             <q-item-section>
               <div>
-                <q-btn
-                  :disable="!isAddressValid(solution) || level > 1"
-                  label="Check my solution"
-                  @click="$emit('finish')"
-                  class="full-width level-button"
+                <level-submit-button
+                  :inputAttempts="inputAttempts"
+                  :level="level"
+                  :submissionProgress="submissionProgress"
+                  :buttonLevel="1"
+                  v-on:finish="$emit('finish')"
                 />
 
-                <q-btn
-                  v-if="level > 1 && selectedLevel === 1"
-                  color="green"
-                  text-color="black"
-                  icon="check"
-                  label="Proceed to Level 2"
-                  to="/level/2"
-                />
               </div>
             </q-item-section>
           </q-item>
@@ -85,6 +79,9 @@
 import { CAVER } from 'boot/caver'
 
 export default {
+  components: {
+    LevelSubmitButton: () => import('components/LevelSubmitButton.vue')
+  },
   props: {
     solution: {
       type: String
@@ -94,15 +91,33 @@ export default {
     },
     level: {
       type: Number
+    },
+    submissionProgress: {
+      type: Number
+    },
+    inputAttempts: {
+      type: Number
     }
   },
   data () {
     return {}
   },
+  computed: {
+  },
   methods: {
     isAddressValid (address) {
       return CAVER.utils.isAddress(address)
+    },
+    handleChange (solution) {
+      if (this.isAddressValid(solution)) {
+        this.$emit('setValue', { address: solution })
+      }
+    },
+    handleSubmit () {
+      if (this.level > 1) this.$router.push('/level/2')
+      else this.$emit('finish')
     }
+
   }
 }
 </script>
