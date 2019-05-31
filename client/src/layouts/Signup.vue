@@ -12,7 +12,12 @@
     >
       <div class="login fixed-center">
         <img src="~assets/klaytn-champ-logo.svg">
-        <q-btn label="Sign in with Google" @click="signinGoogle" class="purp-button"></q-btn>
+
+        <q-btn label="Sign in with Google" @click="signinGoogle" class="purp-button full-width" align="between" icon="account_circle"></q-btn>
+
+        <q-btn label="Import Keystore" @click="loadKeystoreActive=true" class="purp-button purp-button-last full-width" align="between" icon="vpn_key"></q-btn>
+
+
           <div class="partner-logo-signup">
             <a href="https://www.klaytnhackathon.com/" target="_blank">
               <img src="~assets/klaytnhackathon-logo.svg">
@@ -23,7 +28,25 @@
           </div>
       </div>
     </q-drawer>
+<q-dialog v-model="loadKeystoreActive">
+      <q-card>
+        <q-toolbar>
+          <q-avatar>
+            <img src="~assets/shield.png">
+          </q-avatar>
 
+          <q-toolbar-title><span class="text-weight-bold">Import your Keystore</span></q-toolbar-title>
+
+          <q-btn flat round dense icon="close" v-close-popup />
+        </q-toolbar>
+
+        <q-card-section>
+          Importing your Keystore file will be released in the next version of Klaytn Champ.
+          <img src="~assets/klaytn-champ-logo.svg">
+
+        </q-card-section>
+      </q-card>
+    </q-dialog>
   </q-layout>
 </template>
 
@@ -41,7 +64,8 @@ export default {
   data () {
     return {
       tab: 'level',
-      leftDrawerOpen: true
+      leftDrawerOpen: true,
+      loadKeystoreActive: false
     }
   },
   computed: {
