@@ -1,7 +1,7 @@
 <template>
   <q-page class="content-container">
     <h6>{{user.displayName}}'s Profile </h6>
-      <p class="content-container">View all your profile statitics and badges .....</p>
+      <p class="content-container">View all your profile statitics, badges, progress and much more, this section is still mostly under contrcution but will be released soon.</p>
     <div class="q-pa-md">
       <div class="row">
         <div class="col home-button left-hb">
@@ -10,9 +10,8 @@
                 <img class="btnimg-dash center" src="~assets/klaytn-comming-soon.png" alt="comming soon"/>
             </div>
             <div class="col-12 col-md-8">
-              <p class="text-weight-bolder">Course Statistics and badges</p>
-              <p>Get started with this challenge to learn
-                the basic set-up with the Klaytn token.</p>
+              <p class="text-weight-bolder">Statistics, Badges and Certificates</p>
+              <p>Get an overview of your statistics, badges and certificates in one place binded to your blockchain identity.</p>
             </div>
           </div>
         </div>
@@ -23,9 +22,8 @@
                 <img class="btnimg-dash center" src="~assets/klaytn-comming-soon.png" alt="comming soon"/>
             </div>
             <div class="col-12 col-md-8">
-              <p class="text-weight-bolder">Diving into advanced methods</p>
-              <p>Start this challenge to get your skills to
-                the next level.</p>
+              <p class="text-weight-bolder">Import/Export your Keystore file</p>
+              <p>Take control over your account and import/export your account data.</p>
             </div>
           </div>
         </div>
@@ -38,9 +36,8 @@
                 <img class="btnimg-dash center" src="~assets/klaytn-comming-soon.png" alt="comming soon"/>
             </div>
             <div class="col-12 col-md-8">
-              <p class="text-weight-bolder">For the experts</p>
-              <p>Are you ready for a big challenge?
-                Let’s get started!</p>
+              <p class="text-weight-bolder">Social verified identity and skills</p>
+              <p>Skills and adcievements will be veriefied trueout your social channels and will be connected to your blockchain identity.</p>
             </div>
           </div>
         </div>
@@ -52,20 +49,11 @@
             </div>
             <div class="col-12 col-md-8">
               <p class="text-weight-bolder">Much more to come!</p>
-              <p>Stay tuned for the latest courses and challances and earn real rewards!</p>
+              <p>Stay tuned for the latest fetures, courses and challances and earn real rewards!</p>
             </div>
           </div>
         </div>
       </div>
-
-
-    <ul>
-      <li>Soon: Stats: Activity/Attempts</li>
-      <li>Soon: Load your keystore to participate in levels 6+</li>
-      <li>Soon: Connect Social Media such as LinkedIn, Github, Facebook to share and prove your certificates</li>
-    </ul>
-
-
     </div>
 
 
