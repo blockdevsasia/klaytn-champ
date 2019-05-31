@@ -10,13 +10,17 @@
       content-class="bg-white-2"
       :width="400"
     >
-      <div class="login">
+      <div class="login fixed-center">
         <img src="~assets/klaytn-champ-logo.svg">
         <q-btn label="Sign in with Google" @click="signinGoogle" class="purp-button"></q-btn>
-        <div class="footer-singup fixed absolute">
-          <img src="~assets/klaytnhackathon-logo.svg">
-          <img class="padding-top" src="~assets/blockdevs-asia.svg">
-        </div>
+          <div class="partner-logo-signup">
+            <a href="https://www.klaytnhackathon.com/" target="_blank">
+              <img src="~assets/klaytnhackathon-logo.svg">
+            </a>
+            <a href="https://www.blockdevs.asia/klaytn-champ/" target="_blank">
+              <img class="padding-top-logo" src="~assets/blockdevs-asia.svg">
+            </a>
+          </div>
       </div>
     </q-drawer>
 
