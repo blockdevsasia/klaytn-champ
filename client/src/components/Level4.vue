@@ -14,7 +14,7 @@
         <q-list>
           <q-item>
             <q-item-section>
-              <q-item-label>1. Using the IDE, go to the Count details pane located on the lower right side of the screens.</q-item-label>
+              <q-item-label>1. Using the IDE, go to the Count details pane located on the lower right side of the screen.</q-item-label>
             </q-item-section>
           </q-item>
 
@@ -34,7 +34,7 @@
               <q-item-label>
                 <q-input
                   square outlined
-                  label="Transaction Hash"
+                  label="Block Number"
                   :disable="level > 4"
                   :value="solution"
                   @blur="(event) => $emit('setValue', {level4solution: event.target.value})"

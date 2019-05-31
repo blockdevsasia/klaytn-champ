@@ -10,18 +10,20 @@
     <div class="q-pa-md">
       <div class="row">
         <div class="col home-button left-hb">
-          <div class="row">
-            <div class="col-12 col-md-4">
-              <router-link :to="certificationLink(1)">
-                <img class="btnimg-dash center" src="~assets/klaytn-basics.png" alt=""/>
-              </router-link>
+          <router-link :to="certificationLink(1)">
+            <div class="row">
+              <div class="col-12 col-md-4">
+                
+                  <img class="btnimg-dash center" src="~assets/klaytn-basics.png" alt=""/>
+                
+              </div>
+              <div class="col-12 col-md-8">
+                <p class="text-weight-bolder">Mastering the basics</p>
+                <p>Get started with this challenge to learn
+                  the basic set-up with the Klaytn token.</p>
+              </div>
             </div>
-            <div class="col-12 col-md-8">
-              <p class="text-weight-bolder">Mastering the basics</p>
-              <p>Get started with this challenge to learn
-                the basic set-up with the Klaytn token.</p>
-            </div>
-          </div>
+          </router-link>
         </div>
 
         <div class="col home-button">

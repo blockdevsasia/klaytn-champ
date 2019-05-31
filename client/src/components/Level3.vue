@@ -7,7 +7,7 @@
 
     <q-card flat class="my-card">
       <q-card-section>
-        <div class="text-h6">Klatyn IDE</div>
+        <div class="text-h6">Smart contract and Klatyn IDE</div>
         <div class="text-subtitle2">Level 3: Your goal is to compile a smart contract from the Klatyn IDE.</div>
       </q-card-section>
 
@@ -23,7 +23,7 @@
           <q-item>
             <q-item-section>
               <q-item-label>2. Go to the <a href="https://ide.klaytn.com/">Klatyn IDE</a>. You will see a default
-                untitle.sol file with a Count contract. Klatyn uses solidity for smart contract development.
+                untitled.sol file with a Count contract. Klatyn uses solidity for smart contract development.
               </q-item-label>
             </q-item-section>
           </q-item>
