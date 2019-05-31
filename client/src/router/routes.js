@@ -25,6 +25,10 @@ const routes = [
     children: [
       { path: '/signup', component: () => import('pages/Signup.vue') }
     ]
+  },
+  {
+    path: '/mobile',
+    component: () => import('pages/Mobile.vue')
   }
 ]
 
