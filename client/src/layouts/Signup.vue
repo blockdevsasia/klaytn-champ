@@ -42,7 +42,7 @@
 
         <q-card-section>
           Importing your Keystore file will be released in the next version of Klaytn Champ.
-          <img src="~assets/klaytn-champ-logo.svg">
+          <img src="~assets/keystore-soon.png">
 
         </q-card-section>
       </q-card>
