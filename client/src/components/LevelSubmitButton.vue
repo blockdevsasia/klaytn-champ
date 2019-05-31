@@ -39,7 +39,8 @@ export default {
     submitButtonLabel () {
       console.log('att', this.inputAttempts)
       if (this.level === 6) {
-        return 'Congratulations, you successfully passed the first track!'
+        //return 'Congratulations, you successfully passed the first track!'
+        this.$router.push('/completed/1')
       } else if (this.level > this.buttonLevel) {
         return 'Proceed to level ' + this.nextButtonLevel
       } else if (this.inputAttempts === 0) {

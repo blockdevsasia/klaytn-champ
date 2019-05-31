@@ -80,7 +80,7 @@
             <q-item-label>Logout</q-item-label>
           </q-item-section>
         </q-item>
-      </div>
+    
       <a href="https://www.blockdevs.asia/klaytn-champ/" target="_blank">
         <img class="footer-inner-logo fixed absolute" src="~assets/klaytn-champ-logo.svg">
       </a>

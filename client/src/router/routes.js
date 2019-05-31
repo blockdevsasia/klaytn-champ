@@ -9,7 +9,8 @@ const routes = [
       { path: '/profile', component: () => import('pages/Profile.vue') },
       { path: '/earnings', component: () => import('pages/Earnings.vue') },
       { path: '/leaderboard', component: () => import('pages/Leaderboard.vue') },
-      { path: '/certificate/:certificateLevel', component: () => import('pages/Certificate.vue') }
+      { path: '/certificate/:certificateLevel', component: () => import('pages/Certificate.vue') },
+      { path: '/completed/:certificateLevel', component: () => import('pages/Completed.vue') }
     ]
   },
   {
