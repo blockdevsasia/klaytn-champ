@@ -22,8 +22,8 @@
                 <img class="btnimg-dash center" src="~assets/klaytn-comming-soon.png" alt="comming soon"/>
             </div>
             <div class="col-12 col-md-8">
-              <p class="text-weight-bolder">Import/Export your Keystore file</p>
-              <p>Take control over your account and import/export your account data.</p>
+              <p class="text-weight-bolder">Link your organisation</p>
+              <p>Link your organisation to your Klaytn Champ identity so that people can verify this.</p>
             </div>
           </div>
         </div>
