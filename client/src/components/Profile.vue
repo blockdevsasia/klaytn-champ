@@ -12,7 +12,7 @@
       <div class="col-8">
 
      <div class="text-weight-bold">
-        <router-link class="user-name" to="/">
+        <router-link class="user-name" to="/profile">
           {{user.displayName}}
         </router-link>
 <!--          <q-btn size="xs" @click="$store.dispatch('user/resetAll')">

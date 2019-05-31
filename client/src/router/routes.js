@@ -21,10 +21,7 @@ const routes = [
   },
   {
     path: '/signup',
-    component: () => import('layouts/AuthLayout.vue'),
-    children: [
-      { path: '/signup', component: () => import('pages/Signup.vue') }
-    ]
+    component: () => import('layouts/Signup.vue')
   },
   {
     path: '/mobile',
