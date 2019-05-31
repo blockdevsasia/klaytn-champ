@@ -10,7 +10,7 @@
     <div class="q-pa-md">
       <div class="row">
         <div class="col home-button left-hb">
-          <router-link :to="certificationLink(1)">
+          <router-link class="dashboard-link" :to="certificationLink(1)">
             <div class="row">
               <div class="col-12 col-md-4">
 

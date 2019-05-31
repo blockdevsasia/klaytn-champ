@@ -9,13 +9,13 @@
             <q-avatar size="56px" class="q-mb-sm">
               <img class="profile-pic" src="https://avatars3.githubusercontent.com/u/6133031?s=460&v=4">
             </q-avatar>
-
           </router-link>
         </div>
         <div class="col-8">
 
-          <div class="text-weight-bold">
+          <div class="text-weight-bold user-name">
             {{user.displayName}}
+
             <!--          <q-btn size="xs" @click="$store.dispatch('user/resetAll')">
                       DEV: RESET ME
                     </q-btn>
