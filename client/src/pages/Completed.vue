@@ -4,14 +4,13 @@
         <div class="col-12 col-md-4">
             <q-card class="my-card bg-blue text-white">
             <q-card-section>
-                
+
                 <div class="row">
                     <div class="col-12 col-md-4">
                         <q-icon name="check_circle" size="80px"/>
                     </div>
                     <div class="col-12 col-md-8">
                         <div class="text-h6">Course Completed!</div>
-                        <div class="text-subtitle2">[description here]</div>
                     </div>
                 </div>
             </q-card-section>
@@ -26,12 +25,12 @@
                     </q-btn>
                  </div>
                  <div class="col-12 col-md-3"></div>
-            
+
             </q-card-actions>
         </q-card>
         </div>
         <div class="col-12 col-md-4"></div>
-        
+
     </div>
 
 </template>

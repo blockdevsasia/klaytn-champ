@@ -38,8 +38,8 @@
                 <img class="btnimg-dash center" src="~assets/klaytn-comming-soon.png" alt="comming soon"/>
             </div>
             <div class="col-12 col-md-8">
-              <p class="text-weight-bolder">Improve cource content</p>
-              <p>Earn rewards and reputation for improving cource content.</p>
+              <p class="text-weight-bolder">Improve course content</p>
+              <p>Earn rewards and reputation for improving course content.</p>
             </div>
           </div>
         </div>
@@ -58,18 +58,6 @@
       </div>
 
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
   </q-page>
 
 </template>
