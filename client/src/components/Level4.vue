@@ -7,26 +7,26 @@
     <q-card flat class="my-card">
       <q-card-section>
         <div class="text-h6">Contract Interaction</div>
-        <div class="text-subtitle2">Level 4: Your goal is to interact with the Count contract by calling its function(s).</div>
+        <div class="text-subtitle2">Interact with the Count contract by calling its function(s).</div>
       </q-card-section>
 
       <q-card-section>
         <q-list>
           <q-item>
             <q-item-section>
-              <q-item-label>1. Using the IDE, go to the Count details pane located on the lower right side of the screen.</q-item-label>
+              <q-item-label>1. In the IDE find the Contract function calls, in the bottom-right section of the screen. You will see count(), getBlockNumber() and setCount() here. </q-item-label>
             </q-item-section>
           </q-item>
 
           <q-item>
             <q-item-section>
-              <q-item-label>2. Do a function call to "setCount", with as input: <strong>{{random}}</strong> and click the "send" button.</q-item-label>
+              <q-item-label>2. <strong>Do a function call to "setCount"</strong>, with as input: <strong>{{random}}</strong> and click the "send" button.</q-item-label>
             </q-item-section>
           </q-item>
 
           <q-item>
             <q-item-section>
-              <q-item-label>3. On the "Transaction" output tab, You should be able to see the transaction details of the function call. Copy the blockNumber and paste it in the textbox below</q-item-label>
+              <q-item-label>3. On the "Transaction" tab at the bottom of the screen, you should be able to see the transaction details of the function call. <strong>Copy the Tx Hash</strong> and paste it below: </q-item-label>
             </q-item-section>
           </q-item>
           <q-item>
@@ -34,7 +34,7 @@
               <q-item-label>
                 <q-input
                   square outlined
-                  label="Block Number"
+                  label="Tx Hash"
                   :disable="level > 4"
                   :value="solution"
                   @blur="(event) => $emit('setValue', {level4solution: event.target.value})"

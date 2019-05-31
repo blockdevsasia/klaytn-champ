@@ -7,29 +7,29 @@
     <q-card flat class="my-card">
       <q-card-section>
         <div class="text-h6">Contract Modification and Redeployment</div>
-        <div class="text-subtitle2">Level 5: Your goal is to modify and redeploy the Count contract.</div>
+        <div class="text-subtitle2">Modify and redeploy the Count contract.</div>
       </q-card-section>
 
       <q-card-section>
         <q-list>
           <q-item>
             <q-item-section>
-              <q-item-label>1. From the IDE, change the "setCount" function so it stores count multiplied by block number.</q-item-label>
+              <q-item-label>1. In the source code of the Count contract, <strong>modify the "setCount" function</strong> so it stores <strong>count multiplied by block number</strong>.</q-item-label>
             </q-item-section>
           </q-item>
           <q-item>
             <q-item-section>
-              <q-item-label>2. Compile and deploy the updated source.</q-item-label>
+              <q-item-label>2. <strong>Compile and deploy</strong> the modified contract.</q-item-label>
             </q-item-section>
           </q-item>
           <q-item>
             <q-item-section>
-              <q-item-label>3. Call the "setCount" with input: <strong>{{random}}</strong>. </q-item-label>
+              <q-item-label>3. Send the "setCount" function with input: <strong>{{random}}</strong> and wait for it to finish.</q-item-label>
             </q-item-section>
           </q-item>
           <q-item>
             <q-item-section>
-              <q-item-label>4. Call count() and paste the resulting value below.</q-item-label>
+              <q-item-label>4. <strong>Call count() and paste</strong> the resulting value below:</q-item-label>
             </q-item-section>
           </q-item>
 
@@ -46,6 +46,11 @@
               </q-item-label>
             </q-item-section>
           </q-item>
+          <q-item>
+            <q-item-section>
+              <q-item-label><i>Are you ready to get certified!?</i></q-item-label>
+            </q-item-section>
+          </q-item>
         </q-list>
       </q-card-section>
       <q-item>
@@ -58,23 +63,7 @@
               :buttonLevel="5"
               v-on:finish="$emit('finish')"
             />
-<!--            -->
-<!--            <q-btn color="orange" icon="notification_important" label="hint"/>-->
-<!--            <q-btn-->
-<!--              :disable=" level > 5"-->
-<!--              color="green"-->
-<!--              text-color="black"-->
-<!--              label="Check my solution"-->
-<!--              @click="$emit('finish')"-->
-<!--            />-->
-<!--            <q-btn-->
-<!--              v-if="level > 5 && selectedLevel === 5"-->
-<!--              color="green"-->
-<!--              text-color="black"-->
-<!--              icon="check"-->
-<!--              label="Winner!!!"-->
-<!--              to="/certificate"-->
-<!--            />-->
+
           </div>
         </q-item-section>
       </q-item>
@@ -86,8 +75,9 @@
       </q-card-section>
       <q-separator inset />
       <q-card-section>
-        When a contract is redeployed, it stays in the blockchain forever. The old contract doesn't get overwritten.
-        The redeployed contract will have a different address.
+        When a contract is redeployed it stays in the blockchain forever. The old contract doesn't get overwritten.
+        The redeployed contract will have a different address.<br/>
+        In solidity multiplication is written as follows: <i>output = var1 * var2;</i>
       </q-card-section>
     </q-card>
   </div>

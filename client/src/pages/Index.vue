@@ -13,9 +13,9 @@
           <router-link :to="certificationLink(1)">
             <div class="row">
               <div class="col-12 col-md-4">
-                
+
                   <img class="btnimg-dash center" src="~assets/klaytn-basics.png" alt=""/>
-                
+
               </div>
               <div class="col-12 col-md-8">
                 <p class="text-weight-bolder">Mastering the basics</p>
@@ -61,7 +61,7 @@
             </div>
             <div class="col-12 col-md-8">
               <p class="text-weight-bolder">Much more to come!</p>
-              <p>Stay tuned for the latest courses and challances and earn real rewards!</p>
+              <p>Stay tuned for the latest courses and challenges. Earn real rewards!</p>
             </div>
           </div>
         </div>

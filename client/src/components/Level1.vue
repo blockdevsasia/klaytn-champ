@@ -7,26 +7,26 @@
     <q-card flat class="my-card">
       <q-card-section>
         <div class="text-h6">Create a Klatyn Account</div>
-        <div class="text-subtitle2">Level 1: Your goal is to create your own Klatyn account.</div>
+        <div class="text-subtitle2">Getting started with Klaytn.</div>
       </q-card-section>
 
       <q-card-section>
         <q-list>
           <q-item>
             <q-item-section>
-              <q-item-label>1. Go to <a href="https://baobab.klaytnwallet.com/" target="_blank">Klaytn Wallet</a>, and click the "create account" button. </q-item-label>
+              <q-item-label>1. Go to <a href="https://baobab.klaytnwallet.com/" target="_blank">Klaytn Wallet</a> and click the <strong>"create account"</strong> button. </q-item-label>
             </q-item-section>
           </q-item>
 
           <q-item>
             <q-item-section>
-              <q-item-label>2. Follow the instructions on how to create a new account. You will be asked to provide a password, download your keystore and keep your private key. It's just a 3-step process. </q-item-label>
+              <q-item-label>2. Follow the 3-step instructions on how to create a new account. You will be asked to provide a password, <strong>download your keystore</strong> and keep your private key. </q-item-label>
             </q-item-section>
           </q-item>
 
           <q-item>
             <q-item-section>
-              <q-item-label>3. Paste your public address on the texbox below.</q-item-label>
+              <q-item-label>3. Paste your <strong>address</strong> in the texbox below: </q-item-label>
             </q-item-section>
           </q-item>
 
@@ -68,8 +68,8 @@
       </q-card-section>
       <q-separator inset />
       <q-card-section>
-        Remember to keep your keystore file. You will need it in the succeeding levels. <br/> A Klatyn account contains information about a person's balance or a smart contract.
-        To learn more about Klatyn account, click <a href="https://docs.klaytn.com/klaytn/design/account">here</a>
+        Remember to keep your keystore file. You will need it in the succeeding levels. <br/> A Klatyn account gives access to your balance and smart contracts. <br/><br/>
+        To learn more about Klatyn accounts, read the <a href="https://docs.klaytn.com/klaytn/design/account">documentation</a>.
       </q-card-section>
     </q-card>
   </div>

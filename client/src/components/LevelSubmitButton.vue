@@ -39,7 +39,7 @@ export default {
     submitButtonLabel () {
       console.log('att', this.inputAttempts)
       if (this.level === 6) {
-        return 'Congratulations, you successfully passed the first track!'
+        return 'Congratulations, click here to get your Certification!'
       } else if (this.level > this.buttonLevel) {
         return 'Proceed to level ' + this.nextButtonLevel
       } else if (this.inputAttempts === 0) {

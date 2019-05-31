@@ -8,32 +8,32 @@
     <q-card flat class="my-card">
       <q-card-section>
         <div class="text-h6">Faucet and Klaytnscope</div>
-        <div class="text-subtitle2">Level 2: Your goal is to fund your Klatyn account with test KLAY and view the transaction from Klaytnscope.</div>
+        <div class="text-subtitle2">Fund your Klatyn account with test KLAY and view the transaction from Klaytnscope.</div>
       </q-card-section>
 
       <q-card-section>
         <q-list>
           <q-item>
             <q-item-section>
-              <q-item-label>1. Go back to <a href="https://baobab.klaytnwallet.com/" target="_blank">Klaytn Wallet</a>, and click the "KLAY Faucet" from the main menu. </q-item-label>
+              <q-item-label>1. Go back to your <a href="https://baobab.klaytnwallet.com/" target="_blank">Klaytn Wallet</a> and select <strong>"KLAY Faucet"</strong> from the menu on the left side. </q-item-label>
             </q-item-section>
           </q-item>
 
           <q-item>
             <q-item-section>
-              <q-item-label>2. To fund your account, click the "run faucet" button. You should receive a small amount of KLAY. I received 5 KLAY when I did this. </q-item-label>
+              <q-item-label>2. To fund your account, click the <strong>"Run Faucet"</strong> button. You will receive <strong>5 Test_KLAY</strong>. </q-item-label>
             </q-item-section>
           </q-item>
 
           <q-item>
             <q-item-section>
-              <q-item-label>3. Copy your public address from your wallet and go to <a href="https://baobab.klaytnwallet.com/" target="_blank">Klaytnscope</a>, paste your address in the "search by" textbox and click the search icon. </q-item-label>
+              <q-item-label>3. <strong>Copy your address</strong> from your wallet and go to <a href="https://baobab.klaytnscope.com/" target="_blank">Klaytnscope</a>. Then <strong>paste your address</strong> in the "search by" textbox and click the search icon. </q-item-label>
             </q-item-section>
           </q-item>
 
           <q-item>
             <q-item-section>
-              <q-item-label>4. You should be able to see the transaction from the faucet. Copy the TX HASH and paste it on the textbox below.</q-item-label>
+              <q-item-label>4. You should be able to see the transaction from the faucet at the top of the list. <strong>Copy the Tx Hash</strong> and paste it below.</q-item-label>
             </q-item-section>
           </q-item>
 
@@ -41,7 +41,7 @@
             <q-item-section>
               <q-input
                 square outlined
-                label="Transaction hash (txid)"
+                label="Transaction hash"
                 :disable="level > 2"
                 :value="solution"
                 @blur="(event) => $emit('setValue', {level2solution: event.target.value})"
@@ -89,9 +89,9 @@
       </q-card-section>
       <q-separator inset />
       <q-card-section>
-        A faucet drips small amounts of cryptocurrency over a set period of time.
-        Klaytnscope is Klatyn's block explorer. It allows you to find data by monitoring network health and statistics of Klaytn as well as profiling blocks and transactions on Klaytn.
-        To learn more about Klaytnscope, click <a href="https://docs.klaytn.com/toolkit/scope">here</a>
+        A faucet drips small amounts of cryptocurrency over a set period of time.<br/>
+        Klaytnscope is Klatyn's block explorer. It allows you to find data by monitoring network health and statistics of Klaytn as well as profiling blocks and transactions on Klaytn.<br/><br/>
+        To learn more about Klaytnscope read the <a href="https://docs.klaytn.com/toolkit/scope">documentation</a>.
       </q-card-section>
     </q-card>
 
