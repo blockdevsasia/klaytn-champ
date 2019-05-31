@@ -1,9 +1,7 @@
 <template>
   <q-page class="content-container">
     <h6>{{user.displayName}}'s Profile </h6>
-      <p class="content-container">View all your profile statitics and badges .<br/><br/>
-            <i>Below you can find an overview of the different challenges from Klatyn.</i>
-          </p>
+      <p class="content-container">View all your profile statitics and badges .....</p>
     <div class="q-pa-md">
       <div class="row">
         <div class="col home-button left-hb">
