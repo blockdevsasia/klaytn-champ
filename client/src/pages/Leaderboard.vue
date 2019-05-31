@@ -1,11 +1,33 @@
 <template>
   <q-page class="content-container">
+
+    
+    <div class="row">
+      <div class="col">
+        .col
+      </div>
+      <div class="col">
+        .col
+      </div>
+      <div class="col">
+        .col
+      </div>
+    </div>
+
+
+
+
+
+
+    
     <h6>Leaderboard</h6>
     <ul>
       <li>Soon: Winners with least attempts</li>
       <li>Soon: Top countries</li>
       <li>Soon: Highest earners through referrals</li>
     </ul>
+
+
 
 
 
@@ -79,7 +101,7 @@
 
 
 
-    
+
   </q-page>
 
 </template>

@@ -12,7 +12,12 @@
     >
       <div class="login fixed-center">
         <img src="~assets/klaytn-champ-logo.svg">
-        <q-btn label="Sign in with Google" @click="signinGoogle" class="purp-button"></q-btn>
+
+        <q-btn label="Sign in with Google" @click="signinGoogle" class="purp-button full-width" align="between" icon="account_circle"></q-btn>
+
+        <q-btn label="Import Keystore" @click="" class="purp-button purp-button-last full-width" align="between" icon="vpn_key"></q-btn>
+
+
           <div class="partner-logo-signup">
             <a href="https://www.klaytnhackathon.com/" target="_blank">
               <img src="~assets/klaytnhackathon-logo.svg">
