@@ -35,8 +35,8 @@ Blockchain-based user and developer challenge with verifiable scoring and certif
 </tr>
 
 <tr>
-<td><strong>Klaytn Champ Project paper</strong></td>
-<td>Final Project Paper: [Klaytn Champ - Project Paper](https://github.com/blockdevsasia/klaytn-champ/blob/master/media/Klaytn%20Champ%20-%20Project%20Paper.pdf)</td>
+<td><strong>Project paper</strong></td>
+<td>Final Project Paper: https://github.com/blockdevsasia/klaytn-champ/blob/master/media/Klaytn%20Champ%20-%20Project%20Paper.pdf</td>
 </tr>
 
 <tr>
