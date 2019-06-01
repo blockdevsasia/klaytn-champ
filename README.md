@@ -2,6 +2,7 @@
 <img src="https://www.blockdevs.asia/wp-content/uploads/2019/05/klaytn-logo.png">
 
 Blockchain-based user and developer challenge with verifiable scoring and certification. Our goal is to make technical documentation and onboarding with Klaytn more fun by Gamification & Incentivisation.
+<h6>Check out our live demo! http://klaytn.champ.blockdevs.asia/#/signup</h6>
 
 <h3>Check out our Pitch</h3>
 
