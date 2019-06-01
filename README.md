@@ -30,6 +30,11 @@ Blockchain-based user and developer challenge with verifiable scoring and certif
 </tr>
 
 <tr>
+<td><strong>Live Demo!</strong></td>
+<td>http://klaytn.champ.blockdevs.asia/#/signup</td>
+</tr>
+
+<tr>
 <td><strong>Check out our Pitch</strong></td>
 <td>https://www.youtube.com/embed/xmMsZM7A0Ec</td>
 </tr>
