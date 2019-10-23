@@ -35,7 +35,7 @@ app.post('/registerUser', wrap(async (req, res, next) => {
   const randomNumber = Math.floor(1 + (Math.random() * 1000000))
 
   try {
-    const result = await champContract.methods.registerUser(address, caver.utils.hexToBytes(googleHash)).send({
+    const result = await champContract.methods.registerUser(address).send({
       gas: '200000',
       from: process.env.ADDRESS,
       value: randomNumber
@@ -62,12 +62,17 @@ app.post('/checkLevel2', wrap(async (req, res, next) => {
     null    // We don't need the txn detail now
   )
 
-  if(result.length > 0){
-    const result = await champContract.methods.updateUserLevel(address,2).send({
-      gas: '200000',
-      from: process.env.ADDRESS,
-    })
-    res.status(200).send("OK")
+  if(result !== undefined || result.length > 0){
+    try {
+      const result = await champContract.methods.updateUserLevel(address, 2).send({
+        gas: '200000',
+        from: process.env.ADDRESS,
+      })
+      res.status(200).send("OK")
+
+    }catch(err){
+      console.error(err)
+    }
   }else{
     res.status(406).send("WRONG")
   }
