@@ -1,26 +1,20 @@
-const PrivateKeyConnector = require('connect-privkey-to-provider')
+const HDWalletProvider = require("truffle-hdwallet-provider-klaytn");
 
-const NETWORK_ID = '1001'
-const GASLIMIT = '20000000'
+const BAOBAB_NETWORK_ID = '1001'
+const GASLIMIT = '8500000'
 
-/**
- * We extracted `URL`, `PRIVATE_KEY` as const variable to set value easily.
- * Set your private key and klaytn node's URL in here.
- */
-const URL = `https://api.baobab.klaytn.net:8651`
-const PRIVATE_KEY = '0x48f5a77dbf13b436ae0325ae91efd084430d2da1123a8c273d7df5009248f90c'
+const BAOBAB_URL = `https://api.baobab.klaytn.net:8651`
+const PRIVATE_KEY = '0xa0f0e2350fec1fe054ce7d8e2b183e439ac3fc6a030337d7e6fa82ec1d531a49'
 
 module.exports = {
-
   networks: {
-    klaytn: {
-      provider: new PrivateKeyConnector(PRIVATE_KEY, URL),
-      network_id: NETWORK_ID,
+    development: {
+      provider: new HDWalletProvider(PRIVATE_KEY, BAOBAB_URL),
+      network_id: BAOBAB_NETWORK_ID,
       gas: GASLIMIT,
       gasPrice: null,
     },
   },
-
   // Set default mocha options here, use special reporters etc.
   mocha: {
     // timeout: 100000
@@ -29,7 +23,7 @@ module.exports = {
   // Configure your compilers
   compilers: {
     solc: {
-      version: "0.4.24",    // Fetch exact version from solc-bin (default: truffle's version)
+      // version: "0.5.1",    // Fetch exact version from solc-bin (default: truffle's version)
       // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
       // settings: {          // See the solidity docs for advice about optimization and evmVersion
       //  optimizer: {

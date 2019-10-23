@@ -1,4 +1,4 @@
-pragma solidity 0.4.24;
+pragma solidity ^0.5.6;
 
 contract Ownable {
     address private _owner;
@@ -66,6 +66,11 @@ contract Ownable {
 }
 
 contract KlaytnChamp is Ownable {
+    struct Certificate {
+        address userAddress;
+        uint64 certificationLevel;
+    }
+
     struct UserData {
         uint64 randomAmount;
         uint64 level;
@@ -78,8 +83,9 @@ contract KlaytnChamp is Ownable {
 
     // The main mapping that contains the data for each user
     mapping(address => UserData) _users;
+    mapping(bytes32 => Certificate) _certificates;
 
-    function registerUser(address userAddress, bytes32 googleHash) public payable onlyOwner {
+    function registerUser( address payable userAddress ) public payable onlyOwner {
         require(
             _users[userAddress].level == 0,
             "Cannot register twice"
@@ -105,7 +111,7 @@ contract KlaytnChamp is Ownable {
         UserData storage user = _users[userAddress];
 
         require(user.level > 0, "User has to be registered");
-//        require(newLevel > user.level, "New level has to be higher");
+        //        require(newLevel > user.level, "New level has to be higher");
 
         user.level = newLevel;
 
