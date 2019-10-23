@@ -2,7 +2,7 @@ const rp = require('request-promise-native')
 
 const getTransactionsForAddress = async function (address) {
   var options = {
-    uri: 'https://baobab.klaytnscope.com/api/transactions?',
+    uri: 'https://baobab-api.scope.klaytn.com/api/transactions?',
     qs: {
       account: address,
       size: 100
@@ -20,7 +20,7 @@ const getTransactionsForAddress = async function (address) {
 
 const getTransactionByHash = async function (txHash) {
   var options = {
-    uri: 'https://baobab.klaytnscope.com/api/transaction/' + txHash,
+    uri: 'https://baobab-api.scope.klaytn.com/api/transaction/' + txHash,
     headers: {
       'User-Agent': 'Request-Promise'
     },
