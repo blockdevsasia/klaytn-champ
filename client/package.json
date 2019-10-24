@@ -9,7 +9,7 @@
   "scripts": {
     "lint": "eslint --ext .js,.vue src",
     "test": "echo \"No test specified\" && exit 0",
-    "deploytera": "quasar build && rsync -avr dist/spa/ teraweb:./klaytn.champ.blockdevs.asia/web/public"
+    "deploytera": "quasar build && rsync -avr dist/spa/ teraweb:./klaytn.champ.blockdevs.asia/web-klaytn-champ/public"
   },
   "dependencies": {
     "@quasar/extras": "^1.3.2",
