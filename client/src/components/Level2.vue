@@ -118,11 +118,6 @@ export default {
   components: {
     LevelSubmitButton: () => import('components/LevelSubmitButton.vue')
   },
-  methods: {
-    log (msg) {
-      console.log(msg)
-    }
-  },
   props: {
     address: {
       type: String

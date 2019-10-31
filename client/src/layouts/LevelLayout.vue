@@ -96,7 +96,6 @@ import { mapState, mapGetters } from 'vuex'
 export default {
   name: 'MyLayout',
   mounted: function () {
-    console.log(this.$router)
   },
   components: {
     Profile: () => import('components/Profile')

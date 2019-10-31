@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "deploytera": "cp ../client/src/assets/contracts/* . && rsync -avr ./ teraweb:./klaytn.champ.blockdevs.asia/api && ssh teraweb 'docker restart klaytn-champ-api'"
+    "deploytera": "rsync -Lavr --exclude '.env' ./ teraweb:./klaytn.champ.blockdevs.asia/api && ssh teraweb 'docker restart klaytn-champ-api'"
   },
   "dependencies": {
     "caver-js": "^1.2.0",

@@ -96,9 +96,6 @@ export default {
     ...mapActions('user', [
       'setUserField'
     ]),
-    log (msg) {
-      console.log('dis', msg)
-    },
     level1submit () {
       this.$store.commit('user/inputAttempts', this.inputAttempts + 1)
       this.$store.commit('user/submissionProgress', 10)

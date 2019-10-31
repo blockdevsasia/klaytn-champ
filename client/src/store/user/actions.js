@@ -14,7 +14,6 @@ export default {
   },
 
   async loggedIn (ctx, firebaseUser) {
-    console.log(firebaseUser)
     const user = {
       displayName: firebaseUser.displayName,
       email: firebaseUser.email,

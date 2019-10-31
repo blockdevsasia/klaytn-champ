@@ -8,7 +8,6 @@
 export default {
   name: 'App',
   mounted: function () {
-    console.log(this.$store)
     this.$store.dispatch('user/init')
   }
 }

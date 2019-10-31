@@ -62,7 +62,6 @@ export default {
       return this.buttonLevel + 1
     },
     submitButtonLabel () {
-      console.log('att', this.inputAttempts)
       if (this.level === 6) {
         //return 'Congratulations, you successfully passed the first track!'
         this.$router.push('/completed/1')

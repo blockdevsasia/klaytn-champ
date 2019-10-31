@@ -60,7 +60,6 @@ import { mapState } from 'vuex'
 export default {
   name: 'AuthLayout',
   mounted: function () {
-    console.log(this.$router)
   },
   data () {
     return {

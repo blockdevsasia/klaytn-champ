@@ -99,7 +99,6 @@ export async function httpCheckLevel4 (context, { address, solution }) {
       txHash: solution,
       random: context.rootState.user.random
     }
-    console.log(data)
     const result = await axiosHTTP({
       baseURL: champEnv.getApiUrl(),
       method: 'post',
@@ -120,7 +119,6 @@ export async function httpCheckLevel5 (context, { address, solution }) {
       count: solution,
       random: context.rootState.user.random
     }
-    console.log(data)
     const result = await axiosHTTP({
       baseURL: champEnv.getApiUrl(),
       method: 'post',
@@ -140,7 +138,6 @@ export async function klaytnGetUser (context, address) {
   const certificationLevel = Number.parseInt(result.certificationLevel) + 1
   const random = result.randomAmount
 
-  // console.log(level, random)
   if (context.rootState.user.level !== level) {
     context.commit('user/submissionProgress', 100, { root: true })
 

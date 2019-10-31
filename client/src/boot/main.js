@@ -13,16 +13,7 @@ export const champEnv = require('../../../lib/environments.js').champ[process.en
 
 export default ({ app, router, Vue, store }) => {
   router.beforeEach((to, from, next) => {
-    // const isLoading = store.state.user.loading
-    // const userLoggedIn = store.state.user.current.displayName !== undefined
-    // const userHasAddress = store.getters['user/address'].length > 0
     const userNeedsToSignup = firebaseAuth.currentUser === null
-    // const userNeedsLevel1 = userLoggedIn && !userHasAddress
-
-    // console.log('to', to.path)
-    // console.log('isLoading', isLoading)
-    // console.log('userNeedsToSignup', userNeedsToSignup)
-    // console.log('userNeedsLevel1', userNeedsLevel1)
 
     // Always send mobile browsers to a special screen. The app doesnt work for mobile now.
     if (isMobile()) {
