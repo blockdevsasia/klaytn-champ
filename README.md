@@ -36,8 +36,8 @@ Blockchain-based user and developer challenge with verifiable scoring and certif
 </tr>
 
 <tr>
-<td><strong>Check out our Pitch (From the Klaytn Hackathon where we won #1 price!)</strong></td>
-<td>https://www.youtube.com/embed/xmMsZM7A0Ec</td>
+<td><strong>Check out our Pitch</strong></td>
+<td>(From the Klaytn Hackathon where we won #1 price!) https://www.youtube.com/embed/xmMsZM7A0Ec</td>
 </tr>
 
 <tr>
