@@ -60,35 +60,35 @@
 </template>
 
 <script>
-  import {mapState, mapActions, mapGetters} from 'vuex'
+import { mapState, mapActions, mapGetters } from 'vuex'
 
-  export default {
-    name: 'LevelSideBar',
-    components: {
-      Profile: () => import('components/Profile')
-    },
-    data() {
-      return {}
-    },
-    methods: {
-      ...mapActions('user', [
-        'logout'
-      ])
-    },
-    computed: {
-      ...mapGetters({
-        address: 'user/address',
-        selectedLevel: 'user/selectedLevel'
+export default {
+  name: 'LevelSideBar',
+  components: {
+    Profile: () => import('components/Profile')
+  },
+  data () {
+    return {}
+  },
+  methods: {
+    ...mapActions('user', [
+      'logout'
+    ])
+  },
+  computed: {
+    ...mapGetters({
+      address: 'user/address',
+      selectedLevel: 'user/selectedLevel'
 
-      }),
-      ...mapState('user', {
-        level: 'level',
-        levelSideBar: 'levelSideBar',
-        currentUser: 'current'
-      })
+    }),
+    ...mapState('user', {
+      level: 'level',
+      levelSideBar: 'levelSideBar',
+      currentUser: 'current'
+    })
 
-    }
   }
+}
 </script>
 
 <style>

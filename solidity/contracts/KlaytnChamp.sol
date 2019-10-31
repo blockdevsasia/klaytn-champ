@@ -1,71 +1,11 @@
 pragma solidity ^0.5.6;
+import "@openzeppelin/contracts/ownership/Ownable.sol";
+import "./ERC721Metadata.sol";
 
-contract Ownable {
-    address private _owner;
+contract KlaytnChamp is Ownable, ERC721Metadata("Klaytn Champ", "CHAMP") {
+    constructor() public {}
+    mapping(uint256 => uint128) tokenSerial; // Keeps track of the highest serial numbers (128 rightmost bits) in the TokenId per class (leftmost)
 
-    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
-
-    /**
-     * @dev Initializes the contract setting the deployer as the initial owner.
-     */
-    constructor () internal {
-        _owner = msg.sender;
-        emit OwnershipTransferred(address(0), _owner);
-    }
-
-    /**
-     * @dev Returns the address of the current owner.
-     */
-    function owner() public view returns (address) {
-        return _owner;
-    }
-
-    /**
-     * @dev Throws if called by any account other than the owner.
-     */
-    modifier onlyOwner() {
-        require(isOwner(), "Ownable: caller is not the owner");
-        _;
-    }
-
-    /**
-     * @dev Returns true if the caller is the current owner.
-     */
-    function isOwner() public view returns (bool) {
-        return msg.sender == _owner;
-    }
-
-    /**
-     * @dev Leaves the contract without owner. It will not be possible to call
-     * `onlyOwner` functions anymore. Can only be called by the current owner.
-     *
-     * > Note: Renouncing ownership will leave the contract without an owner,
-     * thereby removing any functionality that is only available to the owner.
-     */
-    function renounceOwnership() public onlyOwner {
-        emit OwnershipTransferred(_owner, address(0));
-        _owner = address(0);
-    }
-
-    /**
-     * @dev Transfers ownership of the contract to a new account (`newOwner`).
-     * Can only be called by the current owner.
-     */
-    function transferOwnership(address newOwner) public onlyOwner {
-        _transferOwnership(newOwner);
-    }
-
-    /**
-     * @dev Transfers ownership of the contract to a new account (`newOwner`).
-     */
-    function _transferOwnership(address newOwner) internal {
-        require(newOwner != address(0), "Ownable: new owner is the zero address");
-        emit OwnershipTransferred(_owner, newOwner);
-        _owner = newOwner;
-    }
-}
-
-contract KlaytnChamp is Ownable {
     struct Certificate {
         address userAddress;
         uint64 certificationLevel;
@@ -76,13 +16,14 @@ contract KlaytnChamp is Ownable {
         uint64 level;
         uint64 certificationLevel;
         bytes32 uidHash;
+        bytes32 googleHash;
     }
 
     // The main mapping that contains the data for each user
     mapping(address => UserData) _users;
     mapping(bytes32 => Certificate) _certificates;
 
-    function registerUser( address payable userAddress, bytes32 uidHash ) public payable onlyOwner {
+    function registerUser(address payable userAddress, bytes32 uidHash, bytes32 googleHash) public payable onlyOwner {
         require(
             _users[userAddress].level == 0,
             "Cannot register twice"
@@ -100,8 +41,13 @@ contract KlaytnChamp is Ownable {
         userAddress.transfer(msg.value);
 
         // If the transfer succeeded, register the user's address
-        UserData memory newUser = UserData(uint64(msg.value), 1, 0, uidHash);
+        UserData memory newUser = UserData(uint64(msg.value), 1, 0, uidHash, googleHash);
         _users[userAddress] = newUser;
+
+        _mint(
+            userAddress,
+            getNewTokenId(tokenClass(uint64(0)))
+        );
     }
 
     function updateUserLevel(address userAddress, uint64 newLevel) public onlyOwner {
@@ -119,23 +65,45 @@ contract KlaytnChamp is Ownable {
 
         require(user.level > 0, "User has to be registered");
         user.certificationLevel = newCertificationLevel;
-
+        _mint(
+            userAddress,
+            getNewTokenId(tokenClass(newCertificationLevel))
+        );
     }
 
     function getUser(address userAddress)
     public view
-    returns (uint64 randomAmount, uint64 level, uint64 certificationLevel, bytes32 uidHash)
+    returns (uint64 randomAmount, uint64 level, uint64 certificationLevel, bytes32 uidHash, bytes32 googleHash)
     {
         UserData storage user = _users[userAddress];
-        return (user.randomAmount, user.level, user.certificationLevel, user.uidHash);
+        return (user.randomAmount, user.level, user.certificationLevel, user.uidHash, user.googleHash);
     }
+
     function resetUser(address userAddress) public {
-        require(msg.sender == userAddress  || msg.sender == owner(), "Only user or owner can reset a record");
+        require(msg.sender == userAddress || msg.sender == owner(), "Only user or owner can reset a record");
         UserData storage user = _users[userAddress];
 
         user.randomAmount = 0;
         user.level = 0;
         user.certificationLevel = 0;
         user.uidHash = 0x0;
+        user.googleHash = 0x0;
+    }
+
+    function tokenClass(uint64 certificationLevel)
+    internal pure
+    returns(uint256)
+    {
+        return (
+        uint256(certificationLevel) << 192           // 256 - 64
+        );
+    }
+
+    function getNewTokenId(uint256 _tokenClass)
+    internal
+    returns (uint256)
+    {
+        tokenSerial[_tokenClass]++;
+        return _tokenClass | tokenSerial[_tokenClass];
     }
 }

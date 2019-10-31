@@ -35,10 +35,11 @@ export async function httpRegisterUser (context, address) {
         idToken: idToken
       }
     })
+    const tokenId = result.data
     console.debug(result)
     context.commit('user/submissionProgress', 40, { root: true })
   } catch (err) {
-    context.commit('user/submissionProgress', 40, { root: true })
+    context.commit('user/submissionProgress', 0, { root: true })
   }
 }
 
@@ -139,6 +140,14 @@ export async function klaytnGetUser (context, address) {
   const random = result.randomAmount
 
   if (context.rootState.user.level !== level) {
+    if (level === 2) {
+      const badge0 = await contract.methods.tokenOfOwnerByIndex(address, 0).call()
+      console.log('badge0: ', badge0)
+    } else if (level > 5) {
+      const badge1 = await contract.methods.tokenOfOwnerByIndex(address, 1).call()
+      console.log('badge1: ', badge1)
+    }
+
     context.commit('user/submissionProgress', 100, { root: true })
 
     context.commit('user/level', level, { root: true })

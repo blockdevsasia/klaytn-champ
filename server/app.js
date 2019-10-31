@@ -1,4 +1,5 @@
 require('dotenv').config()
+
 const klaytnEnv = require('./environments.js').klaytn[process.env.KLAYTN_ENVIRONMENT.toLowerCase()]
 const champEnv = require('./environments.js').champ[process.env.CHAMP_ENVIRONMENT.toLowerCase()]
 
@@ -43,16 +44,18 @@ app.post('/registerUser', wrap(async (req, res, next) => {
   const firebaseUser = await retrieveFirebaseId(req.body.idToken)
   const uid = firebaseUser.uid
   const hashedUid = caver.utils.keccak256(uid)
+  const hashedGoogle = caver.utils.keccak256(firebaseUser.email)
   const randomNumber = Math.floor(1 + (Math.random() * 1000000))
 
   try {
-    const result = await champContract.methods.registerUser(address, hashedUid).send({
-      gas: '200000',
+    const result = await champContract.methods.registerUser(address, hashedUid, hashedGoogle).send({
+      gas: '300000',
       from: process.env.ADMIN_PUBKEY,
       value: randomNumber
     })
+    const tokenId = result.events.Transfer.returnValues.tokenId
     console.debug(result)
-    return res.status(200).send()
+    return res.status(200).send(tokenId)
   } catch (err) {
     return res.status(422).send(err)
   }
@@ -75,7 +78,7 @@ app.post('/checkLevel2', wrap(async (req, res, next) => {
   if (result !== undefined || result.length > 0) {
     try {
       const result = await champContract.methods.updateUserLevel(address, 2).send({
-        gas: '200000',
+        gas: '300000',
         from: process.env.ADMIN_PUBKEY
       })
       console.debug(result)
@@ -102,7 +105,7 @@ app.post('/checkLevel3', wrap(async (req, res, next) => {
 
   if (result.length > 0) {
     const result = await champContract.methods.updateUserLevel(address, 3).send({
-      gas: '200000',
+      gas: '300000',
       from: process.env.ADMIN_PUBKEY
     })
     console.debug(result)
@@ -128,7 +131,7 @@ app.post('/checkLevel4', wrap(async (req, res, next) => {
 
   if (result.length > 0) {
     const result = await champContract.methods.updateUserLevel(address, 4).send({
-      gas: '200000',
+      gas: '300000',
       from: process.env.ADMIN_PUBKEY
     })
     console.debug(result)
@@ -165,12 +168,19 @@ app.post('/checkLevel5', wrap(async (req, res, next) => {
     const count = await countContract.methods.count().call()
     console.log('count', Number.parseInt(count), Number.parseInt(expectedCount))
     if (Number.parseInt(count) === Number.parseInt(expectedCount)) {
-      const result = await champContract.methods.updateUserLevel(address, 5).send({
-        gas: '200000',
+      await champContract.methods.updateUserLevel(address, 5).send({
+        gas: '300000',
         from: process.env.ADMIN_PUBKEY
       })
-      console.debug(result)
-      return res.status(200).send('OK')
+
+      const updateCertLevelResult = await champContract.methods.updateUserCertificationLevel(address, 1).send({
+        gas: '300000',
+        from: process.env.ADMIN_PUBKEY
+      })
+
+      const tokenId = updateCertLevelResult.events.Transfer.returnValues.tokenId
+
+      return res.status(200).send(tokenId)
     } else {
       return res.status(406).send('WRONG')
     }

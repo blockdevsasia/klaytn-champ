@@ -8,16 +8,31 @@
       <h3 class="col-12">{{currentUser.displayName}}</h3>
       <p class="col-12">Hereby we testify that {{currentUser.displayName}} has completed the full challenge of Klaytn and is hereby a
         certified Klaytn Champion.</p>
-      <h6 class="col-12">Coming soon: View the Champ Certificate token in your Klaytn Wallet</h6>
       <div class="col-3"></div>
       <div class="col-6">
-        <q-btn
-          :disable="true"
-          align="between"
-          class="btn-fixed-width view-ctf01"
-          label="View Token in Klaytn Wallet"
-               icon="verified_user"
-        />
+
+        <q-card flat class="my-card bg-yellow-1" >
+          <q-card-section>
+            <div class="text-subtitle2">To view the certificates (ERC721) in the Wallet:</div>
+          </q-card-section>
+          <q-separator inset />
+          <q-card-section >
+            <q-markup-table  >
+              <tbody>
+                <tr><td>Open the Klaytn Wallet</td></tr>
+                <tr><td>Click "Send KLAY & Token"</td></tr>
+                <tr><td>Click the (+) on the "Select Token" panel</td></tr>
+                <tr><td>
+                  Token Symbol: "CHAMP"<br/>
+                  Token Contract Address: <strong>{{contractAddress}}</strong><br/>
+                  Decimals: 0<br/>
+                </td></tr>
+                <tr><td>Now click "Save"</td></tr>
+                <tr><td>You should now have 2 CHAMP tokens</td></tr>
+              </tbody>
+              </q-markup-table>
+          </q-card-section>
+        </q-card>
       </div>
       <div class="col-3"></div>
 
@@ -33,6 +48,7 @@
 <script>
 import { mapState, mapGetters } from 'vuex'
 
+import { contract } from 'boot/caver'
 export default {
   name: 'PageIndex',
   computed: {
@@ -48,7 +64,10 @@ export default {
       currentUser: 'current',
       random: 'random',
       level: 'level'
-    })
+    }),
+    contractAddress () {
+      return contract.options.address
+    }
   }
 }
 </script>

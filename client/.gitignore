@@ -20,4 +20,4 @@ yarn-error.log*
 *.njsproj
 *.sln
 /.env.prod
-/env.dev
+/.env.dev

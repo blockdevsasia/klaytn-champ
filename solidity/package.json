@@ -1,7 +1,13 @@
 {
   "dependencies": {
+    "@openzeppelin/contracts": "^2.4.0",
+    "bn-chai": "^1.0.1",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
     "connect-privkey-to-provider": "^0.0.3",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "mocha": "^6.2.2",
+    "truffle-test-utils": "^0.1.0"
   },
   "devDependencies": {
     "truffle-hdwallet-provider-klaytn": "^1.0.13-a"
