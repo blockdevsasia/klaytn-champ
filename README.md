@@ -4,7 +4,7 @@
 Blockchain-based user and developer challenge with verifiable scoring and certification. Our goal is to make technical documentation and onboarding with Klaytn more fun by Gamification & Incentivisation.
 <h6>Check out our live demo! http://klaytn.champ.blockdevs.asia/#/signup</h6>
 
-<h3>Check out our Pitch</h3>
+<h3>Check out our Pitch (From the Klaytn Hackathon where we won #1 price!)</h3>
 
 [![Check out our Pitch](https://res.cloudinary.com/eoi-digital/image/upload/v1559369383/2019-06-01_14_07_55-Window_jn4tfb.png)](https://www.youtube.com/embed/xmMsZM7A0Ec)
 
@@ -36,7 +36,7 @@ Blockchain-based user and developer challenge with verifiable scoring and certif
 </tr>
 
 <tr>
-<td><strong>Check out our Pitch</strong></td>
+<td><strong>Check out our Pitch (From the Klaytn Hackathon where we won #1 price!)</strong></td>
 <td>https://www.youtube.com/embed/xmMsZM7A0Ec</td>
 </tr>
 
