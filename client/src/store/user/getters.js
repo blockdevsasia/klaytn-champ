@@ -2,7 +2,7 @@ import _ from 'lodash'
 
 export default {
   isLoggedIn: (state) => {
-    let result = state.current.displayName !== undefined
+    const result = state.current.displayName !== undefined
     console.log('isLoggedIn: ', result, state.current)
     return result
   },

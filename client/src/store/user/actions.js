@@ -1,4 +1,4 @@
-import { AUTH } from 'boot/firebase'
+import { firebaseAuth } from 'boot/firebase'
 
 export default {
   handler: () => {
@@ -6,7 +6,7 @@ export default {
 
   async logout (ctx) {
     console.log('user/logout')
-    AUTH.signOut()
+    firebaseAuth.signOut()
   },
 
   async init (ctx) {
@@ -30,32 +30,35 @@ export default {
 
   setUserField (ctx, change) {
     console.log('setUserField', change)
+
     ctx.dispatch('set', change)
   },
 
   async reset (ctx) {
     console.log('user/reset')
 
-    AUTH.signOut()
+    firebaseAuth.signOut()
 
     await ctx.dispatch('closeDBChannel', { clearModule: true })
     ctx.commit('current', {})
   },
 
-  resetAll (ctx) {
+  async resetAll (ctx) {
     console.log('resetting all')
     // Reset contract
-    ctx.dispatch('external/httpResetUser', ctx.getters.address, { root: true })
+    await ctx.dispatch('external/httpResetUser', ctx.getters.address, { root: true })
 
     // Reset firebase
     ctx.dispatch('set', {
       address: '',
-      selectedLevel: '',
+      selectedLevel: '1',
       level2solution: '',
       level3solution: '',
       level4solution: '',
       level5solution: ''
     })
+    ctx.commit('user/level', 1, { root: true })
+    ctx.commit('user/random', 0, { root: true })
     // ctx.dispatch('delete', 'level2solution')
     // ctx.dispatch('delete', 'level3solution')
     // ctx.dispatch('delete', 'level4solution')

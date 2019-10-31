@@ -4,14 +4,14 @@ import Vuex from 'vuex'
 import user from './user'
 import external from './external'
 
-import { DB } from 'boot/firebase'
+import { firebaseDb } from 'boot/firebase'
 
 import createEasyFirestore from 'vuex-easy-firestore'
 
 Vue.use(Vuex)
 
 const userModule = {
-  firestorePath: 'users/{uid}',
+  firestorePath: 'klaytn/{userId}',
   firestoreRefType: 'doc',
   moduleName: 'user',
   statePropName: 'data',
@@ -23,7 +23,7 @@ const easyFirestore = createEasyFirestore(
   [userModule],
   {
     // logging: true,
-    FirebaseDependency: DB.app
+    FirebaseDependency: firebaseDb.app
   }
 )
 

@@ -7,7 +7,6 @@
   "author": "info@blockdevs.asia",
   "private": true,
   "scripts": {
-    "lint": "eslint --ext .js,.vue src",
     "test": "echo \"No test specified\" && exit 0",
     "deploytera": "quasar build && rsync -avr dist/spa/ teraweb:./klaytn.champ.blockdevs.asia/web-klaytn-champ/public"
   },
@@ -29,6 +28,7 @@
     "eslint": "^5.10.0",
     "eslint-loader": "^2.2.1",
     "eslint-plugin-vue": "^5.2.3",
+    "standard": "^14.3.1",
     "strip-ansi": "=3.0.1"
   },
   "engines": {
@@ -38,8 +38,5 @@
   },
   "browserslist": [
     "last 1 version, not dead, ie >= 11"
-  ],
-  "resolutions": {
-    "ajv": "6.8.1"
-  }
+  ]
 }

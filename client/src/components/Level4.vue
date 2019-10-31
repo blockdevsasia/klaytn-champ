@@ -3,89 +3,79 @@
   <div
     v-if="selectedLevel === 4"
     class="row"
+    style="margin-left:3vw;margin-top:3vh;width:100%;"
   >
-    <q-card flat class="my-card">
+    <q-card class="my-card q-mb-lg q-pa-lg">
       <q-card-section>
         <div class="text-h6">Contract Interaction</div>
         <div class="text-subtitle2">Interact with the Count contract by calling its function(s).</div>
       </q-card-section>
 
-      <q-card-section>
-        <q-list>
-          <q-item>
-            <q-item-section>
-              <q-item-label>1. In the IDE find the Contract function calls, in the bottom-right section of the screen. You will see count(), getBlockNumber() and setCount() here. </q-item-label>
-            </q-item-section>
-          </q-item>
-
-          <q-item>
-            <q-item-section>
-              <q-item-label>2. <strong>Do a function call to "setCount"</strong>, with as input: <strong>{{random}}</strong> and click the "send" button.</q-item-label>
-            </q-item-section>
-          </q-item>
-
-          <q-item>
-            <q-item-section>
-              <q-item-label>3. On the "Transaction" tab at the bottom of the screen, you should be able to see the transaction details of the function call. <strong>Copy the Tx Hash</strong> and paste it below: </q-item-label>
-            </q-item-section>
-          </q-item>
-          <q-item>
-            <q-item-section>
-              <q-item-label>
-                <q-input
-                  square outlined
-                  label="Tx Hash"
-                  :disable="level > 4"
-                  :value="solution"
-                  @blur="(event) => $emit('setValue', {level4solution: event.target.value})"
-                />
-              </q-item-label>
-            </q-item-section>
-          </q-item>
-        </q-list>
-      </q-card-section>
-      <q-item>
-        <q-item-section>
-          <div>
-            <level-submit-button
-              :inputAttempts="inputAttempts"
-              :level="level"
-              :submissionProgress="submissionProgress"
-              :buttonLevel="4"
-              v-on:finish="$emit('finish')"
+      <q-markup-table bordered wrap-cells>
+        <tbody>
+        <!------------------------ Step 1 ------------------------->
+        <tr>
+          <td>
+            <div class="text-h6">1</div>
+          </td>
+          <td class="instruction">
+            <p>
+              In the IDE find the Contract function calls, in the bottom-right section of the screen. You will see count(), getBlockNumber() and setCount() here.
+            </p>
+          </td>
+          <td/>
+        </tr>
+        <!------------------------ Step 2 ------------------------->
+        <tr>
+          <td>
+            <div class="text-h6">2</div>
+          </td>
+          <td class="instruction">
+            <p>
+              <strong>Do a function call to "setCount"</strong>, with as input: <strong>{{random}}</strong> and click the "send" button.
+            </p>
+          </td>
+          <td/>
+        </tr>
+        <!------------------------ Step 3 ------------------------->
+        <tr>
+          <td>
+            <div class="text-h6">3</div>
+          </td>
+          <td class="instruction">
+            <p>
+              On the "Transaction" tab at the bottom of the screen, you should be able to see the transaction details of the function call. <strong>Copy the Tx Hash</strong> and paste it below:
+            </p>
+          </td>
+          <td/>
+        </tr>
+        <!------------------------ Step 4 ------------------------->
+        <tr>
+          <td>
+            <div class="text-h6">4</div>
+          </td>
+          <td class="instruction">
+            <q-input
+              square outlined
+              label="Tx Hash"
+              :disable="level > 4"
+              :value="solution"
+              @change="(event) => $emit('setValue', {level4solution: event.target.value})"
             />
-<!--            <q-btn-->
-<!--              :loading="submissionProgress > 0 && submissionProgress < 100"-->
-<!--              :percentage="submissionProgress"-->
-<!--              :label="submitButtonLabel"-->
-<!--              @click="level > 4 ? $router.push('/level/5'):$emit('finish')"-->
-<!--              class="level-button"-->
-<!--            >-->
-<!--              <template v-slot:loading>-->
-<!--                <q-spinner-gears class="on-left" />-->
-<!--                Checking...-->
-<!--              </template>-->
-<!--            </q-btn>-->
-<!--            -->
-<!--            <q-btn color="orange" icon="notification_important" label="hint"/>-->
-<!--            <q-btn-->
-<!--              :disable=" level > 4"-->
-<!--              color="green"-->
-<!--              text-color="black"-->
-<!--              label="Check my solution"-->
-<!--              @click="$emit('finish')"-->
-<!--            />-->
-<!--            <q-btn-->
-<!--              v-if="level > 4 && selectedLevel === 4"-->
-<!--              color="green"-->
-<!--              text-color="black"-->
-<!--              icon="check"-->
-<!--              label="Proceed to Level 5"-->
-<!--              to="/level/5"-->
-<!--            />-->
-          </div>
-        </q-item-section>
-      </q-item>
+          </td>
+          <td/>
+        </tr>
+        <tr><td colspan="3">
+          <level-submit-button
+            :inputAttempts="inputAttempts"
+            :level="level"
+            :submissionProgress="submissionProgress"
+            :buttonLevel="4"
+            v-on:finish="$emit('finish')"
+          />
+        </td></tr>
+        </tbody>
+      </q-markup-table>
     </q-card>
   </div>
 </template>

@@ -52,8 +52,9 @@
 
 <script>
 import * as firebase from 'firebase'
-import { AUTH } from 'boot/firebase'
+import { firebaseAuth } from 'boot/firebase'
 
+const firebaseAuthProvider = new firebase.auth.GoogleAuthProvider()
 import { mapState } from 'vuex'
 
 export default {
@@ -76,10 +77,12 @@ export default {
   },
   methods: {
     signinGoogle () {
-      var provider = new firebase.auth.GoogleAuthProvider()
-      AUTH.signInWithRedirect(provider).then((result) => {
-        this.$router.push({ path: '' })
-      }).catch(err => console.log(err))
+      firebaseAuth.signInWithPopup(firebaseAuthProvider).then((result) => {
+        // console.log('Logged in, routing')
+
+      }).catch(err => {
+        console.error(err)
+      })
     }
   }
 }

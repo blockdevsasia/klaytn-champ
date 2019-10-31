@@ -3,70 +3,93 @@
   <div
     v-if="selectedLevel === 5"
     class="row"
+    style="margin-left:3vw;margin-top:3vh;width:100%;"
   >
-    <q-card flat class="my-card">
+    <q-card class="my-card q-mb-lg q-pa-lg">
       <q-card-section>
         <div class="text-h6">Contract Modification and Redeployment</div>
         <div class="text-subtitle2">Modify and redeploy the Count contract.</div>
       </q-card-section>
 
-      <q-card-section>
-        <q-list>
-          <q-item>
-            <q-item-section>
-              <q-item-label>1. In the source code of the Count contract, <strong>modify the "setCount" function</strong> so it stores <strong>count multiplied by block number</strong>.</q-item-label>
-            </q-item-section>
-          </q-item>
-          <q-item>
-            <q-item-section>
-              <q-item-label>2. <strong>Compile and deploy</strong> the modified contract.</q-item-label>
-            </q-item-section>
-          </q-item>
-          <q-item>
-            <q-item-section>
-              <q-item-label>3. Send the "setCount" function with input: <strong>{{random}}</strong> and wait for it to finish.</q-item-label>
-            </q-item-section>
-          </q-item>
-          <q-item>
-            <q-item-section>
-              <q-item-label>4. <strong>Call count() and paste</strong> the resulting value below:</q-item-label>
-            </q-item-section>
-          </q-item>
-
-          <q-item>
-            <q-item-section>
-              <q-item-label>
-                <q-input
+      <q-markup-table bordered wrap-cells>
+        <tbody>
+        <!------------------------ Step 1 ------------------------->
+        <tr>
+          <td>
+            <div class="text-h6">1</div>
+          </td>
+          <td class="instruction">
+            <p>
+              In the source code of the Count contract, <strong>modify the "setCount" function</strong> so it stores <strong>count multiplied by block number</strong>.
+            </p>
+          </td>
+          <td/>
+        </tr>
+        <!------------------------ Step 2 ------------------------->
+        <tr>
+          <td>
+            <div class="text-h6">2</div>
+          </td>
+          <td class="instruction">
+            <p>
+              <strong>Compile and deploy</strong> the modified contract.
+            </p>
+          </td>
+          <td/>
+        </tr>
+        <!------------------------ Step 3 ------------------------->
+        <tr>
+          <td>
+            <div class="text-h6">3</div>
+          </td>
+          <td class="instruction">
+            <p>
+              Send the "setCount" function with input: <strong>{{random}}</strong> and wait for it to finish
+            </p>
+          </td>
+          <td/>
+        </tr>
+        <!------------------------ Step 4 ------------------------->
+        <tr>
+          <td>
+            <div class="text-h6">4</div>
+          </td>
+          <td class="instruction">
+            <p>
+              <strong>Call count() and paste</strong> the resulting value below:
+            </p>
+          </td>
+          <td/>
+        </tr>
+        <!------------------------ Step 5 ------------------------->
+        <tr>
+          <td>
+            <div class="text-h6">5</div>
+          </td>
+          <td class="instruction">
+            <p>
+              <q-input
                 square outlined
                 label="Count"
                 :disable="level > 5"
                 :value="solution"
-                @blur="(event) => $emit('setValue', {level5solution: event.target.value})"
+                @change="(event) => $emit('setValue', {level5solution: event.target.value})"
               />
-              </q-item-label>
-            </q-item-section>
-          </q-item>
-          <q-item>
-            <q-item-section>
-              <q-item-label><i>Are you ready to get certified!?</i></q-item-label>
-            </q-item-section>
-          </q-item>
-        </q-list>
-      </q-card-section>
-      <q-item>
-        <q-item-section>
-          <div>
-            <level-submit-button
-              :inputAttempts="inputAttempts"
-              :level="level"
-              :submissionProgress="submissionProgress"
-              :buttonLevel="5"
-              v-on:finish="$emit('finish')"
-            />
-
-          </div>
-        </q-item-section>
-      </q-item>
+            </p>
+          </td>
+          <td/>
+        </tr>
+        <tr><td colspan="3">
+          <level-submit-button
+            :inputAttempts="inputAttempts"
+            :level="level"
+            :submissionProgress="submissionProgress"
+            :buttonLevel="5"
+            v-on:finish="$emit('finish')"
+          />
+        </td></tr>
+        </tbody>
+      </q-markup-table>
     </q-card>
 
     <q-card flat class="my-card bg-yellow-1" >

@@ -75,17 +75,14 @@ contract KlaytnChamp is Ownable {
         uint64 randomAmount;
         uint64 level;
         uint64 certificationLevel;
-        bytes32 googleHash;
-        bytes32 linkedinHash;
-        bytes32 githubHash;
-        bytes32 facebookHash;
+        bytes32 uidHash;
     }
 
     // The main mapping that contains the data for each user
     mapping(address => UserData) _users;
     mapping(bytes32 => Certificate) _certificates;
 
-    function registerUser( address payable userAddress ) public payable onlyOwner {
+    function registerUser( address payable userAddress, bytes32 uidHash ) public payable onlyOwner {
         require(
             _users[userAddress].level == 0,
             "Cannot register twice"
@@ -103,7 +100,7 @@ contract KlaytnChamp is Ownable {
         userAddress.transfer(msg.value);
 
         // If the transfer succeeded, register the user's address
-        UserData memory newUser = UserData(uint64(msg.value), 1, 0, 0, 0, 0, 0);
+        UserData memory newUser = UserData(uint64(msg.value), 1, 0, uidHash);
         _users[userAddress] = newUser;
     }
 
@@ -127,24 +124,18 @@ contract KlaytnChamp is Ownable {
 
     function getUser(address userAddress)
     public view
-    returns (uint64 randomAmount, uint64 level, uint64 certificationLevel, bytes32 googleHash)
+    returns (uint64 randomAmount, uint64 level, uint64 certificationLevel, bytes32 uidHash)
     {
         UserData storage user = _users[userAddress];
-        return (user.randomAmount, user.level, user.certificationLevel, user.googleHash);
+        return (user.randomAmount, user.level, user.certificationLevel, user.uidHash);
     }
-
-    function resetUser(address userAddress) public onlyOwner {
+    function resetUser(address userAddress) public {
+        require(msg.sender == userAddress  || msg.sender == owner(), "Only user or owner can reset a record");
         UserData storage user = _users[userAddress];
 
         user.randomAmount = 0;
         user.level = 0;
         user.certificationLevel = 0;
-        user.googleHash = 0x0;
-        user.linkedinHash = 0x0;
-        user.githubHash = 0x0;
-        user.facebookHash = 0x0;
+        user.uidHash = 0x0;
     }
-
-    //TODO: Add search by googleHash to retrieve certificate : return UserData by googleHash
-    //
 }

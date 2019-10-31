@@ -1,19 +1,28 @@
-const HDWalletProvider = require("truffle-hdwallet-provider-klaytn");
+require('dotenv').config()
 
-const BAOBAB_NETWORK_ID = '1001'
+const HDWalletProvider = require('truffle-hdwallet-provider-klaytn')
+const env = require('./environments.js')
 const GASLIMIT = '8500000'
-
-const BAOBAB_URL = `https://api.baobab.klaytn.net:8651`
-const PRIVATE_KEY = '0xa0f0e2350fec1fe054ce7d8e2b183e439ac3fc6a030337d7e6fa82ec1d531a49'
 
 module.exports = {
   networks: {
-    development: {
-      provider: new HDWalletProvider(PRIVATE_KEY, BAOBAB_URL),
-      network_id: BAOBAB_NETWORK_ID,
-      gas: GASLIMIT,
-      gasPrice: null,
+    local: {
+      host: 'localhost',
+      port: 8545,
+      network_id: env.klaytn.local.network_id
     },
+    testnet: {
+      provider: new HDWalletProvider(process.env.ADMIN_PRIKEY, env.klaytn.testnet.api_url),
+      network_id: env.klaytn.testnet.network_id,
+      gas: GASLIMIT,
+      gasPrice: null
+    },
+    mainnet: {
+      provider: new HDWalletProvider(process.env.ADMIN_PRIKEY, env.klaytn.mainnet.api_url),
+      network_id: env.klaytn.mainnet.network_id,
+      gas: GASLIMIT,
+      gasPrice: null
+    }
   },
   // Set default mocha options here, use special reporters etc.
   mocha: {

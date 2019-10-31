@@ -15,11 +15,7 @@
 
           <div class="text-weight-bold user-name">
             {{user.displayName}}
-
-            <!--          <q-btn size="xs" @click="$store.dispatch('user/resetAll')">
-                      DEV: RESET ME
-                    </q-btn>
-             -->
+            <q-btn size="xs" @click="$store.dispatch('user/resetAll')">DEV: RESET ME</q-btn>
           </div>
           <div class="level-indu">Level: {{level}}</div>
 

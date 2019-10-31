@@ -1,32 +1,41 @@
+import { champEnv } from 'boot/main'
 import { axiosHTTP } from 'boot/axios'
 import { contract } from 'boot/caver'
+import { idToken } from 'boot/firebase'
 
 // Fix for old web3 flaw: https://github.com/ethereum/web3.js/issues/1986
 process.versions = { node: '11.2.0' }
 
 export async function httpResetUser (context, address) {
-  axiosHTTP({
-    baseURL: process.env.CHAMP_API_URL,
-    method: 'post',
-    url: '/SECRETkn3k4ln23lk4n2lk4n32_RESET_USER',
-    data: {
-      address: address
-    }
-  })
+  try {
+    const result = await axiosHTTP({
+      baseURL: champEnv.getApiUrl(),
+      method: 'post',
+      url: '/resetUser',
+      data: {
+        address: address,
+        idToken: idToken
+      }
+    })
+    console.debug(result)
+    context.commit('user/submissionProgress', 40, { root: true })
+  } catch (err) {
+    context.commit('user/submissionProgress', 40, { root: true })
+  }
 }
 
 export async function httpRegisterUser (context, address) {
   try {
     const result = await axiosHTTP({
-      baseURL: process.env.CHAMP_API_URL,
+      baseURL: champEnv.getApiUrl(),
       method: 'post',
       url: '/registerUser',
       data: {
         address: address,
-        googleHash: '0x3e27a893dc40ef8a7f0841d96639de2f58a132be5ae466d40087a2cfa83b7179'
+        idToken: idToken
       }
     })
-
+    console.debug(result)
     context.commit('user/submissionProgress', 40, { root: true })
   } catch (err) {
     context.commit('user/submissionProgress', 40, { root: true })
@@ -35,7 +44,7 @@ export async function httpRegisterUser (context, address) {
 
 export async function httpCheckAmount (context, { address, random }) {
   axiosHTTP({
-    baseURL: process.env.CHAMP_API_URL,
+    baseURL: champEnv.getApiUrl()(),
     method: 'post',
     url: '/checkAmount',
     data: {
@@ -44,10 +53,11 @@ export async function httpCheckAmount (context, { address, random }) {
     }
   })
 }
+
 export async function httpCheckLevel2 (context, { address, solution }) {
   try {
     const result = await axiosHTTP({
-      baseURL: process.env.CHAMP_API_URL,
+      baseURL: champEnv.getApiUrl(),
       method: 'post',
       url: '/checkLevel2',
       data: {
@@ -59,6 +69,7 @@ export async function httpCheckLevel2 (context, { address, solution }) {
 
     console.log('level2check', result)
   } catch (err) {
+    console.error(err)
     context.commit('user/submissionProgress', 0, { root: true })
   }
 }
@@ -66,7 +77,7 @@ export async function httpCheckLevel2 (context, { address, solution }) {
 export async function httpCheckLevel3 (context, { address, solution }) {
   try {
     const result = await axiosHTTP({
-      baseURL: process.env.CHAMP_API_URL,
+      baseURL: champEnv.getApiUrl(),
       method: 'post',
       url: '/checkLevel3',
       data: {
@@ -76,6 +87,7 @@ export async function httpCheckLevel3 (context, { address, solution }) {
     })
     console.log('level3check', result)
   } catch (err) {
+    console.error(err)
     context.commit('user/submissionProgress', 0, { root: true })
   }
 }
@@ -89,13 +101,14 @@ export async function httpCheckLevel4 (context, { address, solution }) {
     }
     console.log(data)
     const result = await axiosHTTP({
-      baseURL: process.env.CHAMP_API_URL,
+      baseURL: champEnv.getApiUrl(),
       method: 'post',
       url: '/checkLevel4',
       data: data
     })
     console.log('level4check', result)
   } catch (err) {
+    console.error(err)
     context.commit('user/submissionProgress', 0, { root: true })
   }
 }
@@ -109,13 +122,14 @@ export async function httpCheckLevel5 (context, { address, solution }) {
     }
     console.log(data)
     const result = await axiosHTTP({
-      baseURL: process.env.CHAMP_API_URL,
+      baseURL: champEnv.getApiUrl(),
       method: 'post',
       url: '/checkLevel5',
       data: data
     })
     console.log('level5check', result)
   } catch (err) {
+    console.error(err)
     context.commit('user/submissionProgress', 0, { root: true })
   }
 }

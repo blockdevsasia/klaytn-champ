@@ -5,25 +5,29 @@ import firebaseConfig from './firebase.config'
 import { Notify } from 'quasar'
 import {Loading} from 'quasar'
 
-const connection = Firebase.initializeApp(firebaseConfig)
+const firebaseApp = Firebase.initializeApp(firebaseConfig)
 
-export const DB = connection.database()
-export const AUTH = connection.auth()
+export const firebaseDb = firebaseApp.database()
+export const firebaseAuth = firebaseApp.auth()
+export let idToken = ''
 
 export default ({ router, store, Vue }) => {
 
 
-  connection.firestore().enablePersistence()
+  firebaseApp.firestore().enablePersistence()
     .then(() => {
       // If Firebase is going to login, set loading state so UI can adapt
-      if(AUTH.currentUser !== null){
+      if(firebaseAuth.currentUser !== null){
         console.log('supposed to be loading')
         // Loading.show()
         store.commit('user/loading', true)
       }
 
-      AUTH.onAuthStateChanged(user => {
-        console.log('onAuthStateChanged', user)
+      firebaseAuth.onAuthStateChanged(user => {
+        if(user) user.getIdToken().then((result) => {
+          idToken = result
+          console.log(result)})
+        // console.log('onAuthStateChanged', user.getIdToken())
 
         Loading.hide()
         store.commit('user/loading', false)

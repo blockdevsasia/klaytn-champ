@@ -12,12 +12,12 @@ export default {
     1: [
       {
         label: 'Klaytn Wallet',
-        link: 'https://baobab.klaytnwallet.com',
+        link: 'https://baobab.wallet.klaytn.com',
         icon: 'account_balance_wallet'
       },
       {
         label: 'Klaytnscope',
-        link: 'https://baobab.klaytnscope.com/',
+        link: 'https://baobab.scope.klaytn.com/',
         icon: 'explore'
       },
       {
@@ -29,17 +29,17 @@ export default {
     2: [
       {
         label: 'Klaytn Wallet',
-        link: 'https://baobab.klaytnwallet.com',
+        link: 'https://baobab.wallet.klaytn.com',
         icon: 'account_balance_wallet'
       },
       {
         label: 'Klaytnscope',
-        link: 'https://baobab.klaytnscope.com/',
+        link: 'https://baobab.scope.klaytn.com/',
         icon: 'explore'
       },
       {
         label: 'Klaytn Wallet Faucet',
-        link: 'https://baobab.klaytnwallet.com/access?next=faucet',
+        link: 'https://baobab.wallet.klaytn.com/access?next=faucet',
         icon: 'local_drink'
       },
       {
@@ -51,12 +51,12 @@ export default {
     3: [
       {
         label: 'Klaytn Wallet',
-        link: 'https://baobab.klaytnwallet.com',
+        link: 'https://baobab.wallet.klaytn.com',
         icon: 'account_balance_wallet'
       },
       {
         label: 'Klaytnscope',
-        link: 'https://baobab.klaytnscope.com/',
+        link: 'https://baobab.scope.klaytn.com/',
         icon: 'explore'
       },
       {
@@ -73,12 +73,12 @@ export default {
     4: [
       {
         label: 'Klaytn Wallet',
-        link: 'https://baobab.klaytnwallet.com',
+        link: 'https://baobab.wallet.klaytn.com',
         icon: 'account_balance_wallet'
       },
       {
         label: 'Klaytnscope',
-        link: 'https://baobab.klaytnscope.com/',
+        link: 'https://baobab.scope.klaytn.com/',
         icon: 'explore'
       },
       {
@@ -95,12 +95,12 @@ export default {
     5: [
       {
         label: 'Klaytn Wallet',
-        link: 'https://baobab.klaytnwallet.com',
+        link: 'https://baobab.wallet.klaytn.com',
         icon: 'account_balance_wallet'
       },
       {
         label: 'Klaytnscope',
-        link: 'https://baobab.klaytnscope.com/',
+        link: 'https://baobab.scope.klaytn.com/',
         icon: 'explore'
       },
       {

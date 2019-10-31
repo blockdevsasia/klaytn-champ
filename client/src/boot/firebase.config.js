@@ -1,9 +1,9 @@
 export default {
-  apiKey: 'AIzaSyBpTO48xmrJutJrbqkKzn-mDWbu_N0AITQ',
-  authDomain: 'champions-d3050.firebaseapp.com',
-  databaseURL: 'https://champions-d3050.firebaseio.com',
-  projectId: 'champions-d3050',
-  storageBucket: 'champions-d3050.appspot.com',
-  messagingSenderId: '235535837196',
-  appId: '1:235535837196:web:62afe96a675db377'
+  apiKey: 'AIzaSyBe5XF8Q6RAt5cjvSAp7wyqDIlHZjWEk6k',
+  authDomain: 'dlt-champ.firebaseapp.com',
+  databaseURL: 'https://dlt-champ.firebaseio.com',
+  projectId: 'dlt-champ',
+  storageBucket: 'dlt-champ.appspot.com',
+  messagingSenderId: '549250740247',
+  appId: '1:549250740247:web:40b0d4d8cdc21b8ef26c52'
 }
