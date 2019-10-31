@@ -6,9 +6,8 @@ Blockchain-based user and developer challenge with verifiable scoring and certif
 
 <h3>Check out our Pitch (From the Klaytn Hackathon where we won #1 price!)</h3>
 
-[![Check out our Pitch](https://res.cloudinary.com/eoi-digital/image/upload/v1559369383/2019-06-01_14_07_55-Window_jn4tfb.png)](https://www.youtube.com/embed/xmMsZM7A0Ec)
-
 <img src="https://www.blockdevs.asia/wp-content/uploads/2019/10/2019-11-01-00_01_26-Window.png">
+[![Check out our Pitch](https://res.cloudinary.com/eoi-digital/image/upload/v1559369383/2019-06-01_14_07_55-Window_jn4tfb.png)](https://www.youtube.com/embed/xmMsZM7A0Ec)
 
 <b>Growing the blockchain ecosystem on Klaytn by taking a bottom-up strategy (from building-to-consuming). Our blockchain-based solution is aimed to provide a better & more entertaining onboarding and certification process for Klaytn developers. By challenging developers with tasks, activities & trivia, we are educating developers with Klaytn technical documentation & implementation. With our tier-based gamification scoring system with incentives, learning how to utilize and develop with Klaytn is fun and rewarding.</b></br>
 <table>
