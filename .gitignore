@@ -65,3 +65,4 @@ typings/
 server/Count.json
 server/KlaytnChamp.json
 
+/server/.gcpServiceAccount.json
