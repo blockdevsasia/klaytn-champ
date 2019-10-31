@@ -46,6 +46,12 @@ Blockchain-based user and developer challenge with verifiable scoring and certif
 </tr>
 
 <tr>
+<td><strong>Project Pitch</strong></td>
+<td>Final Project Pitch: https://docs.google.com/presentation/d/e/2PACX-1vSRBmCyscGt7MWXBqAfLPGBkVxLDx3i1nQoaa4tUhQaqe6nxlpSyYjSue3cN6fBEFPMSMgkfk6l8S6S/pub?start=true&loop=false&delayms=3000 
+</td>
+</tr>
+
+<tr>
 <td><strong>Landing Page</strong></td>
 <td>https://www.blockdevs.asia/klaytn-champ</td>
 </tr>
