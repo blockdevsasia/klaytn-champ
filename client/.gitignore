@@ -11,9 +11,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-/client/.env.prod
-/client/.env.dev
-/client/.env
 
 # Editor directories and files
 .idea
@@ -22,3 +19,5 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
+/.env.prod
+/env.dev
