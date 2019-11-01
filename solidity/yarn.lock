@@ -995,7 +995,7 @@ caver-js@0.0.2-r:
     websocket "git://github.com/frozeman/WebSocket-Node.git#browserifyCompatible"
     xhr2-cookies "^1.1.0"
 
-caver-js@^1.0.0:
+caver-js@^1.0.0, caver-js@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/caver-js/-/caver-js-1.2.0.tgz#3463fb62b1e7d426362648282f983cabbc41b644"
   integrity sha512-Mj3r+PqgLchSUWexx4Q2LJYot7nI5YxQWaHaUsSZsm0Q+WbIKjHq0zFX6yCAj5gSHNLoGNfU/3vT4ycN/+OT/w==

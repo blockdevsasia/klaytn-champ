@@ -25,7 +25,11 @@ const feePayer = caver.klay.accounts.wallet.add(process.env.FEEPAYER_PRIKEY)
 // https://docs.klaytn.com/klaytn/design/transactions/fee-delegation#txtypefeedelegatedsmartcontractexecution
 
 describe('#ChampContract', function () {
+
   it('Sign for fee delegation', async () => {
+    // Publish to mainnet
+
+    // Call reset
     const { rawTransaction: senderRawTransaction } = await caver.klay.accounts.signTransaction({
       data: champContract.methods.resetUser('0x9bad2a106d44442528bf8ad0b5864a9e663f0dcb').encodeABI(),
       type: 'FEE_DELEGATED_SMART_CONTRACT_EXECUTION',

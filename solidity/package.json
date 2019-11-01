@@ -2,6 +2,7 @@
   "dependencies": {
     "@openzeppelin/contracts": "^2.4.0",
     "bn-chai": "^1.0.1",
+    "caver-js": "^1.2.0",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "connect-privkey-to-provider": "^0.0.3",
