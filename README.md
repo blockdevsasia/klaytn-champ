@@ -4,6 +4,8 @@
 Blockchain-based user and developer challenge with verifiable scoring and certification. Our goal is to make technical documentation and onboarding with Klaytn more fun by Gamification & Incentivisation.
 <h6>Check out our live demo! http://klaytn.champ.blockdevs.asia/#/signup</h6>
 
+<img src="https://www.blockdevs.asia/wp-content/uploads/2019/10/2019-11-01-00_01_26-Window.png">
+
 <h3>Check out our Pitch (From the Klaytn Hackathon where we won #1 price!)</h3>
 
 [![Check out our Pitch](https://res.cloudinary.com/eoi-digital/image/upload/v1559369383/2019-06-01_14_07_55-Window_jn4tfb.png)](https://www.youtube.com/embed/xmMsZM7A0Ec)
@@ -36,13 +38,19 @@ Blockchain-based user and developer challenge with verifiable scoring and certif
 </tr>
 
 <tr>
-<td><strong>Check out our Pitch (From the Klaytn Hackathon where we won #1 price!)</strong></td>
-<td>https://www.youtube.com/embed/xmMsZM7A0Ec</td>
+<td><strong>Check out our Pitch</strong></td>
+<td>(From the Klaytn Hackathon where we won #1 price!) https://www.youtube.com/embed/xmMsZM7A0Ec</td>
 </tr>
 
 <tr>
 <td><strong>Project paper</strong></td>
 <td>Final Project Paper: https://github.com/blockdevsasia/klaytn-champ/blob/master/media/Klaytn%20Champ%20-%20Project%20Paper.pdf</td>
+</tr>
+
+<tr>
+<td><strong>Project Pitch</strong></td>
+<td>Final Project Pitch: https://docs.google.com/presentation/d/e/2PACX-1vSRBmCyscGt7MWXBqAfLPGBkVxLDx3i1nQoaa4tUhQaqe6nxlpSyYjSue3cN6fBEFPMSMgkfk6l8S6S/pub?start=true&loop=false&delayms=3000 
+</td>
 </tr>
 
 <tr>
