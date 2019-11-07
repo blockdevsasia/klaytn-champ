@@ -43,6 +43,7 @@ export default {
   async resetAll (ctx) {
     console.log('resetting all')
     // Reset contract
+    console.log(ctx.getters.address)
     await ctx.dispatch('external/httpResetUser', ctx.getters.address, { root: true })
 
     // Reset firebase
@@ -56,12 +57,6 @@ export default {
     })
     ctx.commit('user/level', 1, { root: true })
     ctx.commit('user/random', 0, { root: true })
-    // ctx.dispatch('delete', 'level2solution')
-    // ctx.dispatch('delete', 'level3solution')
-    // ctx.dispatch('delete', 'level4solution')
-    // ctx.dispatch('delete', 'level5solution')
-    // ctx.dispatch('delete', 'selectedLevel')
-    // ctx.dispatch('delete', 'address')
   }
 
 }

@@ -32,7 +32,7 @@
           </td>
           <td class="instruction">
             <p>
-              <strong>Compile and deploy</strong> the modified contract.
+              <strong>Compile (ctrl-s) and deploy</strong> the modified contract.
             </p>
           </td>
           <td/>
@@ -44,7 +44,7 @@
           </td>
           <td class="instruction">
             <p>
-              Send the "setCount" function with input: <strong>{{random}}</strong> and wait for it to finish
+              Call the "setCount" function with input: <strong>{{random}}</strong> and wait for it to finish
             </p>
           </td>
           <td/>

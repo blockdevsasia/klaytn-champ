@@ -7,6 +7,8 @@ export default {
     return result
   },
   address: (state) => _.get(state.data, 'address', ''),
+  badge0: (state) => _.get(state.data, 'badge0', ''),
+  badge1: (state) => _.get(state.data, 'badge1', ''),
   selectedLevel: (state) => _.get(state.data, 'selectedLevel', '1'),
   level2solution: (state) => _.get(state.data, 'level2solution', ''),
   level3solution: (state) => _.get(state.data, 'level3solution', ''),

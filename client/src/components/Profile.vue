@@ -5,17 +5,17 @@
       <div class="row">
         <div class="col-4">
           <router-link class="user-name" to="/profile">
-
-            <q-avatar size="56px" class="q-mb-sm">
-              <img class="profile-pic" src="https://avatars3.githubusercontent.com/u/6133031?s=460&v=4">
-            </q-avatar>
+            <q-img
+              src="statics/logo_champ.png"
+              spinner-color="white"
+              style="height: 56px; max-width: 56px"
+            />
           </router-link>
         </div>
         <div class="col-8">
 
           <div class="text-weight-bold user-name">
             {{user.displayName}}
-<!--            <q-btn size="xs" @click="$store.dispatch('user/resetAll')">DEV: RESET ME</q-btn>-->
           </div>
           <div class="level-indu">Level: {{level}}</div>
 

@@ -1,8 +1,9 @@
 require('dotenv').config()
+var stream = require('stream')
 
 const klaytnEnv = require('./environments.js').klaytn[process.env.KLAYTN_ENVIRONMENT.toLowerCase()]
 const champEnv = require('./environments.js').champ[process.env.CHAMP_ENVIRONMENT.toLowerCase()]
-
+var Jimp = require('jimp')
 const ChampContract = require('./KlaytnChamp.json')
 const CountContract = require('./Count.json')
 
@@ -18,12 +19,100 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 const caver = new Caver(klaytnEnv.api_url)
-caver.klay.accounts.wallet.add(process.env.ADMIN_PRIKEY)
+const testnetCaver = new Caver(require('./environments.js').klaytn.testnet.api_url)
 const champContract = new caver.klay.Contract(ChampContract.abi, ChampContract.networks[klaytnEnv.network_id].address)
 
 const { retrieveFirebaseId } = require('./firebaseHelpers.js')
 
-app.post('/resetUser', wrap(async (req, res, next) => {
+const sender = caver.klay.accounts.wallet.add(process.env.ADMIN_PRIKEY)
+const payer = caver.klay.accounts.wallet.add(process.env.FEEPAYER_PRIKEY, process.env.FEEPAYER_ADDRESS)
+
+let tokenOwners = {} // Simple key-value store that caches tokenowners in memory while the server runs.
+
+async function executeMethod (method, options) {
+  if (process.env.KLAYTN_ENVIRONMENT === 'MAINNET') {
+    // If we're executing on mainnet, use fee delegate process
+    const { rawTransaction: senderRawTransaction } = await caver.klay.accounts.signTransaction({
+      data: method.encodeABI(),
+      type: 'FEE_DELEGATED_SMART_CONTRACT_EXECUTION',
+      to: ChampContract.networks[klaytnEnv.network_id].address,
+      gas: '30000000',
+      from: sender.address
+    }, sender.privateKey)
+
+    const receipt = await caver.klay.sendTransaction({
+      senderRawTransaction: senderRawTransaction,
+      feePayer: payer.address
+    })
+
+    return receipt
+  } else {
+    return method.send(options)
+  }
+}
+
+app.get('/token/:tokenId', wrap(async (req, res, next) => {
+  const tokenId = req.params.tokenId
+  if (tokenId.length > 100 && !Number.isInteger(tokenId)) return res.status(422).send('Invalid TokenId')
+
+  // Define type of token
+  const bn = caver.utils.toBN(tokenId, 10)
+  const certlevel = bn.shrn(192)
+
+  let metadata = {
+    'description': 'Klaytn Champ Achievement Badge: ' + certlevel === 0 ? 'Initiate' : 'Associate',
+    'name': certlevel === 0 ? 'Klaytn Initiate' : 'Klaytn Developer Associate',
+    'external_url': 'https://klaytn.champ.blockdevs.asia/token/' + tokenId,
+    'image': 'https://klaytn.champ.blockdevs.asia/token_img/' + tokenId
+  }
+
+  return res.status(200).send(metadata)
+}))
+
+app.get('/token_img/:tokenId', wrap(async (req, res, next) => {
+  const tokenId = req.params.tokenId
+  if (tokenId.length > 100 && !Number.isInteger(tokenId)) return res.status(422).send('Invalid TokenId')
+
+  // Define type of token
+  const bn = caver.utils.toBN(tokenId, 10)
+  const certlevel = bn.shrn(192)
+
+  const imageFile = certlevel.toNumber() === 0 ? 'badge-initiate-klaytn-champ.png' : 'badge-associate-klaytn-champ.png'
+  const badgeText = certlevel.toNumber() === 0 ? 'Klaytn Initiate' : 'Klaytn Developer Associate'
+
+  let metadata = {
+    'description': 'Klaytn Champ Achievement Badge: ' + certlevel === 0 ? 'Initiate' : 'Associate',
+    'name': badgeText,
+    'external_url': 'https://klaytn.champ.blockdevs.asia/token/' + tokenId,
+    'image': 'https://klaytn.champ.blockdevs.asia/token_img/' + tokenId
+  }
+
+  let tokenOwner
+  if (tokenOwners.hasOwnProperty(tokenId)) {
+    tokenOwner = tokenOwners[tokenId]
+  } else {
+    tokenOwner = await champContract.methods.ownerOf(tokenId).call()
+    tokenOwners[tokenId] = tokenOwner
+  }
+
+  const fileName = process.cwd() + '/' + imageFile
+
+  let loadedImage = await Jimp.read(fileName)
+  try {
+    let font16 = await Jimp.loadFont(Jimp.FONT_SANS_16_BLACK)
+    loadedImage.print(font16, 50, 310, tokenOwner)
+  } catch (err) { console.error(err) }
+
+  var fileContents = await loadedImage.getBufferAsync(Jimp.MIME_PNG)
+
+  var readStream = new stream.PassThrough()
+  readStream.end(fileContents)
+  res.set('Content-Type', 'image/png')
+
+  readStream.pipe(res)
+}))
+
+app.post('/api/resetUser', wrap(async (req, res, next) => {
   const address = req.body.address
   const firebaseUser = await retrieveFirebaseId(req.body.idToken)
   const uid = firebaseUser.uid
@@ -32,14 +121,11 @@ app.post('/resetUser', wrap(async (req, res, next) => {
     return res.status(422).send('Access denied')
   }
 
-  const result = await champContract.methods.resetUser(address).send({
-    gas: '200000',
-    from: process.env.ADMIN_PUBKEY
-  })
+  const result = await executeMethod(champContract.methods.resetUser(address))
   return res.status(200).send(result)
 }))
 
-app.post('/registerUser', wrap(async (req, res, next) => {
+app.post('/api/registerUser', wrap(async (req, res, next) => {
   const address = req.body.address
   const firebaseUser = await retrieveFirebaseId(req.body.idToken)
   const uid = firebaseUser.uid
@@ -48,20 +134,16 @@ app.post('/registerUser', wrap(async (req, res, next) => {
   const randomNumber = Math.floor(1 + (Math.random() * 1000000))
 
   try {
-    const result = await champContract.methods.registerUser(address, hashedUid, hashedGoogle).send({
-      gas: '300000',
-      from: process.env.ADMIN_PUBKEY,
-      value: randomNumber
-    })
-    const tokenId = result.events.Transfer.returnValues.tokenId
+    const result = await executeMethod(champContract.methods.registerUser(address, hashedUid, hashedGoogle, randomNumber))
+
     console.debug(result)
-    return res.status(200).send(tokenId)
+    return res.status(200).send('OK')
   } catch (err) {
     return res.status(422).send(err)
   }
 }))
 
-app.post('/checkLevel2', wrap(async (req, res, next) => {
+app.post('/api/checkLevel2', wrap(async (req, res, next) => {
   const address = req.body.address
 
   const txHash = req.body.txHash
@@ -77,10 +159,7 @@ app.post('/checkLevel2', wrap(async (req, res, next) => {
 
   if (result !== undefined || result.length > 0) {
     try {
-      const result = await champContract.methods.updateUserLevel(address, 2).send({
-        gas: '300000',
-        from: process.env.ADMIN_PUBKEY
-      })
+      const result = await executeMethod(champContract.methods.updateUserLevel(address, 2))
       console.debug(result)
       return res.status(200).send('OK')
     } catch (err) {
@@ -92,7 +171,7 @@ app.post('/checkLevel2', wrap(async (req, res, next) => {
   }
 }))
 
-app.post('/checkLevel3', wrap(async (req, res, next) => {
+app.post('/api/checkLevel3', wrap(async (req, res, next) => {
   const address = req.body.address
   const contractAddress = req.body.contract
 
@@ -104,10 +183,7 @@ app.post('/checkLevel3', wrap(async (req, res, next) => {
   )
 
   if (result.length > 0) {
-    const result = await champContract.methods.updateUserLevel(address, 3).send({
-      gas: '300000',
-      from: process.env.ADMIN_PUBKEY
-    })
+    const result = await executeMethod(champContract.methods.updateUserLevel(address, 3))
     console.debug(result)
     return res.status(200).send('OK')
   } else {
@@ -115,7 +191,7 @@ app.post('/checkLevel3', wrap(async (req, res, next) => {
   }
 }))
 
-app.post('/checkLevel4', wrap(async (req, res, next) => {
+app.post('/api/checkLevel4', wrap(async (req, res, next) => {
   const address = req.body.address
   const txHash = req.body.txHash
   let randomHex = caver.utils.numberToHex(req.body.random)
@@ -130,10 +206,7 @@ app.post('/checkLevel4', wrap(async (req, res, next) => {
   )
 
   if (result.length > 0) {
-    const result = await champContract.methods.updateUserLevel(address, 4).send({
-      gas: '300000',
-      from: process.env.ADMIN_PUBKEY
-    })
+    const result = await executeMethod(champContract.methods.updateUserLevel(address, 4))
     console.debug(result)
     return res.status(200).send('OK')
   } else {
@@ -141,7 +214,7 @@ app.post('/checkLevel4', wrap(async (req, res, next) => {
   }
 }))
 
-app.post('/checkLevel5', wrap(async (req, res, next) => {
+app.post('/api/checkLevel5', wrap(async (req, res, next) => {
   let contractAddress
   const address = req.body.address
   // const count = req.body.count
@@ -162,25 +235,17 @@ app.post('/checkLevel5', wrap(async (req, res, next) => {
     contractAddress = txsContractCalls[0].to
     const blockNr = txsContractCalls[0].blockNumber
     const expectedCount = blockNr * random
-    const countContract = new caver.klay.Contract(CountContract.abi, contractAddress)
+    const countContract = new testnetCaver.klay.Contract(CountContract.abi, contractAddress)
 
     // Find contract call
     const count = await countContract.methods.count().call()
-    console.log('count', Number.parseInt(count), Number.parseInt(expectedCount))
+
     if (Number.parseInt(count) === Number.parseInt(expectedCount)) {
-      await champContract.methods.updateUserLevel(address, 5).send({
-        gas: '300000',
-        from: process.env.ADMIN_PUBKEY
-      })
+      await executeMethod(champContract.methods.updateUserLevel(address, 5))
 
-      const updateCertLevelResult = await champContract.methods.updateUserCertificationLevel(address, 1).send({
-        gas: '300000',
-        from: process.env.ADMIN_PUBKEY
-      })
+      const updateCertLevelResult = await executeMethod(champContract.methods.updateUserCertificationLevel(address, 1))
 
-      const tokenId = updateCertLevelResult.events.Transfer.returnValues.tokenId
-
-      return res.status(200).send(tokenId)
+      return res.status(200).send('OK')
     } else {
       return res.status(406).send('WRONG')
     }

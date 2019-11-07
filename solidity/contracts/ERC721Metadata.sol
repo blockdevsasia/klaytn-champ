@@ -3,8 +3,10 @@ pragma solidity ^0.5.0;
 
 import "@openzeppelin/contracts/introspection/ERC165.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721Enumerable.sol";
+import "@openzeppelin/contracts/drafts/Strings.sol";
 
 contract ERC721Metadata is Context, ERC165, ERC721Enumerable {
+
     // Token name
     string private _name;
 
@@ -60,17 +62,8 @@ contract ERC721Metadata is Context, ERC165, ERC721Enumerable {
      * @param tokenId uint256 ID of the token to query
      */
     function tokenURI(uint256 tokenId) public view returns (string memory) {
-        return string(abi.encodePacked(_baseTokenURI(), _tokenURI(tokenId)));
-    }
-
-    /**
-     * @dev Internal returns an URI for a given token ID.
-     * Throws if the token ID does not exist. May return an empty string.
-     * @param tokenId uint256 ID of the token to query
-     */
-    function _tokenURI(uint256 tokenId) internal view returns (string memory) {
         require(_exists(tokenId), "ERC721Metadata: URI query for nonexistent token");
-        return _tokenURIs[tokenId];
+        return string(abi.encodePacked(_baseTokenURI(), Strings.fromUint256(tokenId)));
     }
 
     /**

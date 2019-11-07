@@ -2,8 +2,8 @@ pragma solidity ^0.5.6;
 import "@openzeppelin/contracts/ownership/Ownable.sol";
 import "./ERC721Metadata.sol";
 
-contract KlaytnChamp is Ownable, ERC721Metadata("Klaytn Champ", "CHAMP") {
-    constructor() public {}
+contract KlaytnChamp is Ownable, ERC721Metadata {
+
     mapping(uint256 => uint128) tokenSerial; // Keeps track of the highest serial numbers (128 rightmost bits) in the TokenId per class (leftmost)
 
     struct Certificate {
@@ -12,7 +12,7 @@ contract KlaytnChamp is Ownable, ERC721Metadata("Klaytn Champ", "CHAMP") {
     }
 
     struct UserData {
-        uint64 randomAmount;
+        uint64 nonce;
         uint64 level;
         uint64 certificationLevel;
         bytes32 uidHash;
@@ -23,25 +23,27 @@ contract KlaytnChamp is Ownable, ERC721Metadata("Klaytn Champ", "CHAMP") {
     mapping(address => UserData) _users;
     mapping(bytes32 => Certificate) _certificates;
 
-    function registerUser(address payable userAddress, bytes32 uidHash, bytes32 googleHash) public payable onlyOwner {
+    constructor () public ERC721Metadata("Klaytn Champ", "CHAMP") {
+        // solhint-disable-previous-line no-empty-blocks
+        _setBaseTokenURI("https://klaytn.champ.blockdevs.asia/token/");
+    }
+
+    function registerUser(address payable userAddress, bytes32 uidHash, bytes32 googleHash, uint64 nonce) public onlyOwner {
         require(
             _users[userAddress].level == 0,
             "Cannot register twice"
         );
         require(
-            msg.value > 0,
+            nonce > 0,
             "Random amount cannot be 0"
         );
         require(
-            msg.value < 18446744073709551615,
+            nonce < 18446744073709551615,
             "random amount cannot be larger than UINT64 max"
         );
 
-        // Transfer the random amount
-        userAddress.transfer(msg.value);
-
         // If the transfer succeeded, register the user's address
-        UserData memory newUser = UserData(uint64(msg.value), 1, 0, uidHash, googleHash);
+        UserData memory newUser = UserData(nonce, 1, 0, uidHash, googleHash);
         _users[userAddress] = newUser;
 
         _mint(
@@ -73,17 +75,17 @@ contract KlaytnChamp is Ownable, ERC721Metadata("Klaytn Champ", "CHAMP") {
 
     function getUser(address userAddress)
     public view
-    returns (uint64 randomAmount, uint64 level, uint64 certificationLevel, bytes32 uidHash, bytes32 googleHash)
+    returns (uint64 nonce, uint64 level, uint64 certificationLevel, bytes32 uidHash, bytes32 googleHash)
     {
         UserData storage user = _users[userAddress];
-        return (user.randomAmount, user.level, user.certificationLevel, user.uidHash, user.googleHash);
+        return (user.nonce, user.level, user.certificationLevel, user.uidHash, user.googleHash);
     }
 
     function resetUser(address userAddress) public {
         require(msg.sender == userAddress || msg.sender == owner(), "Only user or owner can reset a record");
         UserData storage user = _users[userAddress];
 
-        user.randomAmount = 0;
+        user.nonce = 0;
         user.level = 0;
         user.certificationLevel = 0;
         user.uidHash = 0x0;

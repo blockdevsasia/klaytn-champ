@@ -12,6 +12,8 @@
       <div class="col-6">
 
         <q-card flat class="my-card bg-yellow-1" >
+
+          <q-btn size="xs" @click="$store.dispatch('user/resetAll')">BETA TESTING: RESET ME</q-btn>
           <q-card-section>
             <div class="text-subtitle2">To view the certificates (ERC721) in the Wallet:</div>
           </q-card-section>
@@ -28,7 +30,9 @@
                   Decimals: 0<br/>
                 </td></tr>
                 <tr><td>Now click "Save"</td></tr>
-                <tr><td>You should now have 2 CHAMP tokens</td></tr>
+                <tr><td>You should now have 2 CHAMP tokens:
+                  <a :href="badgeImgUrl(badge0)" target="_blank">Klaytn Initiate</a>
+                  and <a :href="badgeImgUrl(badge1)" target="_blank">Klaytn Associate Developer</a></td></tr>
               </tbody>
               </q-markup-table>
           </q-card-section>
@@ -42,9 +46,6 @@
 
 </template>
 
-<style>
-</style>
-
 <script>
 import { mapState, mapGetters } from 'vuex'
 
@@ -54,6 +55,8 @@ export default {
   computed: {
     ...mapGetters({
       address: 'user/address',
+      badge0: 'user/badge0',
+      badge1: 'user/badge1',
       selectedLevel: 'user/selectedLevel',
       level2solution: 'user/level2solution',
       level3solution: 'user/level3solution',
@@ -67,6 +70,11 @@ export default {
     }),
     contractAddress () {
       return contract.options.address
+    }
+  },
+  methods: {
+    badgeImgUrl (tokenId) {
+      return 'https://klaytn.champ.blockdevs.asia/token_img/' + tokenId
     }
   }
 }

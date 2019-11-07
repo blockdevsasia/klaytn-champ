@@ -45,7 +45,7 @@
           </td>
           <td class="instruction">
             <p>
-              In the right panel in the IDE you can find the "Settings" section. Here, <strong>set "Environment" to "BAOBAB" </strong> using the dropdown menu.
+              In the right panel in the IDE you can find the <strong>"Run"</strong> section. Here, ensure "Environment" is set to <strong>"BAOBAB" </strong> using the dropdown menu.
             </p>
           </td>
           <td/>
@@ -57,7 +57,7 @@
           </td>
           <td class="instruction">
             <p>
-              Open the <strong>"From Account"</strong> dropdown and <strong>select "Import an Account". Upload your downloaded keystore file</strong>
+              Click the (+) next to <strong>"Account"</strong>, go to the "Keystore" tab, and <strong>Upload your downloaded keystore file</strong>
             </p>
           </td>
           <td/>
@@ -69,8 +69,7 @@
           </td>
           <td class="instruction">
             <p>
-              Select the your account and <strong>click "compile"</strong>. You should see the compiled output, it contains
-              the bytecode and abi data of the contract.
+              Make sure your account is selected and <strong>click "Deploy"</strong>.
             </p>
           </td>
           <td/>
@@ -82,8 +81,7 @@
           </td>
           <td class="instruction">
             <p>
-              <strong>Click the "deploy" button</strong> located below the setting. You should be able to see the
-              transaction details in the deploy output tab below.
+              Below the Deploy button (still in the "Run" tab), you should now see "Count at 0x....." in the list of "Deployed Contracts"
             </p>
           </td>
           <td/>
@@ -95,7 +93,7 @@
           </td>
           <td class="instruction">
             <p>
-              <strong>Copy the contract address</strong> located below the Deploy button and paste it below:
+              <strong>Copy the contract address</strong> using the special small button located next to the address, and paste it below:
             </p>
           </td>
           <td/>

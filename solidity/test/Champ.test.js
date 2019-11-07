@@ -88,7 +88,13 @@ contract('KlaytnChamp', accounts => {
     assert(userLevel6.certificationLevel == 1, 'user certlevel has to be 1')
     const nextToken = certLevelUpResult.logs[0].args.tokenId
     assertEventVar(certLevelUpResult, 'Transfer', 'to', alice)
-    console.log('badge1', nextToken)
+
+    // ------------- TOKENURI ----------------------------------
+    const badge1tokenuri = await champ.tokenURI(
+      nextToken,
+      { from: alice }
+    )
+    console.log('badge1 uri', badge1tokenuri)
 
     // ------------- RESET ----------------------------------
     await champ.resetUser(
@@ -98,5 +104,5 @@ contract('KlaytnChamp', accounts => {
     const userResetted = await champ.getUser(alice)
     userResetted.uidHash.should.be.equal('0x0000000000000000000000000000000000000000000000000000000000000000')
     userResetted.googleHash.should.be.equal('0x0000000000000000000000000000000000000000000000000000000000000000')
-  })
+  }).timeout(10000)
 })

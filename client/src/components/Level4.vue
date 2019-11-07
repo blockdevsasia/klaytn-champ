@@ -20,7 +20,7 @@
           </td>
           <td class="instruction">
             <p>
-              In the IDE find the Contract function calls, in the bottom-right section of the screen. You will see count(), getBlockNumber() and setCount() here.
+              In the IDE, expand the "Count" contract by clicking the triangle to the left of the name. You will see the methods setCount(), count() and getBlockNumber() here.
             </p>
           </td>
           <td/>
@@ -32,7 +32,7 @@
           </td>
           <td class="instruction">
             <p>
-              <strong>Do a function call to "setCount"</strong>, with as input: <strong>{{random}}</strong> and click the "send" button.
+              <strong>Do a function call to "setCount"</strong>, with as input: <strong>{{random}}</strong>.
             </p>
           </td>
           <td/>
@@ -44,7 +44,7 @@
           </td>
           <td class="instruction">
             <p>
-              On the "Transaction" tab at the bottom of the screen, you should be able to see the transaction details of the function call. <strong>Copy the Tx Hash</strong> and paste it below:
+              On the "Transaction" tab at the bottom of the screen, you should be able to see the transaction details of the function call. You may have to expand the transaction by clicking the line. <strong>Copy the "transaction hash"</strong> and paste it below:
             </p>
           </td>
           <td/>

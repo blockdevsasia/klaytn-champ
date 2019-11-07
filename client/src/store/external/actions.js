@@ -11,7 +11,7 @@ export async function httpResetUser (context, address) {
     const result = await axiosHTTP({
       baseURL: champEnv.getApiUrl(),
       method: 'post',
-      url: '/resetUser',
+      url: '/api/resetUser',
       data: {
         address: address,
         idToken: idToken
@@ -29,7 +29,7 @@ export async function httpRegisterUser (context, address) {
     const result = await axiosHTTP({
       baseURL: champEnv.getApiUrl(),
       method: 'post',
-      url: '/registerUser',
+      url: '/api/registerUser',
       data: {
         address: address,
         idToken: idToken
@@ -47,7 +47,7 @@ export async function httpCheckAmount (context, { address, random }) {
   axiosHTTP({
     baseURL: champEnv.getApiUrl()(),
     method: 'post',
-    url: '/checkAmount',
+    url: '/api/checkAmount',
     data: {
       address: address,
       random: random
@@ -60,7 +60,7 @@ export async function httpCheckLevel2 (context, { address, solution }) {
     const result = await axiosHTTP({
       baseURL: champEnv.getApiUrl(),
       method: 'post',
-      url: '/checkLevel2',
+      url: '/api/checkLevel2',
       data: {
         address: address,
         txHash: solution
@@ -80,7 +80,7 @@ export async function httpCheckLevel3 (context, { address, solution }) {
     const result = await axiosHTTP({
       baseURL: champEnv.getApiUrl(),
       method: 'post',
-      url: '/checkLevel3',
+      url: '/api/checkLevel3',
       data: {
         address: address,
         contract: solution
@@ -103,7 +103,7 @@ export async function httpCheckLevel4 (context, { address, solution }) {
     const result = await axiosHTTP({
       baseURL: champEnv.getApiUrl(),
       method: 'post',
-      url: '/checkLevel4',
+      url: '/api/checkLevel4',
       data: data
     })
     console.log('level4check', result)
@@ -123,7 +123,7 @@ export async function httpCheckLevel5 (context, { address, solution }) {
     const result = await axiosHTTP({
       baseURL: champEnv.getApiUrl(),
       method: 'post',
-      url: '/checkLevel5',
+      url: '/api/checkLevel5',
       data: data
     })
     console.log('level5check', result)
@@ -137,15 +137,17 @@ export async function klaytnGetUser (context, address) {
   const result = await contract.methods.getUser(address).call()
   const level = Number.parseInt(result.level) + 1
   const certificationLevel = Number.parseInt(result.certificationLevel) + 1
-  const random = result.randomAmount
+  const random = result.nonce
 
   if (context.rootState.user.level !== level) {
     if (level === 2) {
       const badge0 = await contract.methods.tokenOfOwnerByIndex(address, 0).call()
       console.log('badge0: ', badge0)
+      context.dispatch('user/set', { 'badge0': badge0 }, { root: true })
     } else if (level > 5) {
       const badge1 = await contract.methods.tokenOfOwnerByIndex(address, 1).call()
       console.log('badge1: ', badge1)
+      context.dispatch('user/set', { 'badge1': badge1 }, { root: true })
     }
 
     context.commit('user/submissionProgress', 100, { root: true })
