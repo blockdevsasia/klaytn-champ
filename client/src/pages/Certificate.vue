@@ -33,6 +33,7 @@
                 <tr><td>You should now have 2 CHAMP tokens:
                   <a :href="badgeImgUrl(badge0)" target="_blank">Klaytn Initiate</a>
                   and <a :href="badgeImgUrl(badge1)" target="_blank">Klaytn Associate Developer</a></td></tr>
+                <tr><td>You can <a target="_blank" :href="orbUrl">view your tokens in <img style="vertical-align:middle" src="http://cypress.explore.bitcrystals.com/images/orbExplorerlogo.png"/></a> as well</td></tr>
               </tbody>
               </q-markup-table>
           </q-card-section>
@@ -70,6 +71,9 @@ export default {
     }),
     contractAddress () {
       return contract.options.address
+    },
+    orbUrl () {
+      return 'http://cypress.explore.bitcrystals.com/address/?address=' + this.address
     }
   },
   methods: {
