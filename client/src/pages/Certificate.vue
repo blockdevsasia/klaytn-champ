@@ -21,15 +21,17 @@
           <q-card-section >
             <q-markup-table  >
               <tbody>
-                <tr><td>Open the Klaytn Wallet</td></tr>
-                <tr><td>Click "Send KLAY & Token"</td></tr>
-                <tr><td>Click the (+) on the "Select Token" panel</td></tr>
                 <tr><td>
-                  Token Symbol: "CHAMP"<br/>
-                  Token Contract Address: <strong>{{contractAddress}}</strong><br/>
-                  Decimals: 0<br/>
+                  <ol>
+                    <li>Open the Klaytn Wallet</li>
+                    <li>Click "Send KLAY & Token"</li>
+                    <li>Click the (+) on the "Select Token" panel</li>
+                    <li>Token Symbol: "CHAMP"</li>
+                    <li>Token Contract Address: <strong>{{contractAddress}}</strong></li>
+                    <li>Decimals: 0</li>
+                    <li><b>Now click "Save"</b></li>
+                  </ol>
                 </td></tr>
-                <tr><td>Now click "Save"</td></tr>
                 <tr><td>You should now have 2 CHAMP tokens:
                   <a :href="badgeImgUrl(badge0)" target="_blank">Klaytn Initiate</a>
                   and <a :href="badgeImgUrl(badge1)" target="_blank">Klaytn Associate Developer</a></td></tr>
@@ -40,11 +42,8 @@
         </q-card>
       </div>
       <div class="col-3"></div>
-
     </div>
-
   </q-page>
-
 </template>
 
 <script>
